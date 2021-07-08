@@ -1,0 +1,65 @@
+/* * {
+  border: 1px solid black;
+} */
+
+.storeName {
+  font-size: 16px;
+}
+.btn {
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-weight: 500;
+  border: none;
+}
+.order_btn {
+  background-color: #FFBB0F;
+  color: #222;
+  width: 120px;
+  cursor: pointer;
+}
+.noorder_btn {
+  background-color: #eee;
+  color: #f24;
+}
+.location-info {
+  width: 100%;
+  min-height: 200px;
+  font-size: 18px;
+  background-color: rgba(255,255,255);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  color: #6A5959;
+}
+
+.top_title{
+  background-color: #222;
+  color: #eee;
+  padding: 10px;
+}
+.info {
+  padding: 15px;
+}
+
+.mapMarkerAlt{
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.myplace{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  background-color: #C50406;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.compassIcon{
+  font-size: 18px;
+  padding: 5px;
+  color: #fff;
+}

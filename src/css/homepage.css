@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-top: 80px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  color: #6A5959;
+  font-weight: 400;
+}
+
+.keyword_btn {
+  align-self: center;
+  padding: 15px;
+  border: none;
+  background-color: #222;
+  color: #eee;
+  outline: none;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 1600px){
+  main {
+    width: 80%
+  }
+}

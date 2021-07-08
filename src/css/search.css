@@ -1,0 +1,121 @@
+
+section {
+  margin-top: 20px;
+}
+
+.form{
+  display: flex;
+}
+
+.search_bar{
+  width: 80%;
+  height: 60px;
+  padding-left: 50px;
+  font-size: 18px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  margin: 20px 0;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  font-size: 30px;
+  color: #666;
+  height: 100px;
+  z-index: 10;
+  padding-left: 15px;
+}
+
+.fliterIcon {
+  position: absolute;
+  font-size: 30px;
+  color: #666;
+  left: 75%;
+  height: 100px;
+  z-index: 10;
+  cursor: pointer;
+}
+.container {
+  margin-top: 30px;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(225px,1fr));
+  gap: 20px;
+  color: #6A5959;
+}
+
+
+.storeName {
+  text-overflow : ellipsis;
+  overflow : hidden;
+  white-space : nowrap;
+  color: #4f4141;
+}
+
+.card {
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card_content {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  height: 180px;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../images/Frame.png');
+}
+
+.wifiIcon {
+  font-size: 25px;
+  color: #5B1809;
+}
+
+.btn {
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-weight: 500;
+  border: none;
+  margin: 5px;
+  width: 100px;
+  align-self: flex-end;
+}
+.order_btn {
+  background-color: #FFBB0F;
+  color: #222;
+  cursor: pointer;
+}
+.noorder_btn {
+  background-color: #eee;
+  color: #f24;
+}
+
+.wrapper {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 600ms ease-in-out;
+}
+.wrapper.show  {
+  opacity: 1;
+  height: 230px;
+}
+
+.arrow-contain {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  cursor: pointer;
+  /* justify-content: flex-end; */
+}
+.fas {
+  font-size: 24px;
+}
