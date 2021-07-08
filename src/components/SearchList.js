@@ -72,6 +72,6 @@ const SearchList = (props) => {
           />):null}
       </div>
   )
-}
+};
 
 export default SearchList
