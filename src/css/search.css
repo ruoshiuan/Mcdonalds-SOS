@@ -117,5 +117,6 @@ section {
   /* justify-content: flex-end; */
 }
 .fas {
-  font-size: 24px;
+  font-size: 22px;
+  padding: 5px;
 }

@@ -8,14 +8,15 @@ import chevronRight from '@iconify-icons/fa-solid/chevron-right'
 import chevronDown from '@iconify-icons/fa-solid/chevron-down'
 import { useLoadScript,DistanceMatrixService } from '@react-google-maps/api'
 import key from '../key'
+
 const SearchList = (props) => {
   const [active,setActive] = useState(0)
   const [location,setLocation] = useState({lat:null,lng:null,error:''})
-  // const [distance,setDistance] = useState("")
+  const [distance,setDistance] = useState("")
   const [selected,setSelected] = useState(null)
   useEffect(() => {
       window.navigator.geolocation.getCurrentPosition(
-          position => setLocation({lat:position.coords.latitude,lng:position.coords.lng}),
+          position => setLocation({lat:position.coords.latitude,lng:position.coords.longitude}),
           error => setLocation({error:error.message})
       )
   }, [])
@@ -28,11 +29,20 @@ const SearchList = (props) => {
   const cardList = props.resultData.map((store) => {
       const index = store.storeRealId
       return(
-      <div className="card" key={index}>
+      <div className="card" key={index} >
               {!store.image == "" ? <div style={{backgroundImage:`url(${store.image})` }} className="photo" /> : <div style={{backgroundImage:`url(${storeimage})`}} className="photo"/>}
-              <div className="card_content" onClick={()=>{setSelected(store)}}>
+              <div className="card_content">
                   <div className="storeName"><strong>{store.storeName}</strong></div>
                   <div>{store.address}</div>
+                  <div>{distance}</div>
+                  {/* <DistanceMatrixService
+                      options={{
+                          destinations: [{lat: store.coordinates[1],lng: store.coordinates[0]}],
+                          origins: [{lat: location.lat, lng: location.lng}],
+                          travelMode: "DRIVING"
+                      }}
+                      callback = {(response) => setDistance(response.rows[0].elements[0].distance.text)
+                    } /> */}
                   <div className="accordion">
                       <span className="arrow-contain" onClick={() => setActive(index)}>
                           {active === index ? <Icon icon={chevronDown} className="fas chevronDown" /> : <Icon icon={chevronRight} className="fas chevronRight" />}
@@ -60,16 +70,7 @@ const SearchList = (props) => {
   })
   return (
       <div className="container">
-          {props.resultData.length === 0 ? <div className="notfound">找不到相關結果</div>:<>{cardList}</>}
-          {selected ? (
-          <DistanceMatrixService
-              options={{
-                  destinations:[{lat: selected.coordinates[1],lng: selected.coordinates[0]}],
-                  origins: [{lat: location.lat,lng: location.lng}],
-                  travelMode: "DRIVING"
-              }}
-              callback = {(response)=>console.log(response.rows[0].elements[0].distance.text)}
-          />):null}
+          {props.resultData.length === 0 ? <div className="notfound">找不到相關結果</div> :<>{cardList}</>}
       </div>
   )
 };
