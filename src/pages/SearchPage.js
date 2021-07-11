@@ -11,7 +11,6 @@ const SearchPage = (props) => {
       onTermSubmit('台灣')
   }, [])
   const getDataFromFirebase = []
-  const getlocation = []
   const onTermSubmit = (term) => db.collection("stores").where("keywords","array-contains",term).onSnapshot((querySnapshot) => {
       querySnapshot.forEach(doc => {
           getDataFromFirebase.push({...doc.data()})

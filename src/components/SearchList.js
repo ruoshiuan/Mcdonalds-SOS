@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../css/search.css'
 import allday from '../images/24hr.png'
+import mccafe from '../images/mccafe.png'
 import storeimage from '../images/Frame.png'
 import { Icon } from '@iconify/react'
 import wifiIcon from '@iconify-icons/fa-solid/wifi'
@@ -34,7 +35,7 @@ const SearchList = (props) => {
               <div className="card_content">
                   <div className="storeName"><strong>{store.storeName}</strong></div>
                   <div>{store.address}</div>
-                  <div>{distance}</div>
+                  {/* <div>{distance}</div> */}
                   {/* <DistanceMatrixService
                       options={{
                           destinations: [{lat: store.coordinates[1],lng: store.coordinates[0]}],
@@ -50,8 +51,8 @@ const SearchList = (props) => {
                       </span>
                       <div className={(active === index ? "show" : "") + " wrapper"}>
                           {store.wifi === true ? <Icon icon={wifiIcon} className="wifiIcon" /> : null}
-                          {store.open_allday === true ? <img src={allday} alt="24hr" width="25" height="25" />:null}
-                          {store.macCafe === true ? <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/McCaf%C3%A9-Logo.svg/797px-McCaf%C3%A9-Logo.svg.png" alt="maccafe" width="50" height="20" />:null}
+                          {store.open_allday === true ? <img src={allday} alt="24hr" width="25" height="25" className="smallIcon" />:null}
+                          {store.macCafe === true ? <img src={mccafe} alt="maccafe" width="50" height="20" className="smallIcon" />:null}
                           <div>{store.tel}</div>
                           <b>營業時間</b>
                           <div>星期一　{store.opentime.Mon}</div>

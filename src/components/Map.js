@@ -1,4 +1,4 @@
-import React,{ useState,useEffect,useRef,useCallback } from 'react'
+import React,{ useState, useEffect, useRef, useCallback } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow, DistanceMatrixService } from '@react-google-maps/api'
 import key from '../key'
 import db from '../firestore_db'
@@ -10,10 +10,10 @@ import mapMarkerAlt from '@iconify-icons/fa-solid/map-marker-alt'
 import compassIcon from '@iconify-icons/fa-solid/compass'
 
 const mapContainerStyle = {
-  height: "70vh",
-  margin: "20px 0",
-  width: "100%",
-  color: "#4f4141",
+  height: '80vh',
+  margin: '20px 0',
+  width: '100%',
+  color: '#4f4141',
 }
 const center = {
   lat: 23.97120111,
@@ -28,14 +28,14 @@ const options = {
 const Map = () => {
   const [storeData,setStoreData] = useState([])
   const [selected,setSelected] = useState(null)
-  const [location,setLocation] = useState({lat:null,lng:null,error:''})
+  const [location,setLocation] = useState({ lat:null, lng:null, error:'' })
   const [distance,setDistance] = useState('')
 
 
   useEffect(() => {
       window.navigator.geolocation.getCurrentPosition(
-          position => setLocation({lat:position.coords.latitude,lng:position.coords.longitude}),
-          err => setLocation({error:err.message})
+          position => setLocation({ lat:position.coords.latitude, lng:position.coords.longitude }),
+          err => setLocation({ error:err.message })
       )
       const getDataFromFirebase = []
       db.collection("stores")
@@ -53,7 +53,7 @@ const Map = () => {
       mapRef.current = map
   },[])
   const panTo = useCallback(({ lat, lng }) => {
-      mapRef.current.panTo({lat, lng})
+      mapRef.current.panTo({ lat, lng })
       mapRef.current.setZoom(14)
   },[])
   const {isLoaded, loadError} = useLoadScript({
@@ -65,13 +65,13 @@ const Map = () => {
 
   return (
       <>
-      <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={7}
-          center={center}
-          options={options}
-          onLoad={onMapLoad}
-      >
+        <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={7}
+            center={center}
+            options={options}
+            onLoad={onMapLoad}
+        >
           <button className="btn myplace" onClick={() => {
               panTo({lat:location.lat,lng:location.lng})
           }}>
@@ -91,7 +91,7 @@ const Map = () => {
           })}
           {selected ? (
               <InfoWindow
-                  position={{lat: selected.coordinates[1],lng: selected.coordinates[0]}}
+                  position={{ lat: selected.coordinates[1], lng: selected.coordinates[0] }}
                   onCloseClick={() => {setSelected(null)}}
               >
                   <div className="infoWindowStyle">
@@ -111,7 +111,7 @@ const Map = () => {
                   callback = {(response) => setDistance(response.rows[0].elements[0].distance.text)
               } />
           ):null}
-      </GoogleMap>
+        </GoogleMap>
       </>
   )
 }
