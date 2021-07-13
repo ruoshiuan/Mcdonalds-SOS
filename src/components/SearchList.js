@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../css/search.css'
 import allday from '../images/24hr.png'
+import mccafe from '../images/mccafe.png'
 import storeimage from '../images/Frame.png'
 import { Icon } from '@iconify/react'
 import wifiIcon from '@iconify-icons/fa-solid/wifi'
@@ -8,17 +9,20 @@ import chevronRight from '@iconify-icons/fa-solid/chevron-right'
 import chevronDown from '@iconify-icons/fa-solid/chevron-down'
 import { useLoadScript,DistanceMatrixService } from '@react-google-maps/api'
 import key from '../key'
+
 const SearchList = (props) => {
   const [active,setActive] = useState(0)
   const [location,setLocation] = useState({lat:null,lng:null,error:''})
-  // const [distance,setDistance] = useState("")
+  const [distance,setDistance] = useState("")
   const [selected,setSelected] = useState(null)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
       window.navigator.geolocation.getCurrentPosition(
-          position => setLocation({lat:position.coords.latitude,lng:position.coords.lng}),
+          position => setLocation({lat:position.coords.latitude,lng:position.coords.longitude}),
           error => setLocation({error:error.message})
       )
-  }, [])
+      return() => setLoading(false)
+  }, [loading])
   const {isLoaded,loadError} = useLoadScript({
       googleMapsApiKey: key
   })
@@ -28,11 +32,20 @@ const SearchList = (props) => {
   const cardList = props.resultData.map((store) => {
       const index = store.storeRealId
       return(
-      <div className="card" key={index}>
+      <div className="card" key={index} >
               {!store.image == "" ? <div style={{backgroundImage:`url(${store.image})` }} className="photo" /> : <div style={{backgroundImage:`url(${storeimage})`}} className="photo"/>}
-              <div className="card_content" onClick={()=>{setSelected(store)}}>
+              <div className="card_content">
                   <div className="storeName"><strong>{store.storeName}</strong></div>
                   <div>{store.address}</div>
+                  {/* <div>{distance}</div> */}
+                  {/* <DistanceMatrixService
+                      options={{
+                          destinations: [{lat: store.coordinates[1],lng: store.coordinates[0]}],
+                          origins: [{lat: location.lat, lng: location.lng}],
+                          travelMode: "DRIVING"
+                      }}
+                      callback = {(response) => setDistance(response.rows[0].elements[0].distance.text)
+                    } /> */}
                   <div className="accordion">
                       <span className="arrow-contain" onClick={() => setActive(index)}>
                           {active === index ? <Icon icon={chevronDown} className="fas chevronDown" /> : <Icon icon={chevronRight} className="fas chevronRight" />}
@@ -40,8 +53,8 @@ const SearchList = (props) => {
                       </span>
                       <div className={(active === index ? "show" : "") + " wrapper"}>
                           {store.wifi === true ? <Icon icon={wifiIcon} className="wifiIcon" /> : null}
-                          {store.open_allday === true ? <img src={allday} alt="24hr" width="25" height="25" />:null}
-                          {store.macCafe === true ? <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/McCaf%C3%A9-Logo.svg/797px-McCaf%C3%A9-Logo.svg.png" alt="maccafe" width="50" height="20" />:null}
+                          {store.open_allday === true ? <img src={allday} alt="24hr" width="25" height="25" className="smallIcon" />:null}
+                          {store.macCafe === true ? <img src={mccafe} alt="maccafe" width="50" height="20" className="smallIcon" />:null}
                           <div>{store.tel}</div>
                           <b>營業時間</b>
                           <div>星期一　{store.opentime.Mon}</div>
@@ -60,16 +73,7 @@ const SearchList = (props) => {
   })
   return (
       <div className="container">
-          {props.resultData.length === 0 ? <div className="notfound">找不到相關結果</div>:<>{cardList}</>}
-          {selected ? (
-          <DistanceMatrixService
-              options={{
-                  destinations:[{lat: selected.coordinates[1],lng: selected.coordinates[0]}],
-                  origins: [{lat: location.lat,lng: location.lng}],
-                  travelMode: "DRIVING"
-              }}
-              callback = {(response)=>console.log(response.rows[0].elements[0].distance.text)}
-          />):null}
+          {props.resultData.length === 0 ? <div className="notfound">找不到相關結果</div> :<>{cardList}</>}
       </div>
   )
 };

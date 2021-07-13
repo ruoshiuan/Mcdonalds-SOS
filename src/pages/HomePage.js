@@ -10,10 +10,10 @@ const HomePage = () => {
         setView({mapPage:'flex', searchPage:'none'})
     }
   return (
-    <div>
+    <>
       <MapPage display={view.mapPage} switchPage={toSearchPage} />
       <SearchPage display={view.searchPage} switchPage={toMapPage} />
-    </div>
+    </>
   )
 }
 

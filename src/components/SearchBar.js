@@ -2,7 +2,6 @@ import React,{ useState } from 'react'
 import '../css/search.css'
 import { Icon } from '@iconify/react'
 import searchIcon from '@iconify-icons/fa-solid/search'
-import filter from '@iconify-icons/fa-solid/filter'
 
 const SearchBar = ({ onFormSubmit }) => {
   const [term,setTerm] = useState('')
@@ -13,7 +12,6 @@ const SearchBar = ({ onFormSubmit }) => {
   return (
       <form className="form" onSubmit={onSubmit}>
           <Icon icon={searchIcon} className="searchIcon" />
-          <Icon icon={filter} className="fliterIcon" onClick={onSubmit} />
           <input
               className="search_bar"
               type="text"

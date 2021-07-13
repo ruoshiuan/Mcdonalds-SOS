@@ -10,7 +10,7 @@ section {
 .search_bar{
   width: 80%;
   height: 60px;
-  padding-left: 50px;
+  padding-left: 55px;
   font-size: 18px;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
@@ -77,8 +77,11 @@ section {
 .wifiIcon {
   font-size: 25px;
   color: #5B1809;
+  margin: 2px;
 }
-
+.smallIcon{
+  margin: 2px;
+}
 .btn {
   border-radius: 2px;
   padding: 10px 20px;
@@ -117,5 +120,6 @@ section {
   /* justify-content: flex-end; */
 }
 .fas {
-  font-size: 24px;
+  font-size: 22px;
+  padding: 5px;
 }
