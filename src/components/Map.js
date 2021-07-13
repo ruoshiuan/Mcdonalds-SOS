@@ -1,7 +1,7 @@
 import React,{ useState, useEffect, useRef, useCallback } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow, DistanceMatrixService } from '@react-google-maps/api'
 import key from '../key'
-import db from '../firestore_db'
+import { db } from '../firestore_db'
 import MapStyle from './MapStyle'
 import '../css/map.css'
 import macicon from '../images/mac.svg'
@@ -30,8 +30,7 @@ const Map = () => {
   const [selected,setSelected] = useState(null)
   const [location,setLocation] = useState({ lat:null, lng:null, error:'' })
   const [distance,setDistance] = useState('')
-
-
+  const [loading,setLoading] = useState(true)
   useEffect(() => {
       window.navigator.geolocation.getCurrentPosition(
           position => setLocation({ lat:position.coords.latitude, lng:position.coords.longitude }),
@@ -47,7 +46,8 @@ const Map = () => {
               setStoreData(getDataFromFirebase)
           })
           .catch(error => console.log(error))
-  }, [])
+        return() => setLoading(false)
+  }, [loading])
   const mapRef = useRef()
   const onMapLoad = useCallback((map) => {
       mapRef.current = map

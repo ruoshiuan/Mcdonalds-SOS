@@ -15,12 +15,14 @@ const SearchList = (props) => {
   const [location,setLocation] = useState({lat:null,lng:null,error:''})
   const [distance,setDistance] = useState("")
   const [selected,setSelected] = useState(null)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
       window.navigator.geolocation.getCurrentPosition(
           position => setLocation({lat:position.coords.latitude,lng:position.coords.longitude}),
           error => setLocation({error:error.message})
       )
-  }, [])
+      return() => setLoading(false)
+  }, [loading])
   const {isLoaded,loadError} = useLoadScript({
       googleMapsApiKey: key
   })

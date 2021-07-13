@@ -1,7 +1,10 @@
+
 .form_container {
   display: flex;
-  padding: 60px;
+  padding: 30px;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: #6A5959;
 }
 .loginForm {
@@ -9,15 +12,12 @@
   min-width: 360px;
   flex-direction: column;
   align-items: center;
-  /* box-shadow: 0 0 50px rgba(0,0,0,0.2); */
-
-
+  padding: 10px;
 }
 .title {
   font-size: 25px;
   padding: 5px;
   border-bottom: 5px solid #C50406;
-  margin: 10px;
   position: relative;
   color: #4f4141;
 }
@@ -43,20 +43,23 @@
   border-radius: 2px;
   padding-left: 10px;
 }
-
+.errorMsg{
+  color: #C50406;
+  border-bottom: 1px solid #C50406;
+}
 .submit_button {
-  width: 150px;
+  width: 262px;
   padding: 10px 0;
   background-color: #222;
   color: #fff;
   cursor: pointer;
   border: none;
   border-radius: 2px;
-  margin: 5px;
+  margin: 10px;
 }
 
 .hint {
-  margin: 10px;
+  margin: 15px;
 }
 
 .switchlink {
@@ -66,4 +69,16 @@
 .switchlink:hover {
   color: #222;
   border-bottom: 1px solid #222;
+}
+
+.googleLogin{
+  width: 262px;
+  padding: 10px 0;
+  background-color: #DD4D3F;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  margin: 5px;
+  font-size: 14px;
 }
