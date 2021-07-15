@@ -2,7 +2,7 @@ import React,{ useState } from 'react'
 import firebase,{ usersCollection } from '../firestore_db'
 import { useHistory } from 'react-router-dom'
 import '../css/login.css'
-const LoginForm = () => {
+const RegisterForm = () => {
   const history = useHistory()
   const [formData,setFormData] = useState({ name: '', lastname: '', email: '', password: '' })
   const [register,setRigister] = useState(false)
@@ -55,7 +55,7 @@ const LoginForm = () => {
     }
   }
   const handleRedirection = () => {
-    history.push('/member')
+    history.push('/')
   }
   const handleStoreRegisterUser = (data) => {
     const currentTime = new Date().toLocaleString()
@@ -116,7 +116,7 @@ const LoginForm = () => {
                 className="ip nameInput"
                 placeholder="名字"
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
-                value={formData.name}
+                value={ formData.name }
             />
           </>
           : null
@@ -128,7 +128,7 @@ const LoginForm = () => {
                 className="ip emailInput"
                 placeholder="Email"
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
-                value={formData.email}
+                value={ formData.email }
             />
             <input
                 type="password"
@@ -137,7 +137,7 @@ const LoginForm = () => {
                 className="ip passwordInput"
                 placeholder="密碼"
                 onChange={e => setFormData({ ...formData, password: e.target.value })}
-                value={formData.password}
+                value={ formData.password }
             />
             <br/>
             {error ? <div className="errorMsg">{error}</div> : null}
@@ -149,7 +149,7 @@ const LoginForm = () => {
             </button>
 
             <div className="hint">
-                {register ? '已經是會員？' : '尚未成為會員？'}
+                { register ? '已經是會員？' : '尚未成為會員？' }
                 <span
                     className="switchlink"
                     onClick={() => handleRigister()}
@@ -165,4 +165,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default RegisterForm

@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import LoginForm from '../components/LoginForm'
+import RegisterForm from '../components/RegisterForm'
 const LoginPage = () => {
   return (
     <>
       <Navbar />
       <main>
-        <LoginForm />
+        <RegisterForm />
       </main>
     </>
   )

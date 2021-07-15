@@ -25,9 +25,10 @@ const Navbar = () => {
     if(login){
       history.push('/member')
     } else {
-      history.push('/login')
+      history.push('/register')
     }
   }
+
   return (
     <nav className="fixed_navbar">
       <div className="navbar">

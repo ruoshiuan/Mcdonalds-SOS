@@ -6,9 +6,10 @@ const MemberPage = () => {
   const history = useHistory()
   const handleLogout = () => {
     firebase.auth().signOut().then(() => {
-      console.log('user logout')
+      // console.log('user logout')
+      localStorage.removeItem("email")
+      history.push('/register')
     })
-    history.push('/login')
   }
   return (
     <div>

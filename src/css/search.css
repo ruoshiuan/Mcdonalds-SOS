@@ -24,19 +24,10 @@ section {
   font-size: 30px;
   color: #666;
   height: 100px;
-  z-index: 10;
+  z-index: 5;
   padding-left: 15px;
 }
 
-.fliterIcon {
-  position: absolute;
-  font-size: 30px;
-  color: #666;
-  left: 75%;
-  height: 100px;
-  z-index: 10;
-  cursor: pointer;
-}
 .container {
   margin-top: 30px;
   max-width: 1200px;
@@ -74,6 +65,13 @@ section {
   background-image: url('../images/Frame.png');
 }
 
+.distanceInfo{
+  width: 100px;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #eee;
+  font-size: 14px;
+}
 .wifiIcon {
   font-size: 25px;
   color: #5B1809;
@@ -88,17 +86,19 @@ section {
   font-weight: 500;
   border: none;
   margin: 5px;
-  width: 100px;
   align-self: flex-end;
 }
 .order_btn {
   background-color: #FFBB0F;
   color: #222;
   cursor: pointer;
+  width: 100px;
 }
 .noorder_btn {
-  background-color: #eee;
+  border: 1px solid #c9bebe;
+  background-color: transparent;
   color: #f24;
+  width: 165px;
 }
 
 .wrapper {

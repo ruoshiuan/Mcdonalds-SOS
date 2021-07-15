@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import MapPage from '../pages/MapPage'
 import SearchPage from '../pages/SearchPage'
 const HomePage = () => {
-  const [view,setView] = useState({mapPage:'flex', searchPage:'none'})
+  const [view,setView] = useState({mapPage:'none', searchPage:'flex'})
     const toSearchPage = () => {
         setView({mapPage:'none', searchPage:'flex'})
     }
