@@ -25,7 +25,6 @@ const OrderButton = ({ info,storeInfo }) => {
       history.push('/register')
     }
   }
-
   const handleStoreInfo = () => {
     const getUser = firebase.auth().currentUser
     const data = {
@@ -38,14 +37,14 @@ const OrderButton = ({ info,storeInfo }) => {
   }
   return (
     <div className="orderOption">
-      { (info * 0.001).toFixed(2) <= 50 ?
+      { info <= 50 ?
         <button
           className="mapBtn mapOrderBtn"
           onClick={ () => handleRedirection() }
         >
           開始點餐
-        </button> :
-        <button className="mapBtn mapNoOrderBtn">無法點餐</button> }
+        </button>
+        :<button className="mapBtn mapNoOrderBtn">無法點餐</button> }
     </div>
   )
 }

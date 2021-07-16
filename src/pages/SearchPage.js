@@ -43,7 +43,6 @@ const SearchPage = (props) => {
         tel: store.tel
         }
         localStorage.setItem('userMessage',JSON.stringify(data))
-        console.log('From the searchPage', store)
         history.push('/menu')
     } else {
         history.push('/register')
