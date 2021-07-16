@@ -12,7 +12,7 @@ const App = () => {
         <Route exact path="/" component={ HomePage } />
         <Route exact path="/register" component={ LoginPage }  />
         <Route exact path="/member" component={ MemberPage }  />
-        <Route exact path='/order' component={ FoodPage } />
+        <Route exact path='/menu' component={ FoodPage } />
         <Redirect to="/" />
       </Switch>
     </Router>

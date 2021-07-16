@@ -1,0 +1,10 @@
+.reset_btn {
+  align-self: center;
+  padding: 10px 20px;
+  border: 1px solid #222;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  border-radius: 2px;
+  margin: 5px;
+}

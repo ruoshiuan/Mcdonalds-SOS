@@ -3,11 +3,11 @@ section {
   margin-top: 20px;
 }
 
-.form{
+.form {
   display: flex;
 }
 
-.search_bar{
+.search_bar {
   width: 80%;
   height: 60px;
   padding-left: 55px;
@@ -37,7 +37,6 @@ section {
   color: #6A5959;
 }
 
-
 .storeName {
   text-overflow : ellipsis;
   overflow : hidden;
@@ -65,8 +64,8 @@ section {
   background-image: url('../images/Frame.png');
 }
 
-.distanceInfo{
-  width: 100px;
+.distanceInfo {
+  width: 95px;
   border-radius: 4px;
   padding: 5px;
   background-color: #eee;

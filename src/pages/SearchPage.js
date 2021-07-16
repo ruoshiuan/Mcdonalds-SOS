@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
 import SearchList from '../components/SearchList'
-import { storesCollection } from '../firestore_db'
+import firebase, { storesCollection } from '../firestore_db'
 import '../css/homepage.css'
 const SearchPage = (props) => {
   const [storeData, setStoreData] = useState([])
   const [loading, setLoading] = useState(true)
+  const [login,setLogin] = useState(null)
+  const history = useHistory()
   useEffect(() => {
-      onTermSubmit('高雄')
+    firebase.auth().onAuthStateChanged(user => {
+        if(user){
+            setLogin(user)
+        }else{
+            console.log('no user')
+        }
+    })
+    onTermSubmit('高雄')
     return() => setLoading(false)
   }, [loading])
+
   const getDataFromFirebase = []
   const onTermSubmit = (term) =>
   storesCollection
@@ -21,8 +32,22 @@ const SearchPage = (props) => {
       })
       setStoreData(getDataFromFirebase)
   })
+
   const onStoreSelect = (store) => {
-      console.log('From the searchPage', store)
+    if(login){
+        const getUser = firebase.auth().currentUser
+        const data = {
+        email: getUser.email,
+        store: store.storeName,
+        address: store.address,
+        tel: store.tel
+        }
+        localStorage.setItem('userMessage',JSON.stringify(data))
+        console.log('From the searchPage', store)
+        history.push('/menu')
+    } else {
+        history.push('/register')
+      }
   }
   return (
       <div style={{display:`${props.display}`}}>
@@ -32,7 +57,7 @@ const SearchPage = (props) => {
                   <h2>請選擇取餐地點</h2>
                   <button
                       className="keyword_btn"
-                      onClick={()=>props.switchPage()}
+                      onClick={() => props.switchPage()}
                   >
                       地圖搜尋
                   </button>
