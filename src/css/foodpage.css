@@ -1,3 +1,6 @@
+/* * {
+  border: 1px solid black;
+} */
 .reset_btn {
   align-self: center;
   width: 100px;
@@ -15,18 +18,20 @@
   margin: 30px 0;
   border-bottom: 1px solid #6A5959;
   overflow: hidden;
+  display: flex;
 }
 .barTitle {
   text-align: center;
   width: 120px;
   padding: 10px 0;
+  margin-right: 10px;
   border-bottom: 5px solid #C50406;
 }
 .sectionTitle {
   color: #6A5959;
   font-size: 22px;
   padding: 10px;
-  margin: 40px 0;
+  margin: 30px 0;
   border-radius: 2px;
 }
 
@@ -57,7 +62,7 @@
   position: fixed;
   width: 100%;
   bottom: 0;
-  z-index: 10;
+  z-index: 15;
 }
 
 .bottomBar {
@@ -72,17 +77,18 @@
   align-items: center;
   margin-right: auto;
   margin-left: auto;
+  left: 0;
+  /* justify-content: flex-end; */
 }
 .cartIcon {
   font-size: 40px;
 }
-
 .shoppingCart {
   display: flex;
   flex-direction: row;
   color: #222;
+  /* display: none; */
 }
-
 .itemCount {
   font-size: 20px;
   width: 30px;
@@ -103,17 +109,18 @@
   background-color: #FFBB0F;
   color: #222;
   cursor: pointer;
+  float: right;
 }
 .itemTotal {
   margin-left: 60px;
   font-size: 28px;
 }
+
 @media screen and (max-width: 1600px) {
   .bottomBar {
     width: 80%;
   }
 }
-
 @media screen and (max-width: 600px) {
   .bottomBar {
     max-width: 580px;

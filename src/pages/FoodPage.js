@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import SetMenu from '../components/SetMenu'
-import CartBar from '../components/CartBar'
 import '../css/foodpage.css'
 const FoodPage = () => {
   const history = useHistory()
@@ -10,6 +9,7 @@ const FoodPage = () => {
   const storeTitle = storeInfo.store
   const handleReset =() => {
     localStorage.removeItem("userMessage")
+    localStorage.removeItem("cartItem")
     history.push('/')
   }
   return (
@@ -23,13 +23,12 @@ const FoodPage = () => {
           </button>
         </div>
         <div className="menuBar">
-            <div className="barTitle">套餐</div>
-          </div>
+          <div className="barTitle">菜單一覽</div>
+        </div>
+      </main>
           <section>
             <SetMenu />
           </section>
-      </main>
-      <CartBar />
     </>
   )
 }
