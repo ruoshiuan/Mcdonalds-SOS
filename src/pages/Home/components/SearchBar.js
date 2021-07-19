@@ -10,13 +10,13 @@ const SearchBar = ({ onFormSubmit }) => {
       onFormSubmit(term)
   }
   return (
-      <form className="form" onSubmit={onSubmit}>
-          <Icon icon={searchIcon} className="searchIcon" />
+      <form className="form" onSubmit={ onSubmit }>
+          <Icon icon={ searchIcon } className="searchIcon" />
           <input
               className="search_bar"
               type="text"
               placeholder="搜尋相關地點"
-              value={term}
+              value={ term }
               onChange={(e) => setTerm(e.target.value)}
           />
       </form>

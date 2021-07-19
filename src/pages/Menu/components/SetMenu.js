@@ -4,7 +4,7 @@ import RegularSet from './RegularSet'
 import CartBar from '../components/CartBar'
 import Point from '../components/Point'
 import '../css/foodpage.css'
-import { menuMorningCollection, menuRegularCollection, menuPointCollection } from '../firestore_db'
+import { menuMorningCollection, menuRegularCollection, menuPointCollection } from '../../../firestore_db'
 const SetMenu = () => {
   const [morningData, setMorningData] = useState([])
   const [regularData, setRegularData] = useState([])
@@ -52,7 +52,6 @@ const SetMenu = () => {
         <div className="container">
           <MorningSet MorningMenuInfo={morningData} onMealSelect={onMealSelect} />
         </div>
-
       <div className="sectionTitle">超值全餐</div>
         <div className="container">
           <RegularSet RegularMenuInfo={regularData} />

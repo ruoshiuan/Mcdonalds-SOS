@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import SetMenu from '../components/SetMenu'
-import '../css/foodpage.css'
+import Navbar from '../../components/Navbar'
+import SetMenu from './components/SetMenu'
+import './css/foodpage.css'
 const FoodPage = () => {
   const history = useHistory()
   const storeInfo = JSON.parse(localStorage.getItem("userMessage"))

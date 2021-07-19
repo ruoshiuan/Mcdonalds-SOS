@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import '../css/map.css'
 import { useHistory } from 'react-router-dom'
-import firebase from '../firestore_db'
+import firebase from '../../../firestore_db'
 const OrderButton = ({ info,storeInfo }) => {
   const [login,setLogin] = useState(null)
   const [loading,setLoading] = useState(true)

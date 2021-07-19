@@ -1,8 +1,8 @@
 import React from 'react'
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import MemberPage from './pages/MemberPage'
-import FoodPage from './pages/FoodPage'
+import HomePage from './pages/Home/HomePage'
+import LoginPage from './pages/Register/LoginPage'
+import MemberPage from './pages/Member/MemberPage'
+import FoodPage from './pages/Menu/FoodPage'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 const App = () => {
   return (

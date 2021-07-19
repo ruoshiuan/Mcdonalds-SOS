@@ -61,7 +61,7 @@ section {
   max-width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('../images/Frame.png');
+  background-image: url('../../../images/Frame.png');
 }
 
 .distanceInfo {
@@ -108,7 +108,7 @@ section {
 }
 .wrapper.show  {
   opacity: 1;
-  height: 230px;
+  height: 250px;
 }
 
 .arrow-contain {

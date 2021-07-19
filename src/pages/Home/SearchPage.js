@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import SearchBar from '../components/SearchBar'
-import SearchList from '../components/SearchList'
-import firebase, { storesCollection } from '../firestore_db'
-import '../css/homepage.css'
+import Navbar from '../../components/Navbar'
+import SearchBar from './components/SearchBar'
+import SearchList from './components/SearchList'
+import firebase, { storesCollection } from '../../firestore_db'
+import './css/homepage.css'
 const SearchPage = (props) => {
   const [storeData, setStoreData] = useState([])
   const [loading, setLoading] = useState(true)

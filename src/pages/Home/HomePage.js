@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import MapPage from '../pages/MapPage'
-import SearchPage from '../pages/SearchPage'
+import MapPage from './MapPage'
+import SearchPage from './SearchPage'
+import './css/homepage.css'
 const HomePage = () => {
   const [view,setView] = useState({ mapPage:'flex', searchPage:'none' })
     const toSearchPage = () => {

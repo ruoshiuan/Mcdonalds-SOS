@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Point = ({PointMenuInfo}) => {
+const Point = ({ PointMenuInfo }) => {
   const PointList = PointMenuInfo.map(info => {
     return (
       <div className="itemCard" key={info.mealId}>

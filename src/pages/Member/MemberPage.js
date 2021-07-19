@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../../components/Navbar'
 import { useHistory } from 'react-router-dom'
-import firebase from '../firestore_db'
+import firebase from '../../firestore_db'
 const MemberPage = () => {
   const history = useHistory()
   const handleLogout = () => {

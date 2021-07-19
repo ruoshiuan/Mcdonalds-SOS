@@ -1,7 +1,7 @@
 import React from 'react'
-import Map from '../components/Map'
-import Navbar from '../components/Navbar'
-import '../css/homepage.css'
+import Map from './components/Map'
+import Navbar from '../../components/Navbar'
+import './css/homepage.css'
 
 const MapPage = (props) => {
   return (
