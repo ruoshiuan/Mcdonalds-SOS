@@ -2,7 +2,7 @@ import '../css/navbar.css'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react'
-import receipt from '@iconify-icons/fa-solid/receipt'
+// import receipt from '@iconify-icons/fa-solid/receipt'
 import userCircle from '@iconify-icons/fa-solid/user-circle'
 import brand_icon from '../images/brand_icon.png'
 import { useHistory } from 'react-router-dom'
@@ -25,9 +25,10 @@ const Navbar = () => {
     if(login){
       history.push('/member')
     } else {
-      history.push('/login')
+      history.push('/register')
     }
   }
+
   return (
     <nav className="fixed_navbar">
       <div className="navbar">
