@@ -6,7 +6,7 @@
   top: 50%;
   left: 50%;
   z-index: 20;
-  height: 80vh;
+  height: 600px;
   background-color: #fff;
   color: #6A5959;
   border-radius: 5px;
@@ -21,7 +21,7 @@
   align-items: center;
   flex-direction: column;
   margin: 20px;
-  height: 75vh;
+  height: 500px;
 }
 
 .checkMealTitle {
@@ -38,20 +38,29 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  height: 400px;
 }
 .mealInfo {
   padding: 10px;
   margin: 5px;
   border-bottom: 1px solid #D8D8D8;
 }
-.mealName {
+.mealMainTitle {
   font-size: 20px;
+}
+.mealQuantity {
+  float: right;
+  padding: 0 10px;
+}
+.oneMealTotal{
+  font-size: 22px;
 }
 .removeIcon {
   float: right;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   color: #C50406;
+  padding: 0 10px;
 }
 .cartTotal {
   font-size: 25px;

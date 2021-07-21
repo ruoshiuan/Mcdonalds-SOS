@@ -1,22 +1,59 @@
 import React,{ useState } from 'react'
 import { Icon } from '@iconify/react'
-import windowClose from '@iconify-icons/fa-solid/window-close';
+import windowClose from '@iconify-icons/fa-solid/window-close'
+import minusCircle from '@iconify-icons/fa-solid/minus-circle'
+import plusCircle from '@iconify-icons/fa-solid/plus-circle'
 import '../css/mealdetail.css'
-const PointDetail = ({ openPoint, setOpenPoint }) => {
+const PointDetail = ({ openPoint, setOpenPoint, orders, setOrders }) => {
+  const [count, setCount] = useState(1)
+  const plus = () => {
+    if(count < 5){
+      setCount(count + 1)
+    }
+  }
+  const minus = () => {
+    if(count > 1 ){
+      setCount(count - 1)
+    }
+  }
+  let order = {}
+  if(openPoint){
+    order = {
+      id: openPoint.mealId,
+      meal: '單點 '+openPoint.meal,
+      price: openPoint.price,
+      quantity: count,
+      total: (count * openPoint.price)
+    }
+  }
+  const addToOrder = () => {
+    setOrders([...orders, order])
+    setOpenPoint(null)
+    setCount(1)
+  }
+  const closeDetailBox = () => {
+    setOpenMorning(null)
+    setCount(1)
+  }
   return openPoint ? (
     <>
-      <div className="blackBackground" onClick={() => setOpenPoint(null) }></div>
+      <div className="blackBackground" onClick={() => closeDetailBox() }></div>
         <div className="detailBox">
-          <Icon className="closeIcon" icon={ windowClose } onClick={() => setOpenPoint(null) } />
-          <form className="detailInfo" onClick={(e)=>e.preventDefault()}>
+          <Icon className="closeIcon" icon={ windowClose } onClick={() => closeDetailBox() } />
+          <form className="detailInfo" onClick={ (e) => e.preventDefault() }>
             <img src={ openPoint.image } alt="photo" width="200" />
             <div className="detailTitle">
               { openPoint.meal }
-              <div className="detailPrice">$<span>{ openPoint.price }</span></div>
+              <div className="detailPrice">$<span>{ openPoint.price } / 杯</span></div>
             </div>
             <div className="detailDescription">{ openPoint.description }</div>
-            <br />
-            <button className="addCartBtn">加入購物車</button>
+            <div className="detailTitle">數量</div>
+            <div className="countBar">
+              <Icon icon={ minusCircle } className="countIcon" onClick={ () => minus() } />
+              { count }
+              <Icon icon={ plusCircle } className="countIcon" onClick={ () => plus() } />
+            </div>
+            <button className="addCartBtn" onClick={ addToOrder }>加入購物車</button>
           </form>
         </div>
     </>

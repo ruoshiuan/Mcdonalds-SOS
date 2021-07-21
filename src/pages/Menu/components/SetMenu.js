@@ -38,15 +38,11 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
     .catch(err => console.log(err))
   },[])
 
-  const onMealSelect = (morningData) => {
-    console.log('From SetMenu Component!', morningData)
-  }
   const morningList = morningData.map(info => {
     return (
       <div className="itemCard"
         key={ info.mealId }
         onClick={() => {
-          onMealSelect(info)
           setOpenMorning(info)
         }}
       >
@@ -61,7 +57,6 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
       <div className="itemCard"
         key={ info.mealId }
         onClick={() => {
-          onMealSelect(info)
           setOpenRegular(info)
         }}
       >
