@@ -12,22 +12,21 @@
 }
 .detailBox {
   position: fixed;
-  top: 0;
+  top: 40%;
   left: 50%;
   z-index: 15;
   background-color: #fff;
   color: #6A5959;
-  margin-top: 40px;
   padding: 10px 20px;
   text-align: center;
   border-radius: 5px;
   width: 450px;
   box-shadow: 0 0 5px rgba(255,255,255,0.2);
-  transform: translateX(-50%);
+  transform: translate(-50%,-40%);
   user-select: none;
 }
 .detailDescription {
-  font-size: 12px;
+  font-size: 14px;
   text-align: left;
 }
 .detailTitle {
@@ -38,6 +37,7 @@
   float: right;
   font-size: 20px;
   cursor: pointer;
+  align-self: flex-end;
 }
 
 .countBar {
