@@ -21,7 +21,7 @@ const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
   let order = {}
   if(openRegular){
     order = {
-      id: openRegular.mealId,
+      id: Date.now(),
       meal: '套餐 ' + openRegular.meal,
       side: sideFood,
       drink: drink,
@@ -34,9 +34,12 @@ const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
     setOrders([...orders, order])
     setOpenRegular(null)
     setCount(1)
+    const items = localStorage.getItem('cartItems') === null ? [] : JSON.parse(localStorage.getItem('cartItems'))
+    items.push(order)
+    localStorage.setItem('cartItems', JSON.stringify(items))
   }
   const closeDetailBox = () => {
-    setOpenMorning(null)
+    setOpenRegular(null)
     setCount(1)
   }
   return openRegular ? (
@@ -48,7 +51,7 @@ const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
             <img src={ openRegular.image } alt="photo" width="100"/>
             <div className="detailTitle">
               { openRegular.meal + '套餐' }
-              <div className="detailPrice">$<span>{ openRegular.price } / 個</span></div>
+              <div className="detailPrice">$<span>{ openRegular.price } / 份</span></div>
             </div>
             <div className="detailDescription">{ openRegular.description }</div>
             <div className="detailTitle">請選擇配餐</div>

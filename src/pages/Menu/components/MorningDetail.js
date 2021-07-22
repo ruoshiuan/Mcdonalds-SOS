@@ -8,6 +8,7 @@ const MorningDetail = ({ openMorning, setOpenMorning ,orders, setOrders }) => {
   const [sideFood, setSideFood] = useState('薯餅')
   const [drink, setDrink] = useState('奶茶')
   const [count, setCount] = useState(1)
+
   const plus = () => {
     if(count < 5){
       setCount(count + 1)
@@ -21,7 +22,7 @@ const MorningDetail = ({ openMorning, setOpenMorning ,orders, setOrders }) => {
   let order = {}
   if(openMorning){
     order = {
-      id: openMorning.mealId,
+      id: Date.now(),
       meal: '套餐 ' + openMorning.meal,
       side: sideFood,
       drink: drink,
@@ -30,11 +31,13 @@ const MorningDetail = ({ openMorning, setOpenMorning ,orders, setOrders }) => {
       total: (count * openMorning.price)
     }
   }
-
   const addToOrder = () => {
     setOrders([...orders, order])
     setOpenMorning(null)
     setCount(1)
+    const items = localStorage.getItem('cartItems') === null ? [] : JSON.parse(localStorage.getItem('cartItems'))
+    items.push(order)
+    localStorage.setItem('cartItems', JSON.stringify(items))
   }
   const closeDetailBox = () => {
     setOpenMorning(null)
@@ -49,7 +52,7 @@ const MorningDetail = ({ openMorning, setOpenMorning ,orders, setOrders }) => {
             <img src={ openMorning.image } alt="photo" width="100"/>
             <div className="detailTitle">
               { openMorning.meal + '套餐' }
-              <div className="detailPrice">$<span>{ openMorning.price } / 個</span></div>
+              <div className="detailPrice">$<span>{ openMorning.price } / 份</span></div>
             </div>
             <div className="detailDescription">{ openMorning.description }</div>
             <div className="detailTitle">請選擇配餐</div>

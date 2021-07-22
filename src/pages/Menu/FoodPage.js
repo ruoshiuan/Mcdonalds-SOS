@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 import SetMenu from './components/SetMenu'
@@ -9,22 +9,33 @@ import CheckCart from './components/CheckCart'
 import { Icon } from '@iconify/react'
 import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
 import './css/foodpage.css'
+
+const storeInfo = JSON.parse(localStorage.getItem("userMessage"))
+const storeTitle = storeInfo.store
+const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]' )
+
 const FoodPage = () => {
   const [openMorning, setOpenMorning] = useState()
   const [openRegular, setOpenRegular] = useState()
   const [openPoint, setOpenPoint] = useState()
   const [openCart, setOpenCart] = useState(false)
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState(localStoreInfo)
   const history = useHistory()
-  const storeInfo = JSON.parse(localStorage.getItem("userMessage"))
-  const storeTitle = storeInfo.store
-  const handleReset =() => {
+  useEffect(() => {
+    localStorage.setItem("cartItems",JSON.stringify(orders))
+  },[orders])
+  const handleReset = () => {
     localStorage.removeItem("userMessage")
-    localStorage.removeItem("cartItem")
+    localStorage.removeItem("cartItems")
+    setOrders([])
     history.push('/')
   }
-  const getTotal = orders.reduce((total, order)=> {
+
+  const getTotal = orders.reduce((total, order) => {
     return total + order.total
+  }, 0)
+  const getCount = orders.reduce((total, order) => {
+    return total + order.quantity
   }, 0)
 
   return (
@@ -38,7 +49,7 @@ const FoodPage = () => {
           </button>
         </div>
         <div className="menuBar">
-          <div className="barTitle">菜單一覽</div>
+          <div className="barTitle">餐點一覽</div>
         </div>
       </main>
           <section>
@@ -46,14 +57,14 @@ const FoodPage = () => {
             <MorningDetail openMorning={openMorning} setOpenMorning={setOpenMorning} orders={orders} setOrders={setOrders} />
             <RegularDetail openRegular={openRegular} setOpenRegular={setOpenRegular} orders={orders} setOrders={setOrders} />
             <PointDetail openPoint={openPoint} setOpenPoint={setOpenPoint} orders={orders} setOrders={setOrders} />
-            <CheckCart openCart={openCart} setOpenCart={setOpenCart} orders={orders} setOrders={setOrders} />
+            <CheckCart openCart={openCart} setOpenCart={setOpenCart} orders={orders} setOrders={setOrders} setOpenMorning={setOpenMorning} />
           </section>
         <div className="bottomOuter">
         <div className="bottomBar">
           <div className="shoppingCart">
             <Icon icon={ shoppingBasket } className="cartIcon"/>
-            <div className="itemCount">{ orders.length }</div>
-            <div className="itemTotal">$<span>{getTotal}</span></div>
+            <div className="itemCount">{ getCount }</div>
+            <div className="itemTotal">$<span>{ getTotal }</span></div>
           </div>
           <button className="checkCart" onClick={() => setOpenCart(true)}>確認購物車</button>
         </div>

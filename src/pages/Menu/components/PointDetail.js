@@ -19,7 +19,7 @@ const PointDetail = ({ openPoint, setOpenPoint, orders, setOrders }) => {
   let order = {}
   if(openPoint){
     order = {
-      id: openPoint.mealId,
+      id: Date.now(),
       meal: '單點 '+openPoint.meal,
       price: openPoint.price,
       quantity: count,
@@ -30,9 +30,12 @@ const PointDetail = ({ openPoint, setOpenPoint, orders, setOrders }) => {
     setOrders([...orders, order])
     setOpenPoint(null)
     setCount(1)
+    const items = localStorage.getItem('cartItems') === null ? [] : JSON.parse(localStorage.getItem('cartItems'))
+    items.push(order)
+    localStorage.setItem('cartItems', JSON.stringify(items))
   }
   const closeDetailBox = () => {
-    setOpenMorning(null)
+    setOpenPoint(null)
     setCount(1)
   }
   return openPoint ? (
