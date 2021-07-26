@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+/* * {
+  border: 1px solid black;
+} */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.thanksCorner {
+  text-align: center;
+  padding: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  min-width: 500px;
+  color: #6A5959;
+  box-shadow: 0 5px 30px rgba(106, 89, 89,0.1);
+  overflow: hidden;
+  position: relative;
+}
+.thanksCorner::before {
+  content: "";
+  width: 200px;
+  height: 200px;
+  left: -50px;
+  top: -50px;
+  z-index: -1;
+  background-color: #fcecbd;
+  position: absolute;
+  transform: rotate(68deg);
+  animation: appear 2s both;
+}
+.thanksCorner::after {
+  content: "";
+  z-index: -1;
+  width: 200px;
+  height: 200px;
+  right: -50px;
+  bottom: -10px;
+  transform: rotate(68deg);
+  background-color: #fffac9;
+  position: absolute;
+  animation: appear 2s both;
+}
+.thankyou{
+  font-size: 72px;
+  padding: 10px;
+  font-family: 'Kaushan Script';
+}
+.thanksCornerAlert {
+  margin: 50px;
+  text-align: center;
+  width: 500px;
+  padding: 10px 50px;
+  color: #61392f;
+  font-size: 18px;
+  background-color: #fcecbd;
+}
+.orderNumber {
+  font-size: 50px;
+  font-weight: 600;
+}
+.receiptCorner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+  margin: 0 50px;
+  min-width: 500px;
+  color: #6A5959;
+  font-size: 20px;
+  line-height: 30px;
+  box-shadow: 0 5px 30px rgba(106, 89, 89,0.1);
+}
+.picBg {
+  width: 300px;
+  height: 200px;
+  background-color: #eee;
+  border: 6px double #fff;
+  display: flex;
+  justify-content: center;
+}
+.dinnerType {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 4px;
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #fcecbd 50%);
+}
+.backToHome {
+  cursor: pointer;
+  background-color: #FFBB0F;
+  border: 1px solid #FFBB0F;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin: 30px 0;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+@keyframes appear {
+  0% {
+    transform: rotate(0deg) scale(0.8)
+  }
+  100% {
+    transform: rotate(68deg) scale(1)
+  }
+}

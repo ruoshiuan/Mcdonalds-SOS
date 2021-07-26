@@ -1,17 +1,40 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
+import firebase from '../../../firestore_db'
+import { Redirect, useHistory } from 'react-router-dom'
 import '../css/checkCart.css'
 import { Icon } from '@iconify/react'
 import trashAlt from '@iconify-icons/fa-solid/trash-alt'
 
-const CheckCart = ({ openCart ,setOpenCart, orders, setOrders }) => {
+const CheckCart = ({ openCart, setOpenCart, orders, setOrders }) => {
+  const [login, setLogin] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const history = useHistory()
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        setLogin(user)
+      }else {
+        return <Redirect to='/register' />
+      }
+    })
+    return () => setLoading(false)
+  },[loading])
   const getTotal = orders.reduce((total, order)=> {
     return total + order.total
-  },0)
+  }, 0)
   const deleteItem = (index) => {
     const newOrders = [...orders]
     newOrders.splice(index, 1)
     setOrders(newOrders)
     localStorage.setItem('cartItems', JSON.stringify(newOrders))
+  }
+  const handleRedirection = () =>{
+    if(login){
+      history.push('/order')
+    }
+    else {
+      history.push('/register')
+    }
   }
   return openCart ? (
     <>
@@ -33,7 +56,9 @@ const CheckCart = ({ openCart ,setOpenCart, orders, setOrders }) => {
           <div className="cartTotal">合計 ＄<span className="totalPrice">{ getTotal }</span></div>
           <div className="bottomBtn">
             <button className="goOrderMeal" onClick={() => setOpenCart(null)} >繼續點餐</button>
-            {orders.length === 0 ? <button className="goOrderBtn stopGoOrderBtn">前往結帳</button> : <button className="goOrderBtn">前往結帳</button>}
+            { orders.length === 0 ?
+              <button className="goOrderBtn stopGoOrderBtn">前往結帳</button> :
+              <button className="goOrderBtn" onClick={() => handleRedirection() }>前往結帳</button> }
           </div>
         </div>
       </div>

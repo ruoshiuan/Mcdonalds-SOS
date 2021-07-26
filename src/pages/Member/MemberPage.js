@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import { useHistory } from 'react-router-dom'
 import firebase from '../../firestore_db'
@@ -6,7 +6,6 @@ const MemberPage = () => {
   const history = useHistory()
   const handleLogout = () => {
     firebase.auth().signOut().then(() => {
-      // console.log('user logout')
       localStorage.removeItem("email")
       history.push('/register')
     })

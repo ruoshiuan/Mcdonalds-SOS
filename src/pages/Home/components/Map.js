@@ -4,7 +4,7 @@ import haversine from 'haversine-distance'
 import key from '../../../key'
 import { storesCollection } from '../../../firestore_db'
 import MapStyle from './MapStyle'
-import OrderButton from './OrderButton'
+import SelectPlaceBtn from './SelectPlaceBtn'
 import '../css/map.css'
 import macicon from '../../../images/mac.svg'
 import { Icon } from '@iconify/react'
@@ -120,7 +120,7 @@ const Map = () => {
                 </div>
               </InfoWindow>
            ) : null}
-          { selected ? <OrderButton info={ distance } storeInfo={ selected } /> : null }
+          { selected ? <SelectPlaceBtn info={ distance } storeInfo={ selected } /> : null }
         </GoogleMap>
       </>
   )

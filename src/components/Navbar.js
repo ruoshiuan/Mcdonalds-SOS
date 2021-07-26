@@ -2,7 +2,6 @@ import '../css/navbar.css'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react'
-// import receipt from '@iconify-icons/fa-solid/receipt'
 import userCircle from '@iconify-icons/fa-solid/user-circle'
 import brand_icon from '../images/brand_icon.png'
 import { useHistory } from 'react-router-dom'
@@ -16,7 +15,7 @@ const Navbar = () => {
       if(user){
         setLogin(user)
       } else {
-        console.log('no user')
+        history.push('/register')
       }
     })
     return () => setLoading(false)
@@ -36,7 +35,6 @@ const Navbar = () => {
           <h1 className="main_title"><Link to="/" style={{ textDecoration: 'none',color: '#6A5959' }}>自助點餐</Link></h1>
           {/* <div className="items"><Icon className="icon receipt" icon={receipt}/></div> */}
           <div className="items">
-              {/* <Link to="/login" style={{ textDecoration: 'none',color: '#6A5959' }}><Icon className="icon usercircle" icon={userCircle}/></Link> */}
               <Icon className="icon usercircle" icon={userCircle} onClick={()=>handleRedirection()} />
           </div>
       </div>

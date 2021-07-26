@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import firebase,{ usersCollection } from '../../firestore_db'
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import './login.css'
 const RegisterForm = () => {
   const history = useHistory()

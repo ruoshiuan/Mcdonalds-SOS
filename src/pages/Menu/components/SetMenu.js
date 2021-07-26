@@ -1,10 +1,12 @@
 import React,{ useEffect, useState } from 'react'
 import '../css/foodpage.css'
 import { menuMorningCollection, menuRegularCollection, menuPointCollection } from '../../../firestore_db'
+
 const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
   const [morningData, setMorningData] = useState([])
   const [regularData, setRegularData] = useState([])
   const [pointData, setPointData] = useState([])
+  const [loading, setLoading] = useState(true)
   const getMorningMenuFromFirebase = []
   const getRegularMenuFromFirebase = []
   const getPointMenuFromFirebase = []
@@ -35,8 +37,8 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
       })
       setPointData(getPointMenuFromFirebase)
     })
-    .catch(err => console.log(err))
-  },[])
+    return () => setLoading(false)
+  },[loading])
 
   const morningList = morningData.map(info => {
     return (
@@ -69,7 +71,7 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
   const pointList = pointData.map(info => {
     return (
       <div className="itemCard"
-        key={info.mealId}
+        key={ info.mealId }
         onClick={() => {
           setOpenPoint(info)
         }}

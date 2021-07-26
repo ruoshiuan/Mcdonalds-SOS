@@ -1,0 +1,77 @@
+/* * {
+  border: 1px solid black;
+} */
+.orderTitle {
+  color: #6A5959;
+  padding: 20px 10px;
+  border-bottom: 1px solid #eee;
+}
+.orderForm {
+  color: #222;
+  font-weight: 400;
+  padding: 10px;
+  font-size: 18px;
+}
+h3 {
+  font-weight: 400;
+  color: #6A5959;
+}
+.radioStyle {
+  width: 1.5em;
+  height: 1.5em;
+  background: #C50406;
+}
+.oneOption {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.labelStyle {
+  padding: 5px;
+}
+.orderCart {
+  width: 800px;
+  border-radius: 5px;
+  margin: 20px;
+  border: 1px solid #D8D8D8;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+.orderInfo {
+  padding: 10px;
+  margin: 5px;
+  border-bottom: 1px solid #D8D8D8;
+}
+.orderMainTitle {
+  font-size: 20px;
+}
+.orderQuantity {
+  float: right;
+  padding: 0 10px;
+}
+.orderMealTotal{
+  font-size: 22px;
+}
+
+.orderBtn {
+  cursor: pointer;
+  background-color: #FFBB0F;
+  border: 1px solid #FFBB0F;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin: 5px;
+  font-size: 16px;
+}
+.backToCartBtn {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #222;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin: 5px;
+  font-size: 16px;
+}

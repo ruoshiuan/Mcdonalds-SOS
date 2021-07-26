@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import firebase from '../../firestore_db'
 import Navbar from '../../components/Navbar'
 import SetMenu from './components/SetMenu'
 import MorningDetail from './components/MorningDetail'
@@ -10,27 +11,31 @@ import { Icon } from '@iconify/react'
 import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
 import './css/foodpage.css'
 
-const storeInfo = JSON.parse(localStorage.getItem("userMessage"))
-const storeTitle = storeInfo.store
 const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]' )
-
 const FoodPage = () => {
   const [openMorning, setOpenMorning] = useState()
   const [openRegular, setOpenRegular] = useState()
   const [openPoint, setOpenPoint] = useState()
   const [openCart, setOpenCart] = useState(false)
   const [orders, setOrders] = useState(localStoreInfo)
+  const [loading,setLoading] = useState()
   const history = useHistory()
+  const storeInfo = JSON.parse(localStorage.getItem("userMessage"))
   useEffect(() => {
-    localStorage.setItem("cartItems",JSON.stringify(orders))
-  },[orders])
+    if(!storeInfo){
+      history.push('/')
+    }
+    return () => setLoading(false)
+  }, [loading])
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(orders))
+  }, [orders])
+
   const handleReset = () => {
     localStorage.removeItem("userMessage")
-    localStorage.removeItem("cartItems")
-    setOrders([])
     history.push('/')
   }
-
   const getTotal = orders.reduce((total, order) => {
     return total + order.total
   }, 0)
@@ -43,7 +48,7 @@ const FoodPage = () => {
       <Navbar />
       <main>
         <div className="subtitle">
-          <h2>在 { storeTitle + '店' } 取餐</h2>
+          {storeInfo ? <h2>在 { storeInfo.store + '店' } 取餐</h2> : null}
           <button className="reset_btn" onClick={ () => handleReset() }>
             重選地點
           </button>
@@ -53,11 +58,11 @@ const FoodPage = () => {
         </div>
       </main>
           <section>
-            <SetMenu setOpenMorning={setOpenMorning} setOpenRegular={setOpenRegular} setOpenPoint={setOpenPoint} />
-            <MorningDetail openMorning={openMorning} setOpenMorning={setOpenMorning} orders={orders} setOrders={setOrders} />
-            <RegularDetail openRegular={openRegular} setOpenRegular={setOpenRegular} orders={orders} setOrders={setOrders} />
-            <PointDetail openPoint={openPoint} setOpenPoint={setOpenPoint} orders={orders} setOrders={setOrders} />
-            <CheckCart openCart={openCart} setOpenCart={setOpenCart} orders={orders} setOrders={setOrders} setOpenMorning={setOpenMorning} />
+            <SetMenu setOpenMorning={ setOpenMorning } setOpenRegular={ setOpenRegular } setOpenPoint={ setOpenPoint } />
+            <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
+            <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />
+            <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
+            <CheckCart openCart={ openCart } setOpenCart={ setOpenCart } orders={ orders } setOrders={ setOrders } setOpenMorning={ setOpenMorning } />
           </section>
         <div className="bottomOuter">
         <div className="bottomBar">
