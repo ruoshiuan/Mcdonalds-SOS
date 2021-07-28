@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import firebase,{ usersCollection } from '../../firestore_db'
-import { Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './login.css'
 const RegisterForm = () => {
   const history = useHistory()
@@ -39,6 +39,7 @@ const RegisterForm = () => {
       .signInWithEmailAndPassword(formData.email, formData.password)
       .then(res => {
         if(res.user.email === formData.email){
+          localStorage.setItem('email',JSON.stringify(formData.email))
           handleRedirection()
         }
       })
@@ -70,7 +71,6 @@ const RegisterForm = () => {
       console.log(e)
     })
   }
-
   const handleGoogleSignin = () => {
     const provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithPopup(provider)

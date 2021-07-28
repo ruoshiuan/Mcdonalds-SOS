@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
-import firebase, { ordersCollection } from '../../firestore_db'
+import { ordersCollection } from '../../firestore_db'
 import './css/orderpage.css'
 const OrderPage = () => {
-  const [login, setLogin] = useState(null)
   const [loading, setLoading] = useState(true)
   const [mealWay, setMealWay] = useState(null)
   const [payWay, setPayWay] = useState(null)
@@ -28,17 +27,30 @@ const OrderPage = () => {
     }
     else{
     const currentTime = new Date().toLocaleString()
+    const currentDate = new Date().toISOString().slice(4,10).replace(/-/g, "")
+    const randomParams = Math.floor(Math.random() * 1000)
     ordersCollection.doc().set({
       orderTime: currentTime,
+      orderNumber: currentDate + randomParams,
       email: storeInfo.email,
       store: storeInfo.store,
       address: storeInfo.address,
       tel: storeInfo.tel,
       items: getCartInfo,
       mealType: mealWay,
-      payType: payWay
+      payType: payWay,
+      total: getTotal
     })
-    history.push('/complete')
+    const data = {
+      orderNumber: currentDate + randomParams,
+      mealType: mealWay,
+      store: storeInfo.store,
+      address: storeInfo.address,
+
+    }
+      sessionStorage.setItem('orderRecord', JSON.stringify(data))
+      localStorage.setItem('cartItems',JSON.stringify([]))
+      history.push('/complete')
     }
   }
   const getTotal = getCartInfo.reduce((total, order) => {
@@ -81,11 +93,11 @@ const OrderPage = () => {
                 <label htmlFor="apple" className="labelStyle">Apple Pay</label>
               </div>
               <div className="oneOption">
-                <input type="radio" className="radioStyle" id="jko" name="payWays" value="jkoPay" onChange={(e)=>setPayWay(e.target.value)} />
+                <input type="radio" className="radioStyle" id="jko" name="payWays" value="街口支付" onChange={(e)=>setPayWay(e.target.value)} />
                 <label htmlFor="jko" className="labelStyle">街口支付</label>
               </div>
               <div className="oneOption">
-                <input type="radio" className="radioStyle" id="credit" name="payWays" value="creditCard" onChange={(e)=>setPayWay(e.target.value)} />
+                <input type="radio" className="radioStyle" id="credit" name="payWays" value="信用卡" onChange={(e)=>setPayWay(e.target.value)} />
                 <label htmlFor="credit" className="labelStyle">信用卡</label>
               </div>
               <h3>餐點最終確認</h3>

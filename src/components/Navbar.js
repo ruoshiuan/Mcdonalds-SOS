@@ -27,6 +27,7 @@ const Navbar = () => {
       history.push('/register')
     }
   }
+  
 
   return (
     <nav className="fixed_navbar">

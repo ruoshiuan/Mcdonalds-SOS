@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import firebase from '../../firestore_db'
 import Navbar from '../../components/Navbar'
 import SetMenu from './components/SetMenu'
 import MorningDetail from './components/MorningDetail'
@@ -62,7 +61,7 @@ const FoodPage = () => {
             <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
             <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />
             <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
-            <CheckCart openCart={ openCart } setOpenCart={ setOpenCart } orders={ orders } setOrders={ setOrders } setOpenMorning={ setOpenMorning } />
+            <CheckCart openCart={ openCart } setOpenCart={ setOpenCart } orders={ orders } setOrders={ setOrders } />
           </section>
         <div className="bottomOuter">
         <div className="bottomBar">

@@ -18,7 +18,7 @@ const App = () => {
         <Route exact path='/member' component={ MemberPage }  />
         <Route exact path='/menu' component={ FoodPage } />
         <Route exact path='/order' component={ OrderPage } />
-        <Route exact path="/complete" component={ CompletePage } />
+        <Route path="/complete" component={ CompletePage } />
         <Redirect to='/' />
       </Switch>
     </Router>
