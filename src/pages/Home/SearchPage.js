@@ -7,7 +7,7 @@ import firebase, { storesCollection } from '../../firestore_db'
 import './css/homepage.css'
 const SearchPage = (props) => {
   const [storeData, setStoreData] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState()
   const [login,setLogin] = useState(null)
   const history = useHistory()
   useEffect(() => {

@@ -23,7 +23,7 @@ const MemberPage = () => {
         <h2>點餐記錄</h2>
         <div className="content">
           <RecordList />
-          <button className="signoutBtn" onClick={() => handleLogout()}>登出 <InlineIcon icon={signOutAlt} /></button>
+          <button className="signoutBtn" onClick={() => handleLogout()}><InlineIcon icon={signOutAlt} /> 登出</button>
         </div>
       </main>
       {/* <RecordDetails /> */}

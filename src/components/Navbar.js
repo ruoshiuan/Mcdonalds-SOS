@@ -27,7 +27,7 @@ const Navbar = () => {
       history.push('/register')
     }
   }
-  
+
 
   return (
     <nav className="fixed_navbar">
@@ -36,7 +36,8 @@ const Navbar = () => {
           <h1 className="main_title"><Link to="/" style={{ textDecoration: 'none',color: '#6A5959' }}>自助點餐</Link></h1>
           {/* <div className="items"><Icon className="icon receipt" icon={receipt}/></div> */}
           <div className="items">
-              <Icon className="icon usercircle" icon={userCircle} onClick={()=>handleRedirection()} />
+              {login ? <Icon className="icon usercircle" icon={userCircle} style={{color:'#FFBB0F'}} onClick={()=>handleRedirection()} />
+              : <Icon className="icon usercircle" icon={userCircle} onClick={()=>handleRedirection()} /> }
           </div>
       </div>
     </nav>

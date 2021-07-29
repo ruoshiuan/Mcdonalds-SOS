@@ -37,7 +37,7 @@ const RecordDetails = ({ openRecord, setOpenRecord }) => {
             </tbody>
           </table>
           <div className="recordDetailTotal">訂單金額 $ { openRecord.total }</div>
-          <button className="closeRecordDetail" onClick={ ()=>setOpenRecord(null) }>關閉</button>
+          <button className="closeRecordDetail" onClick={ () => setOpenRecord(null) }>關閉</button>
       </div>
     </>
   ) : null
