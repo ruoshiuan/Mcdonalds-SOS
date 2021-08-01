@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './completepage.css'
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import takein from '../../images/takein.svg'
 import takeout from '../../images/takeout.svg'
 import { Link } from 'react-router-dom'
@@ -45,7 +46,7 @@ const CompletePage = () => {
             <Link to="/"><button className="backToHome">返回主頁</button></Link>
         </div> : null }
       </main>
-
+      <Footer />
     </>
   )
 }

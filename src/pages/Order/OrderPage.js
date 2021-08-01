@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import { ordersCollection } from '../../firestore_db'
 import './css/orderpage.css'
 const OrderPage = () => {
@@ -110,6 +111,7 @@ const OrderPage = () => {
 
           </form>
       </main>
+      <Footer />
     </>
   )
 }

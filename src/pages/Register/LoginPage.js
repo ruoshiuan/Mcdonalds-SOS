@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import RegisterForm from './RegisterForm'
 import firebase from '../../firestore_db'
 import { useHistory } from 'react-router-dom'
@@ -22,6 +23,7 @@ const LoginPage = () => {
       <main>
         <RegisterForm />
       </main>
+      <Footer />
     </>
   )
 }

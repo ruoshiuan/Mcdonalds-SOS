@@ -2,32 +2,37 @@ export default
 [
   {
   textColor: 'white',
-  url: 'src/pages/Home/components/static/m1.png',
-  height: 53,
-  width: 53
+  height: 50,
+  url: 'https://raw.githubusercontent.com/ruoshiuan/test/4f14521bfe680cb59497732aebef5adac9025de4/Group%2077.svg',
+  width: 50,
+  textSize: 15
   },
  {
   textColor: 'white',
-  url: 'src/pages/Home/components/static/m2.png',
   height: 56,
-  width: 56
+  url: 'https://raw.githubusercontent.com/ruoshiuan/test/4f14521bfe680cb59497732aebef5adac9025de4/Group%2076.svg',
+  width: 56,
+  textSize: 15
   },
  {
   textColor: 'white',
-  url: 'src/pages/Home/components/static/m3.png',
   height: 66,
-  width: 66
+  url: 'https://raw.githubusercontent.com/ruoshiuan/test/4f14521bfe680cb59497732aebef5adac9025de4/Group%2073.svg',
+  width: 66,
+  textSize: 15
   },
  {
   textColor: 'white',
-  url: 'src/pages/Home/components/static/m4.png',
   height: 78,
-  width: 78
+  url: 'https://raw.githubusercontent.com/ruoshiuan/test/4f14521bfe680cb59497732aebef5adac9025de4/Group%2072.svg',
+  width: 78,
+  textSize: 15
   },
  {
   textColor: 'white',
-  url: 'src/pages/Home/components/static/m5.png',
   height: 90,
-  width: 90
+  url: 'https://raw.githubusercontent.com/ruoshiuan/test/4f14521bfe680cb59497732aebef5adac9025de4/Group%2071.svg',
+  width: 90,
+  textSize: 15
   }
 ]

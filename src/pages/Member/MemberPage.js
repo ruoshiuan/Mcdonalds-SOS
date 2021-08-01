@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import RecordList from './RecordList'
 import { useHistory } from 'react-router-dom'
 import firebase from '../../firestore_db'
@@ -27,6 +28,7 @@ const MemberPage = () => {
         </div>
       </main>
       {/* <RecordDetails /> */}
+      <Footer />
     </>
   )
 }

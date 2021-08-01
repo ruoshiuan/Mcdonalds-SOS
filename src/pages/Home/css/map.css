@@ -17,6 +17,11 @@
 }
 
 .myplace{
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-weight: 500;
+  border: none;
+  margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,5 +68,5 @@
 }
 .mapNoOrderBtn {
   background-color: #eee;
-  color: #f24;
+  color: #DA0406;
 }

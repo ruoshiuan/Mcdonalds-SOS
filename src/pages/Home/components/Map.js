@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext, useRef, useCallback } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow, MarkerClusterer } from '@react-google-maps/api'
+import { storesContext } from '../HomePage'
 import haversine from 'haversine-distance'
 import key from '../../../key'
 import MapStyle from './MapStyle'
-import { storesContext } from '../HomePage'
+import ClusterStyle from './ClusterStyle'
 import SelectPlaceBtn from './SelectPlaceBtn'
 import '../css/map.css'
 import { Icon } from '@iconify/react'
 import mapMarkerAlt from '@iconify-icons/fa-solid/map-marker-alt'
 import compassIcon from '@iconify-icons/fa-solid/compass'
-import macicon from '../../../images/mac.svg'
-import ClusterStyle from './ClusterStyle'
+import macicon from '../images/mac.svg'
 const mapContainerStyle = {
   height: '75vh',
   margin: '10px 0',
@@ -39,8 +39,8 @@ const Map = () => {
   const { storeData } = useContext(storesContext)
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
-        position => setLocation({ lat:position.coords.latitude, lng:position.coords.longitude }),
-        err => setLocation({ error:err.message })
+        position => setLocation({ lat: position.coords.latitude, lng: position.coords.longitude }),
+        err => setLocation({ error: err.message })
     )
     return() => setLoading(false)
   }, [loading])
@@ -68,14 +68,17 @@ const Map = () => {
             options={ options }
             onLoad={ onMapLoad }
         >
-          <button className="btn myplace" onClick={() => {
+          <button className="myplace" onClick={() => {
               panTo({ lat:location.lat, lng:location.lng })
           }}>
               <Icon icon={ compassIcon } className="compassIcon"/>我的位置
           </button>
-          <MarkerClusterer styles={ClusterStyle} >
+          <MarkerClusterer
+            enableRetinaIcons
+            styles={ ClusterStyle }
+          >
             {(clusterer) =>
-              storeData.map((store)=>(
+              storeData.map((store) => (
                 <Marker
                     key={ store.storeRealId }
                     position={{ lat: store.coordinates[1], lng: store.coordinates[0] }}
@@ -83,7 +86,7 @@ const Map = () => {
                     clusterer={ clusterer }
                     onClick = {() => {
                         setSelected(store)
-                        setDistance(((haversine({ latitude: location.lat, longitude: location.lng },{ latitude: store.coordinates[1], longitude: store.coordinates[0] }))*0.001).toFixed(2))
+                        setDistance(((haversine({ latitude: location.lat, longitude: location.lng }, { latitude: store.coordinates[1], longitude: store.coordinates[0] }))*0.001).toFixed(2))
                     }}
                 />
               ))
@@ -102,10 +105,9 @@ const Map = () => {
                       className="distanceIcon" />
                       { distance < 50 ?
                       <span><strong> { distance } </strong></span>
-                      : <span style={{color:'#f24'}}><strong> { distance } </strong></span> }
+                      :
+                      <span style={{ color:'#DA0406' }}><strong> { distance } </strong></span> }
                       公里
-
-
                 </div>
               </InfoWindow>
            ) : null}
