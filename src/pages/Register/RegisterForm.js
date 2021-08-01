@@ -26,7 +26,9 @@ const RegisterForm = () => {
           console.log(e)
           if(e.code === 'auth/email-already-in-use'){
             setError("此Email已被註冊")
-          } else if(formData.length < 6) {
+          } else if(formData.email === ''){
+            setError('請輸入正確的Email')
+          }else if(formData.password.length < 6) {
             setError("密碼長度至少6字符以上")
           } else {
             setError("伺服器內部錯誤")

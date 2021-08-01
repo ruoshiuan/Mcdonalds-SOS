@@ -83,6 +83,7 @@
   overflow: hidden;
   background-image: url('../images/machouse.png');
 }
+
 .hideInfo{
   background-color: rgba(34,34,34,0.8);
   color: #fff;
@@ -177,4 +178,27 @@
   background-color: #eee;
   color: #DA0406;
   cursor: not-allowed;
+}
+.paginationNum {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  padding: 10px;
+}
+.paginationNum li {
+  padding: 5px 10px;
+  border: 1px solid #6A5959;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.paginationNum li.active {
+  background-color: #6A5959;
+  color: #fff;
+}
+.prevBtn, .nextBtn {
+  background-color: white;
+  border: none;
+  cursor: pointer;
 }
