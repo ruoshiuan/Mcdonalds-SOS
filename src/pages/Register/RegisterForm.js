@@ -99,6 +99,7 @@ const RegisterForm = () => {
           <h2 className="greet">
             { formGreet }
           </h2>
+          <div style={{fontSize:'14px',marginLeft: '0', fontWeight: '500', color: '#C50406'}}>◎本服務需開啟定位功能以獲得完整體驗</div>
           {
           register ?
           <>
@@ -109,7 +110,7 @@ const RegisterForm = () => {
                 className="ip lastnameInput"
                 placeholder="姓氏"
                 onChange={e => setFormData({ ...formData,lastname: e.target.value })}
-                value={formData.lastname}
+                value={ formData.lastname }
             />
             <input
                 type="text"
@@ -161,7 +162,8 @@ const RegisterForm = () => {
         </form>
         {/* <button onClick={() => handleGetUserInfo()}>登入者資訊</button> */}
         { register ?
-          null :
+          null
+          :
           <button className="googleLogin" onClick={() => handleGoogleSignin()}><strong>G+</strong> 使用Google帳戶登入</button>}
     </div>
   )

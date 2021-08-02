@@ -61,53 +61,36 @@ const Map = () => {
   if (!isLoaded) return "Loading..."
   return (
       <>
-        <GoogleMap
-            mapContainerStyle={ mapContainerStyle }
-            zoom={ 7 }
-            center={ center }
-            options={ options }
-            onLoad={ onMapLoad }
-        >
-          <button className="myplace" onClick={() => {
-              panTo({ lat:location.lat, lng:location.lng })
-          }}>
-              <Icon icon={ compassIcon } className="compassIcon"/>我的位置
+        <GoogleMap mapContainerStyle={ mapContainerStyle } zoom={ 7 } center={ center } options={ options } onLoad={ onMapLoad } >
+          <button className="myplace" onClick={() => { panTo({ lat:location.lat, lng:location.lng }) }}>
+            <Icon icon={ compassIcon } className="compassIcon"/>
+            我的位置
           </button>
-          <MarkerClusterer
-            enableRetinaIcons
-            styles={ ClusterStyle }
-          >
+          <MarkerClusterer enableRetinaIcons styles={ ClusterStyle }>
             {(clusterer) =>
               storeData.map((store) => (
-                <Marker
-                    key={ store.storeRealId }
-                    position={{ lat: store.coordinates[1], lng: store.coordinates[0] }}
-                    icon={ macicon }
-                    clusterer={ clusterer }
-                    onClick = {() => {
-                        setSelected(store)
-                        setDistance(((haversine({ latitude: location.lat, longitude: location.lng }, { latitude: store.coordinates[1], longitude: store.coordinates[0] }))*0.001).toFixed(2))
-                    }}
+                <Marker key={ store.storeRealId } position={{ lat: store.coordinates[1], lng: store.coordinates[0] }} icon={ macicon } clusterer={ clusterer }
+                  onClick = {() => {
+                    setSelected(store)
+                    setDistance(((haversine({ latitude: location.lat, longitude: location.lng }, { latitude: store.coordinates[1], longitude: store.coordinates[0] }))*0.001).toFixed(2))
+                  }}
                 />
               ))
             }
           </MarkerClusterer>
           {selected ? (
-              <InfoWindow
-                position={{ lat: selected.coordinates[1], lng: selected.coordinates[0] }}
-                onCloseClick={() => { setSelected(null) }}
-              >
+              <InfoWindow position={{ lat: selected.coordinates[1], lng: selected.coordinates[0] }} onCloseClick={() => { setSelected(null) }}>
                 <div className="infoWindowStyle">
-                    <div><strong>{ selected.storeName+'店' }</strong></div>
-                    <div>{ selected.address }</div>
-                    <Icon
-                      icon={ mapMarkerAlt }
-                      className="distanceIcon" />
-                      { distance < 50 ?
-                      <span><strong> { distance } </strong></span>
-                      :
-                      <span style={{ color:'#DA0406' }}><strong> { distance } </strong></span> }
-                      公里
+                  <div><strong>{ selected.storeName+'店' }</strong></div>
+                  <div>{ selected.address }</div>
+                  <Icon
+                    icon={ mapMarkerAlt }
+                    className="distanceIcon" />
+                    { distance < 50 ?
+                    <span><strong> { distance } </strong></span>
+                    :
+                    <span style={{ color:'#DA0406' }}><strong> { distance } </strong></span> }
+                    公里
                 </div>
               </InfoWindow>
            ) : null}

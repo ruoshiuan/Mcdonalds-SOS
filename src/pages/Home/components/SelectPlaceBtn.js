@@ -44,7 +44,9 @@ const SelectPlaceBtn = ({ info,storeInfo }) => {
         >
           開始點餐
         </button>
-        :<button className="mapBtn mapNoOrderBtn">無法點餐</button> }
+        :<button className="mapBtn mapNoOrderBtn">
+          無法點餐
+        </button> }
     </div>
   )
 }

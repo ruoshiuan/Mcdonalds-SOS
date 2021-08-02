@@ -7,6 +7,10 @@ import SearchBar from './components/SearchBar'
 import SearchList from './components/SearchList'
 import firebase from '../../firestore_db'
 import './css/homepage.css'
+import { Icon } from '@iconify/react'
+import mapMarkedAlt from '@iconify-icons/fa-solid/map-marked-alt'
+
+
 const SearchPage = (props) => {
   const [loading, setLoading] = useState()
   const [login,setLogin] = useState(null)
@@ -60,13 +64,11 @@ const SearchPage = (props) => {
         <main>
           <div className="subtitle">
             <h2>請選擇取餐地點</h2>
-            <button
-              className="keyword_btn"
-              onClick={() => props.switchPage()}
-            >
-            地圖搜尋
+            <button className="keyword_btn" onClick={() => props.switchPage()}>
+              <Icon icon={mapMarkedAlt} style={{ fontSize: '35px'}} />
             </button>
             </div>
+            <div style={{color:'#DA0406',fontSize:'14px',marginLeft: '0'}}>◎本服務需開啟定位功能以取得完整資訊</div>
             <SearchBar onFormSubmit={ onFormSubmit } />
             <SearchList data={ data } onStoreSelect={ onStoreSelect } />
         </main>

@@ -23,7 +23,7 @@
 }
 
 .brand_icon {
-  margin: 8px;
+  margin: 10px 2px;
 }
 .main_title {
   position: relative;
@@ -51,18 +51,8 @@
   top: 0;
 }
 
-
-/* nav_bar RWD */
 @media screen and (max-width: 1600px) {
   .navbar {
     width: 80%;
   }
 }
-
-@media screen and (max-width: 600px) {
-  .navbar {
-      max-width: 580px;
-      min-width: 340px;
-  }
-}
-/* nav_bar RWD */

@@ -17,6 +17,7 @@
     "@babel/preset-react": "^7.14.5",
     "@iconify-icons/entypo-social": "^1.1.0",
     "@iconify-icons/fa-solid": "^1.1.1",
+    "@iconify-icons/iconoir": "^1.1.1",
     "@iconify/react": "^1.1.4",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",

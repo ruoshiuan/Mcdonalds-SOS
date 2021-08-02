@@ -26,7 +26,6 @@ const StoreItem = ({ store, onStoreSelect }) => {
     const distance = (tempDistance * 0.001).toFixed(2)
     return(
       <div className="card">
-      { !store.image == "" ?
       <div style={{ backgroundImage: `url(${ store.image })` }} className="photo">
         { isOpen &&
         <div className="hideInfo">
@@ -41,22 +40,6 @@ const StoreItem = ({ store, onStoreSelect }) => {
         </div>
         }
       </div>
-      :
-      <div style={{ backgroundImage: `url(${ machouse })` }} className="photo">
-        { isOpen &&
-        <div className="hideInfo">
-          <div>營業時間</div>
-          <div>週一　{ store.opentime.Mon }</div>
-          <div>週二　{ store.opentime.Tue }</div>
-          <div>週三　{ store.opentime.Wed }</div>
-          <div>週四　{ store.opentime.Thu }</div>
-          <div>週五　{ store.opentime.Fri }</div>
-          <div>週六　{ store.opentime.Sat }</div>
-          <div>週日　{ store.opentime.Sun }</div>
-        </div>
-        }
-      </div>
-      }
       <div className="card_content" >
         <div className="topInfo">
           <div className="storeName">{ store.storeName }</div>

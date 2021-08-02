@@ -12,7 +12,7 @@
 .menuBar {
   font-size: 22px;
   color: #6A5959;
-  margin: 30px 0;
+  margin-top: 30px;
   border-bottom: 1px solid #6A5959;
   overflow: hidden;
   display: flex;
@@ -28,7 +28,6 @@
   color: #6A5959;
   font-size: 22px;
   padding: 10px;
-  margin-bottom: 30px;
   border-radius: 2px;
 }
 
@@ -75,7 +74,6 @@
   margin-right: auto;
   margin-left: auto;
   left: 0;
-  /* justify-content: flex-end; */
 }
 .cartIcon {
   font-size: 40px;
@@ -84,7 +82,6 @@
   display: flex;
   flex-direction: row;
   color: #222;
-  /* display: none; */
 }
 .itemCount {
   font-size: 20px;
@@ -109,7 +106,7 @@
   float: right;
 }
 .itemTotal {
-  margin-left: 60px;
+  margin-left: 50px;
   font-size: 28px;
 }
 
@@ -119,8 +116,25 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .bottomBar {
-    max-width: 580px;
-     min-width: 340px;
+  .reset_btn {
+    font-size: 12px;
+    width: 50px;
+  }
+  .cartIcon {
+    font-size: 35px;
+  }
+  .itemCount {
+    font-size: 18px;
+    padding: 2px;
+  }
+  .checkCart {
+    border-radius: 2px;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .itemTotal {
+    margin-left: 30px;
+    font-size: 25px;
   }
 }

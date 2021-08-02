@@ -8,7 +8,6 @@ import './memberpage.css'
 import { InlineIcon } from '@iconify/react'
 import signOutAlt from '@iconify-icons/fa-solid/sign-out-alt'
 
-
 const MemberPage = () => {
   const history = useHistory()
   const handleLogout = () => {
@@ -21,13 +20,12 @@ const MemberPage = () => {
     <>
       <Navbar />
       <main>
-        <h2>點餐記錄</h2>
+        <h2 className="memberPageTitle">點餐記錄</h2>
         <div className="content">
           <RecordList />
           <button className="signoutBtn" onClick={() => handleLogout()}><InlineIcon icon={signOutAlt} /> 登出</button>
         </div>
       </main>
-      {/* <RecordDetails /> */}
       <Footer />
     </>
   )

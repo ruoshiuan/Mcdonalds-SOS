@@ -1,6 +1,3 @@
-/* * {
-  border: 1px solid black;
-} */
 .blackBackground {
   z-index: 11;
   background-color: rgba(0,0,0,0.5);
@@ -57,4 +54,9 @@
   background-color: #FFBB0F;
   color: #222;
   cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .detailBox {
+    width: 300px;
+  }
 }

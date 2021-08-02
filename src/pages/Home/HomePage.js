@@ -5,12 +5,12 @@ import { storesCollection } from '../../firestore_db'
 import './css/homepage.css'
 export const storesContext = createContext()
 const HomePage = () => {
-  const [view,setView] = useState({ mapPage:'flex', searchPage:'none' })
+  const [view,setView] = useState({ mapPage:'none', searchPage:'flex' })
   const [loading, setLoading] = useState(true)
   const [storeData, setStoreData] = useState([])
   const getDataFromFirebase = []
   useEffect(() => {
-    storesCollection.limit(32)
+    storesCollection.limit(10)
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {

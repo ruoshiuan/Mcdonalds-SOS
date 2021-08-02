@@ -106,10 +106,9 @@ const OrderPage = () => {
                 { orderInfo }
             </div>
             <h2>合計 $<span>{ getTotal }</span></h2>
-              <button className="backToCartBtn" onClick={() => {history.push('/menu')} }>回上一頁</button>
-              <button className="orderBtn">確定結帳</button>
-
           </form>
+          <button className="backToCartBtn" onClick={() => {history.push('/menu')} }>回上一頁</button>
+          <button className="orderBtn">確定結帳</button>
       </main>
       <Footer />
     </>

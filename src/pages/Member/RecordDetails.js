@@ -10,7 +10,7 @@ const RecordDetails = ({ openRecord, setOpenRecord }) => {
             <div style={{fontSize:'22px',padding:'5px 0'}}>點餐記錄明細</div>
             <div><span className="recordCardTop-span">編號</span>{ openRecord.orderNumber } {openRecord.mealType}</div>
             <div><span className="recordCardTop-span">時間</span>{ openRecord.orderTime }</div>
-            <div><span className="recordCardTop-span">店名</span>{ openRecord.store+'店' }</div>
+            <div><span className="recordCardTop-span">店名</span>{ openRecord.store }</div>
             <div><span className="recordCardTop-span">地址</span>{ openRecord.address }</div>
             <div><span className="recordCardTop-span">電話</span>{ openRecord.tel }</div>
           </div>

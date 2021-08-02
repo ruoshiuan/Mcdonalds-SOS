@@ -52,6 +52,9 @@
     content: attr(data-label);
     float: left;
   }
+  .memberPageTitle {
+    padding-top: 10px;
+  }
 }
 
 .signoutBtn {
