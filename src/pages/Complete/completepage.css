@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
-/* * {
-  border: 1px solid black;
-} */
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: moveup 3s both;
 }
 .thanksCorner {
   text-align: center;
@@ -30,7 +28,7 @@
   background-color: #fcecbd;
   position: absolute;
   transform: rotate(68deg);
-  animation: appear 2s both;
+  animation: appear 3s both;
 }
 .thanksCorner::after {
   content: "";
@@ -42,7 +40,7 @@
   transform: rotate(68deg);
   background-color: #fffac9;
   position: absolute;
-  animation: appear 2s both;
+  animation: appear 3s both;
 }
 .thankyou{
   font-size: 72px;
@@ -52,11 +50,12 @@
 .thanksCornerAlert {
   margin: 50px;
   text-align: center;
-  width: 500px;
+  min-width: 500px;
   padding: 10px 50px;
   color: #61392f;
   font-size: 18px;
   background-color: #fcecbd;
+  border: 6px double #fff;
 }
 .orderNumber {
   font-size: 50px;
@@ -64,30 +63,36 @@
 }
 .receiptCorner {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 50px;
-  margin: 0 50px;
-  min-width: 500px;
+  min-width: 600px;
   color: #6A5959;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   box-shadow: 0 5px 30px rgba(106, 89, 89,0.1);
+  position: relative;
+}
+.cornerLeft {
+  width: 200px;
+}
+.completeImage {
+  width: 200px;
+  height: 100%
+}
+.cornerRight {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .picBg {
-  width: 300px;
-  height: 200px;
-  background-color: #eee;
-  border: 6px double #fff;
+  width: 245px;
+  height: 123px;
   display: flex;
   justify-content: center;
 }
 .dinnerType {
   padding: 5px;
-  margin: 10px;
   border-radius: 4px;
-  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #fcecbd 50%);
 }
 .backToHome {
   cursor: pointer;
@@ -107,5 +112,53 @@
   }
   100% {
     transform: rotate(68deg) scale(1)
+  }
+}
+@keyframes moveup {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 600px) {
+  .thanksCorner {
+    min-width: 250px;
+    margin: 10px;
+    padding: 20px;
+  }
+  .thankyou{
+    font-size: 50px;
+  }
+  .orderNumber {
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .thanksCornerAlert {
+    margin: 20px 0;
+    min-width: 250px;
+    padding: 10px;
+  }
+  .receiptCorner {
+    min-width: 300px;
+  }
+
+  .cornerLeft {
+    display: none;
+  }
+  .completeImage {
+    width: 200px;
+    height: 100%
+  }
+  .cornerRight {
+    min-width: 300px;
+    padding: 10px;
+  }
+  .picBg {
+    width: 200px;
+    height: 100px;
   }
 }
