@@ -56,7 +56,11 @@
     padding-top: 10px;
   }
 }
-
+.bottomSignout {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
 .signoutBtn {
   cursor: pointer;
   background-color: #C50406;
@@ -65,7 +69,6 @@
   border-radius: 2px;
   padding: 10px 30px;
   font-weight: 500;
-  margin-top: 50px;
   font-size: 16px;
   text-decoration: none;
 }

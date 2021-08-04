@@ -33,7 +33,7 @@ h3 {
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 390px;
 }
 .orderInfo {
   padding: 10px;
@@ -91,6 +91,7 @@ h3 {
 @media screen and (max-width: 900px) {
   .orderCart {
     min-width: 450px;
+    height: 350px;
   }
   .orderBtn {
     margin-left: 50px;
@@ -99,6 +100,7 @@ h3 {
 @media screen and (max-width: 600px) {
   .orderCart {
     min-width: 280px;
+    height: 300px;
   }
   .orderBtn {
     margin-left: 20px;

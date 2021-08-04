@@ -54,10 +54,10 @@ const RecordList = () => {
           <tr><td colSpan="5">目前沒有點餐記錄</td></tr>
         :
         recordsList
-      }
+        }
         </tbody>
         </table>
-      <RecordDetails openRecord={openRecord} setOpenRecord={setOpenRecord} />
+      <RecordDetails openRecord={ openRecord } setOpenRecord={ setOpenRecord } />
     </>
   )
 }

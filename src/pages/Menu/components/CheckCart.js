@@ -18,7 +18,7 @@ const CheckCart = ({ openCart, setOpenCart, orders, setOrders }) => {
       }
     })
     return () => setLoading(false)
-  },[loading])
+  }, [loading])
   const getTotal = orders.reduce((total, order)=> {
     return total + order.total
   }, 0)
@@ -43,7 +43,7 @@ const CheckCart = ({ openCart, setOpenCart, orders, setOrders }) => {
         <div className="cartInner">
           <div className="checkMealTitle">確認購物車</div>
             <div className="cart">
-            {orders.length === 0 ? <div className="emptyAlert">目前尚未加入任何餐點</div> : null}
+            {orders.length === 0 ? <div className="emptyAlert">目前尚未加入任何餐點</div> : null }
             {orders.map((order, index) => (
               <div className="mealInfo" key={ order.id }>
                 <div className="mealMainTitle"><span>{ order.meal }</span><span className="mealQuantity">x{ order.quantity }</span></div>
@@ -58,7 +58,7 @@ const CheckCart = ({ openCart, setOpenCart, orders, setOrders }) => {
             <button className="goOrderMeal" onClick={() => setOpenCart(null)} >繼續點餐</button>
             { orders.length === 0 ?
               <button className="goOrderBtn stopGoOrderBtn">前往結帳</button> :
-              <button className="goOrderBtn" onClick={() => handleRedirection() }>前往結帳</button> }
+              <button className="goOrderBtn" onClick={ handleRedirection }>前往結帳</button> }
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
 import windowClose from '@iconify-icons/fa-solid/window-close'
 import minusCircle from '@iconify-icons/fa-solid/minus-circle'
@@ -8,7 +8,6 @@ const MorningDetail = ({ openMorning, setOpenMorning ,orders, setOrders }) => {
   const [sideFood, setSideFood] = useState('薯餅')
   const [drink, setDrink] = useState('奶茶')
   const [count, setCount] = useState(1)
-
   const plus = () => {
     if(count < 5){
       setCount(count + 1)

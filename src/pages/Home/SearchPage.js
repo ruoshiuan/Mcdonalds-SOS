@@ -10,11 +10,11 @@ import './css/homepage.css'
 import { Icon } from '@iconify/react'
 import mapMarkedAlt from '@iconify-icons/fa-solid/map-marked-alt'
 
-
 const SearchPage = (props) => {
   const [loading, setLoading] = useState()
   const [login,setLogin] = useState(null)
   const [ data, setData ] = useState([])
+  const [noResult, setNoResult] = useState('')
   const { storeData } = useContext(storesContext)
   const history = useHistory()
   useEffect(() => {
@@ -32,15 +32,16 @@ const SearchPage = (props) => {
   const onFormSubmit = (term) => {
     let emptyArray =[]
     storeData.filter(store => {
-        if(term === ''){
-            emptyArray.push(store)
-            setData(emptyArray)
-        } else if (store.address && store.address.includes(term) || store.storeName && store.storeName.includes(term) || store.keywords && store.keywords.includes(term)){
-            emptyArray.push(store)
-            setData(emptyArray)
-        } else {
-            return null
-        }
+      if(term === ''){
+        emptyArray.push(store)
+        setData(emptyArray)
+      } else if (store.address && store.address.includes(term) || store.storeName && store.storeName.includes(term) || store.keywords && store.keywords.includes(term)) {
+        emptyArray.push(store)
+        setData(emptyArray)
+      } else {
+        setData(emptyArray)
+        setNoResult(`沒有符合「${ term }」的相關地點`)
+      }
     })
   }
   const onStoreSelect = (store) => {
@@ -64,13 +65,13 @@ const SearchPage = (props) => {
         <main>
           <div className="subtitle">
             <h2>請選擇取餐地點</h2>
-            <button className="keyword_btn" onClick={() => props.switchPage()}>
-              <Icon icon={mapMarkedAlt} style={{ fontSize: '35px'}} />
+            <button className="keyword_btn" onClick={ () => props.switchPage() }>
+              <Icon icon={ mapMarkedAlt } style={{ fontSize: '35px'}} />
             </button>
-            </div>
-            <div style={{color:'#DA0406',fontSize:'14px',marginLeft: '0'}}>◎本服務需開啟定位功能以取得完整資訊</div>
+          </div>
+            <div style={{ color:'#DA0406',fontSize:'14px',marginLeft: '0' }}>◎本服務需開啟定位功能以取得完整資訊</div>
             <SearchBar onFormSubmit={ onFormSubmit } />
-            <SearchList data={ data } onStoreSelect={ onStoreSelect } />
+            <SearchList data={ data } onStoreSelect={ onStoreSelect } noResult={ noResult }/>
         </main>
         <Footer />
       </div>

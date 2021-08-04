@@ -1,16 +1,17 @@
-import React,{ useState } from 'react'
+import React,{ useState, useRef } from 'react'
 import StoreItem from './StoreItem'
 import '../css/search.css'
 import { Icon } from '@iconify/react'
 import angleRight from '@iconify-icons/fa-solid/angle-right'
 import angleLeft from '@iconify-icons/fa-solid/angle-left'
 
-const SearchList = ({ data, onStoreSelect }) => {
+const SearchList = ({ data, onStoreSelect, noResult }) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [storesPerPage, setStoresPerPage] = useState(8)
+  const [storesPerPage, setStoresPerPage] = useState(12)
   const [pageNumLimit, setPageNumLimit] = useState(5)
   const [minPageNumLimit, setMinPageNumLimit] = useState(0)
   const [maxPageNumLimit, setMaxPageNumLimit] = useState(5)
+  const scrollTopRef = useRef(null)
   const pages = []
   for(let i = 1; i <= Math.ceil(data.length / storesPerPage); i++){
     pages.push(i)
@@ -21,6 +22,7 @@ const SearchList = ({ data, onStoreSelect }) => {
 
   const handleIndexClick = (e) => {
     setCurrentPage(Number(e.target.id))
+    window.scrollTo({ behavior: 'smooth', top: scrollTopRef.current.offsetTop - 100 })
   }
   const handleNextBtn = () => {
     setCurrentPage(currentPage + 1)
@@ -37,12 +39,12 @@ const SearchList = ({ data, onStoreSelect }) => {
     }
   }
   const renderStoreList = currentStores.map(store => {
-    return <StoreItem key={ store.storeRealId } store={ store } onStoreSelect= { onStoreSelect } />
+    return <StoreItem key={ store.storeRealId } store={ store } onStoreSelect={ onStoreSelect } />
   })
   const renderPageNumber = pages.map(num => {
     if(num < maxPageNumLimit + 1 && num > minPageNumLimit){
       return (
-        <li key={ num } id={ num } onClick={ handleIndexClick} className={ currentPage === num ? "active" : null }>
+        <li key={ num } id={ num } onClick={ handleIndexClick } className={ currentPage === num ? "active" : null }>
           { num }
         </li>
       )
@@ -52,13 +54,15 @@ const SearchList = ({ data, onStoreSelect }) => {
   })
   return (
     <>
-    <div className="container">
+    <div className="container" ref={ scrollTopRef }>
       { renderStoreList }
     </div>
-  { pages.length === 0 ? null :
+  { data.length === 0 ?
+    <div style={{ textAlign: 'center', color: '#6A5959' }}>{ noResult }</div>
+    :
     <ul className="paginationNum">
       <li>
-        <button className="prevBtn" disabled={ currentPage === pages[0] ? true : false} onClick={ handlePrevBtn }>
+        <button className="prevBtn" disabled={ currentPage === pages[0] ? true : false } onClick={ handlePrevBtn }>
         <Icon icon={ angleLeft } />
         </button>
       </li>

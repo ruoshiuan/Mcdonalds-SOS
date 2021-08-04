@@ -49,7 +49,7 @@
 }
 
 .container {
-  margin-top: 30px;
+  padding-top: 30px;
   padding-bottom: 30px;
   max-width: 1200px;
   display: grid;
@@ -89,6 +89,7 @@
   display: block;
   z-index: -1;
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-image: url('../images/machouse.png');
 }

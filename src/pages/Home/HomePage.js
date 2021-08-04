@@ -10,7 +10,7 @@ const HomePage = () => {
   const [storeData, setStoreData] = useState([])
   const getDataFromFirebase = []
   useEffect(() => {
-    storesCollection.limit(10)
+    storesCollection.limit(32)
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {

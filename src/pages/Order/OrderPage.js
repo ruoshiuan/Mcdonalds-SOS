@@ -23,10 +23,10 @@ const OrderPage = () => {
     e.preventDefault()
     if(mealWay === null){
       alert('請選擇用餐方式')
-    }else if(payWay === null) {
+    } else if(payWay === null) {
       alert('請選擇付款方式')
     }
-    else{
+    else {
     const currentTime = new Date().toLocaleString()
     const currentDate = new Date().toISOString().slice(4,10).replace(/-/g, "")
     const randomParams = Math.floor(Math.random() * 1000)
@@ -107,7 +107,7 @@ const OrderPage = () => {
             <div className="orderTotal">合計 $<span>{ getTotal }</span></div>
           </form>
           <div className="orderBottomBtn">
-            <button className="backToCartBtn" onClick={() => {history.push('/menu')} }>回上一頁</button>
+            <button className="backToCartBtn" onClick={() => history.goBack()}>回上一頁</button>
             <button className="orderBtn" onClick={ submitOrder }>確定結帳</button>
           </div>
       </main>

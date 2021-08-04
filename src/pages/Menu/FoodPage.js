@@ -10,8 +10,8 @@ import { Icon } from '@iconify/react'
 import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
 import './css/foodpage.css'
 
-const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]' )
 const FoodPage = () => {
+  const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]' )
   const [openMorning, setOpenMorning] = useState()
   const [openRegular, setOpenRegular] = useState()
   const [openPoint, setOpenPoint] = useState()
@@ -53,16 +53,18 @@ const FoodPage = () => {
           </button>
         </div>
         <div className="menuBar">
-          <div className="barTitle">餐點一覽</div>
+          <div className="barTitle">早餐</div>
+          <div className="barTitle">全餐</div>
+          <div className="barTitle">單點</div>
         </div>
       </main>
-          <section>
-            <SetMenu setOpenMorning={ setOpenMorning } setOpenRegular={ setOpenRegular } setOpenPoint={ setOpenPoint } />
-            <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
-            <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />
-            <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
-            <CheckCart openCart={ openCart } setOpenCart={ setOpenCart } orders={ orders } setOrders={ setOrders } />
-          </section>
+        <section>
+          <SetMenu setOpenMorning={ setOpenMorning } setOpenRegular={ setOpenRegular } setOpenPoint={ setOpenPoint } />
+          <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
+          <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />
+          <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
+          <CheckCart openCart={ openCart } setOpenCart={ setOpenCart } orders={ orders } setOrders={ setOrders } />
+        </section>
         <div className="bottomOuter">
         <div className="bottomBar">
           <div className="shoppingCart">
