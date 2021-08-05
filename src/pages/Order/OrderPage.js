@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import LoadingEffect from './LoadingEffect'
 import { ordersCollection } from '../../firestore_db'
 import './css/orderpage.css'
 const OrderPage = () => {
   const [loading, setLoading] = useState(true)
   const [mealWay, setMealWay] = useState(null)
   const [payWay, setPayWay] = useState(null)
+  const [direct, setDirect] = useState()
   const history = useHistory()
   const storeInfo = JSON.parse(localStorage.getItem("userMessage"))
   const getCartInfo = JSON.parse(localStorage.getItem('cartItems')) || []
@@ -50,7 +52,8 @@ const OrderPage = () => {
     }
     sessionStorage.setItem('orderRecord', JSON.stringify(data))
     localStorage.setItem('cartItems',JSON.stringify([]))
-    history.push('/complete')
+    setDirect(true)
+    setTimeout(() => history.push('/complete'), 3000)
     }
   }
   const getTotal = getCartInfo.reduce((total, order) => {
@@ -59,7 +62,10 @@ const OrderPage = () => {
   const orderInfo = getCartInfo.map(info => {
     return (
     <div className="orderInfo" key={ info.id }>
-      <div className="orderMainTitle"><span>{ info.meal }</span><span className="orderQuantity">x{ info.quantity }</span></div>
+      <div className="orderMainTitle">
+        <span>{ info.meal }</span>
+        <span className="orderQuantity">x{ info.quantity }</span>
+      </div>
       {info.side || info.drink === null ? <div className="mealSide">{ info.side }, { info.drink }</div> : null }
       <div className="orderMealTotal">$ { info.total }</div>
     </div>
@@ -107,9 +113,10 @@ const OrderPage = () => {
             <div className="orderTotal">合計 $<span>{ getTotal }</span></div>
           </form>
           <div className="orderBottomBtn">
-            <button className="backToCartBtn" onClick={() => history.goBack()}>回上一頁</button>
+            <button className="backToCartBtn" onClick={() => history.push('menu') }>回上一頁</button>
             <button className="orderBtn" onClick={ submitOrder }>確定結帳</button>
           </div>
+          {direct ? <LoadingEffect /> : null}
       </main>
       <Footer />
     </>

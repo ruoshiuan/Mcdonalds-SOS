@@ -34,10 +34,8 @@ const Navbar = () => {
       <div className="navbar">
           <img className="brand_icon" src={brand_icon} alt="brand_icon" width="45" height="38" />
           <h1 className="main_title"><Link to="/" style={{ textDecoration: 'none',color: '#6A5959' }}>自助點餐</Link></h1>
-          {/* <div className="items"><Icon className="icon receipt" icon={receipt}/></div> */}
           <div className="items">
-              {login ? <Icon className="icon usercircle" icon={userCircle} style={{color:'#2c76f6'}} onClick={()=>handleRedirection()} />
-              : <Icon className="icon usercircle" icon={userCircle} onClick={()=>handleRedirection()} /> }
+              <Icon className="icon usercircle" icon={userCircle} onClick={()=>handleRedirection()} />
           </div>
       </div>
     </nav>

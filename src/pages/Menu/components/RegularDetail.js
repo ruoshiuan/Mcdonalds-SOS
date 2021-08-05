@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import { Icon } from '@iconify/react'
 import windowClose from '@iconify-icons/fa-solid/window-close'
 import minusCircle from '@iconify-icons/fa-solid/minus-circle'
@@ -61,7 +61,7 @@ const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
               <option value="沙拉">沙拉</option>
             </select>
             <div className="detailTitle">請選擇飲料</div>
-            <select name="drink" onChange={ (e) => {setDrink(e.target.value)} }>
+            <select name="drink" onChange={ (e) => { setDrink(e.target.value) } }>
               <option value="可口可樂">可口可樂</option>
               <option value="雪碧">雪碧</option>
               <option value="檸檬紅茶">檸檬紅茶</option>

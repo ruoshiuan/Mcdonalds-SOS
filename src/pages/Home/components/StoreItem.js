@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import haversine from 'haversine-distance'
 import '../css/search.css'
 import allday from '../images/24hr.svg'
-import machouse from '../images/machouse.png'
 import { Icon } from '@iconify/react'
 import wifiIcon from '@iconify-icons/fa-solid/wifi'
 import coffeeIcon from '@iconify-icons/fa-solid/coffee'
@@ -20,8 +19,8 @@ const StoreItem = ({ store, onStoreSelect }) => {
     return() => setLoading(false)
   }, [loading])
     const tempDistance = haversine(
-        { latitude: location.lat, longitude: location.lng },
-        { latitude: store.coordinates[1], longitude: store.coordinates[0]}
+      { latitude: location.lat, longitude: location.lng },
+      { latitude: store.coordinates[1], longitude: store.coordinates[0]}
     )
     const distance = (tempDistance * 0.001).toFixed(2)
     return(
@@ -47,7 +46,7 @@ const StoreItem = ({ store, onStoreSelect }) => {
           <div>{ store.tel }</div>
         </div>
         <div className="distanceInfo">
-          <Icon icon={ mapMarkerAlt} style={{padding: '0 3px'}} />
+          <Icon icon={ mapMarkerAlt } style={{ padding: '0 3px' }} />
           { distance < 50 ?
           <span><strong>{ distance }</strong></span>
           :

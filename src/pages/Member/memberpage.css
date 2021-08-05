@@ -1,3 +1,6 @@
+.memberPageTitle {
+  padding-top: 20px;
+}
 .records {
   border: 1px solid #ccc;
   border-collapse: collapse;
@@ -52,9 +55,7 @@
     content: attr(data-label);
     float: left;
   }
-  .memberPageTitle {
-    padding-top: 10px;
-  }
+
 }
 .bottomSignout {
   display: flex;

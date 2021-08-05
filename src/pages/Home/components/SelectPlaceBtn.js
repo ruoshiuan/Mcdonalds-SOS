@@ -38,15 +38,14 @@ const SelectPlaceBtn = ({ info,storeInfo }) => {
   return (
     <div className="orderOption">
       { info <= 50 ?
-        <button
-          className="mapBtn mapOrderBtn"
-          onClick={ () => handleRedirection() }
-        >
+        <button className="mapBtn mapOrderBtn" onClick={ () => handleRedirection() }>
           開始點餐
         </button>
-        :<button className="mapBtn mapNoOrderBtn">
+        :
+        <button className="mapBtn mapNoOrderBtn">
           無法點餐
-        </button> }
+        </button>
+      }
     </div>
   )
 }

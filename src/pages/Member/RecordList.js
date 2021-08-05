@@ -9,7 +9,9 @@ const RecordList = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if(user){
         const orderDataArray = []
-        ordersCollection.where('email', '==', user.email)
+        ordersCollection
+        .where('email', '==', user.email)
+        .orderBy('orderTime','desc')
         .get()
         .then(snapshot => {
           snapshot.forEach(doc => {

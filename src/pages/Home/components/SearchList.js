@@ -26,6 +26,7 @@ const SearchList = ({ data, onStoreSelect, noResult }) => {
   }
   const handleNextBtn = () => {
     setCurrentPage(currentPage + 1)
+    window.scrollTo({ behavior: 'smooth', top: scrollTopRef.current.offsetTop - 100 })
     if(currentPage + 1 > maxPageNumLimit){
       setMaxPageNumLimit(maxPageNumLimit + pageNumLimit)
       setMinPageNumLimit(minPageNumLimit + pageNumLimit)
@@ -33,6 +34,7 @@ const SearchList = ({ data, onStoreSelect, noResult }) => {
   }
   const handlePrevBtn = () => {
     setCurrentPage(currentPage - 1)
+    window.scrollTo({ behavior: 'smooth', top: scrollTopRef.current.offsetTop - 100 })
     if((currentPage - 1) % pageNumLimit === 0) {
       setMaxPageNumLimit(maxPageNumLimit - pageNumLimit)
       setMinPageNumLimit(minPageNumLimit - pageNumLimit)

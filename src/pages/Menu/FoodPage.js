@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
-import SetMenu from './components/SetMenu'
+import MorningMenu from './components/MorningMenu'
+import RegularMenu from './components/RegularMenu'
+import PointMenu from './components/PointMenu'
 import MorningDetail from './components/MorningDetail'
 import RegularDetail from './components/RegularDetail'
 import PointDetail from './components/PointDetail'
@@ -12,6 +14,9 @@ import './css/foodpage.css'
 
 const FoodPage = () => {
   const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]' )
+  const [toMorning, setToMorning] = useState(true)
+  const [toRegular, setToRegular] = useState()
+  const [toPoint, setToPoint] = useState()
   const [openMorning, setOpenMorning] = useState()
   const [openRegular, setOpenRegular] = useState()
   const [openPoint, setOpenPoint] = useState()
@@ -24,16 +29,28 @@ const FoodPage = () => {
     if(!storeInfo){
       history.push('/')
     }
-    return () => setLoading(false)
-  }, [loading])
-
-  useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(orders))
-  }, [orders])
+    return () => setLoading(false)
+  }, [loading,orders])
 
   const handleReset = () => {
     localStorage.removeItem("userMessage")
     history.push('/')
+  }
+  const handleToMorningMenu = () => {
+    setToMorning(true)
+    setToRegular(null)
+    setToPoint(null)
+  }
+  const handleToRegularMenu = () => {
+    setToRegular(true)
+    setToPoint(null)
+    setToMorning(null)
+  }
+  const handleToPointMenu = () => {
+    setToPoint(true)
+    setToRegular(null)
+    setToMorning(null)
   }
   const getTotal = orders.reduce((total, order) => {
     return total + order.total
@@ -53,13 +70,15 @@ const FoodPage = () => {
           </button>
         </div>
         <div className="menuBar">
-          <div className="barTitle">早餐</div>
-          <div className="barTitle">全餐</div>
-          <div className="barTitle">單點</div>
+          <div className={ toMorning ? "barTitle selected" : "barTitle" } onClick={ handleToMorningMenu }>早餐</div>
+          <div className={ toRegular ? "barTitle selected" : "barTitle" } onClick={ handleToRegularMenu }>全餐</div>
+          <div className={ toPoint ? "barTitle selected" : "barTitle" } onClick={ handleToPointMenu }>飲品</div>
         </div>
       </main>
         <section>
-          <SetMenu setOpenMorning={ setOpenMorning } setOpenRegular={ setOpenRegular } setOpenPoint={ setOpenPoint } />
+          <MorningMenu setOpenMorning={ setOpenMorning } toMorning={ toMorning }  />
+          <RegularMenu setOpenRegular={ setOpenRegular } toRegular={ toRegular }  />
+          <PointMenu setOpenPoint={ setOpenPoint } toPoint={ toPoint } />
           <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
           <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />
           <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
