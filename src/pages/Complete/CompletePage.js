@@ -48,7 +48,7 @@ const CompletePage = () => {
             <div>{ record.address }</div>
           </div>
         </div>
-          <Link to="/"><button className="backToHome">返回主頁</button></Link>
+          <Link to="/member"><button className="backToHome">查看訂單</button></Link>
       </div> : null }
     </main>
     <Footer />

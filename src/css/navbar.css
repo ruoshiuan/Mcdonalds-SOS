@@ -24,6 +24,9 @@
 
 .brand_icon {
   margin: 10px 2px;
+  width: 45px;
+  height: 38px;
+  align-self: center;
 }
 .main_title {
   position: relative;
@@ -39,20 +42,28 @@
 .items {
   color: #6A5959;
   cursor: pointer;
-  align-self: center;
-  margin: 10px;
-}
-
-.icon {
-  font-size: 36px;
+  margin: 12px;
 }
 
 .usercircle{
   top: 0;
+  font-size: 36px;
 }
 
 @media screen and (max-width: 1600px) {
   .navbar {
     width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .brand_icon {
+    width: 37px;
+    height: 30px
+  }
+  .main_title {
+    font-size: 28px;
+  }
+  .usercircle{
+    font-size: 34px;
   }
 }

@@ -78,22 +78,22 @@ const Map = () => {
               ))
             }
           </MarkerClusterer>
-          {selected ? (
-              <InfoWindow position={{ lat: selected.coordinates[1], lng: selected.coordinates[0] }} onCloseClick={() => { setSelected(null) }}>
+          { selected && (
+              <InfoWindow position={{ lat: selected.coordinates[1], lng: selected.coordinates[0] }} onCloseClick={ () => { setSelected(null) }}>
                 <div className="infoWindowStyle">
                   <div><strong>{ selected.storeName+'店' }</strong></div>
                   <div>{ selected.address }</div>
                   <Icon
                     icon={ mapMarkerAlt }
                     className="distanceIcon" />
-                    { distance < 50 ?
+                    { distance <= 50 ?
                     <span><strong> { distance } </strong></span>
                     :
                     <span style={{ color:'#DA0406' }}><strong> { distance } </strong></span> }
                     公里
                 </div>
               </InfoWindow>
-           ) : null}
+           ) }
           { selected ? <SelectPlaceBtn info={ distance } storeInfo={ selected } /> : null }
         </GoogleMap>
       </>

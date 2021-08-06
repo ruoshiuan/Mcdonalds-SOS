@@ -1,6 +1,3 @@
-/* * {
-  border: 1px solid black;
-} */
 .form {
   display: flex;
   height: 45vh;
@@ -94,14 +91,22 @@
   background-image: url('../images/machouse.png');
 }
 
-.hideInfo{
+.hideInfo {
   background-color: rgba(34,34,34,0.8);
-  color: #fff;
-  padding: 20px;
-  font-size: 15px;
-  height: 200px;
   max-width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height ease-in 0.15s;
 }
+.hideInfo.show {
+  height: 200px;
+}
+.hideInfoTime {
+  padding: 15px;
+  color: #fff;
+  font-size: 15px;
+}
+
 .distanceInfo {
   width: 95px;
   background-color: #fff;
@@ -110,6 +115,7 @@
   padding: 5px;
   top: 0;
   right: 10px;
+  border-radius: 0 0 4px 4px;
   box-shadow: 0 0 5px #ddd;
 }
 .topInfo {
@@ -187,7 +193,6 @@
 .noorder_btn {
   background-color: #eee;
   color: #DA0406;
-  cursor: not-allowed;
 }
 .paginationNum {
   list-style: none;
@@ -212,7 +217,6 @@
   border: none;
   cursor: pointer;
 }
-
 @media screen and (max-width: 600px) {
   .form {
     height: 35vh;
