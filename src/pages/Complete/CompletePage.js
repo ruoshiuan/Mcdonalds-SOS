@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import takein from '../../images/takein.svg'
 import takeout from '../../images/takeout.svg'
 import completeImage from '../../images/completeImage.jpg'
+import firebase from '../../firestore_db'
 
 const CompletePage = () => {
   const [loading, setLoading] = useState(true)
@@ -13,9 +14,15 @@ const CompletePage = () => {
   const cartItems = JSON.parse(localStorage.getItem('cartItems'))
   const history = useHistory()
   useEffect(() => {
-    if (!cartItems || !record) {
-      history.push('/')
-    }
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        if (!cartItems || !record) {
+          history.push('/')
+        }
+      } else {
+        history.push('/register')
+      }
+    })
     return () => setLoading(false)
   }, [loading])
   return (

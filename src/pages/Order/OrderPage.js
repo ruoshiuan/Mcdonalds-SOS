@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import LoadingEffect from './LoadingEffect'
-import { ordersCollection } from '../../firestore_db'
+import firebase, { ordersCollection } from '../../firestore_db'
 import './css/orderpage.css'
 const OrderPage = () => {
   const [loading, setLoading] = useState(true)
@@ -14,6 +14,13 @@ const OrderPage = () => {
   const storeInfo = JSON.parse(localStorage.getItem('userMessage'))
   const getCartInfo = JSON.parse(localStorage.getItem('cartItems')) || []
   useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        return true
+      } else {
+        history.push('/register')
+      }
+    })
     if (!storeInfo) {
       history.push('/')
     } else if (getTotal === 0) {

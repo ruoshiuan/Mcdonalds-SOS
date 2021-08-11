@@ -10,8 +10,6 @@ const SelectPlaceBtn = ({ info, storeInfo }) => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setLogin(user)
-      } else {
-        history.push('/register')
       }
     })
     return () => setLoading(false)

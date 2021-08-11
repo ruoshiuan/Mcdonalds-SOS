@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -9,7 +9,18 @@ import { InlineIcon } from '@iconify/react'
 import signOutAlt from '@iconify-icons/fa-solid/sign-out-alt'
 
 const MemberPage = () => {
+  const [loading, setLoading] = useState(true)
   const history = useHistory()
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        return true
+      } else {
+        history.push('/register')
+      }
+    })
+    return () => setLoading(false)
+  }, [loading])
   const handleLogout = () => {
     firebase.auth().signOut().then(() => {
       localStorage.removeItem('email')

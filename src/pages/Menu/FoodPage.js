@@ -10,6 +10,7 @@ import PointDetail from './components/PointDetail'
 import CheckCart from './components/CheckCart'
 import { Icon } from '@iconify/react'
 import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
+import firebase from '../../firestore_db'
 import './css/foodpage.css'
 
 const FoodPage = () => {
@@ -26,9 +27,15 @@ const FoodPage = () => {
   const history = useHistory()
   const storeInfo = JSON.parse(localStorage.getItem('userMessage'))
   useEffect(() => {
-    if (!storeInfo) {
-      history.push('/')
-    }
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        if (!storeInfo) {
+          history.push('/')
+        }
+      } else {
+        history.push('/register')
+      }
+    })
     localStorage.setItem('cartItems', JSON.stringify(orders))
     return () => setLoading(false)
   }, [loading, orders])
