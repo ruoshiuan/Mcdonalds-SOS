@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: moveup 3s both;
+}
+.thanksCorner {
+  text-align: center;
+  padding: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  min-width: 500px;
+  color: #6A5959;
+  box-shadow: 0 5px 30px rgba(106, 89, 89,0.1);
+  overflow: hidden;
+  position: relative;
+}
+.thanksCorner::before {
+  content: "";
+  width: 200px;
+  height: 200px;
+  left: -50px;
+  top: -50px;
+  z-index: -1;
+  background-color: #fcecbd;
+  position: absolute;
+  transform: rotate(68deg);
+  animation: appear 3s both;
+}
+.thanksCorner::after {
+  content: "";
+  z-index: -1;
+  width: 200px;
+  height: 200px;
+  right: -50px;
+  bottom: -10px;
+  transform: rotate(68deg);
+  background-color: #fffac9;
+  position: absolute;
+  animation: appear 3s both;
+}
+.thankyou{
+  font-size: 72px;
+  padding: 10px;
+  font-family: 'Kaushan Script';
+}
+.thanksCornerAlert {
+  margin: 50px;
+  text-align: center;
+  min-width: 500px;
+  padding: 10px 50px;
+  color: #61392f;
+  font-size: 18px;
+  background-color: #fcecbd;
+  border: 6px double #fff;
+}
+.orderNumber {
+  font-size: 50px;
+  font-weight: 600;
+}
+.receiptCorner {
+  display: flex;
+  min-width: 600px;
+  color: #6A5959;
+  font-size: 18px;
+  line-height: 30px;
+  box-shadow: 0 5px 30px rgba(106, 89, 89,0.1);
+  position: relative;
+}
+.cornerLeft {
+  width: 200px;
+}
+.completeImage {
+  width: 200px;
+  height: 100%
+}
+.cornerRight {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.picBg {
+  width: 245px;
+  height: 123px;
+  display: flex;
+  justify-content: center;
+}
+.dinnerType {
+  padding: 5px;
+  border-radius: 4px;
+}
+.backToHome {
+  cursor: pointer;
+  background-color: #FFBB0F;
+  border: 1px solid #FFBB0F;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin: 30px 0;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+@keyframes appear {
+  0% {
+    transform: rotate(0deg) scale(0.8)
+  }
+  100% {
+    transform: rotate(68deg) scale(1)
+  }
+}
+@keyframes moveup {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 600px) {
+  .thanksCorner {
+    min-width: 250px;
+    margin: 10px;
+    padding: 20px;
+  }
+  .thankyou{
+    font-size: 50px;
+  }
+  .orderNumber {
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .thanksCornerAlert {
+    margin: 20px 0;
+    min-width: 250px;
+    padding: 10px;
+  }
+  .receiptCorner {
+    min-width: 300px;
+  }
+
+  .cornerLeft {
+    display: none;
+  }
+  .completeImage {
+    width: 200px;
+    height: 100%
+  }
+  .cornerRight {
+    min-width: 300px;
+    padding: 10px;
+  }
+  .picBg {
+    width: 200px;
+    height: 100px;
+  }
+}

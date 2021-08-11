@@ -1,0 +1,136 @@
+/* * {
+  border: 1px solid black;
+} */
+.cartBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  height: 550px;
+  background-color: #fff;
+  color: #6A5959;
+  border-radius: 5px;
+  min-width: 800px;
+  box-shadow: 0 0 5px rgba(255,255,255,0.2);
+  transform: translate(-50%,-50%);
+  user-select: none;
+}
+.cartInner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  height: 500px;
+}
+
+.checkMealTitle {
+  font-size: 25px;
+  margin: 20px;
+  align-self: start;
+}
+
+.cart {
+  min-width: 800px;
+  border-radius: 5px;
+  margin: 10px;
+  border: 1px solid #D8D8D8;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+.emptyAlert {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: #eee;
+  padding: 10px;
+  opacity: 0.5;
+}
+.mealInfo {
+  padding: 10px;
+  margin: 5px;
+  border-bottom: 1px solid #D8D8D8;
+}
+.mealMainTitle {
+  font-size: 20px;
+}
+.mealQuantity {
+  float: right;
+  padding: 0 10px;
+}
+.oneMealTotal{
+  font-size: 22px;
+}
+.removeIcon {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+  color: #C50406;
+  padding: 0 10px;
+}
+.cartTotal {
+  font-size: 25px;
+  align-self: start;
+  margin: 20px;
+}
+.bottomBtn {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.goOrderMeal {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #222;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  font-size: 16px;
+}
+.goOrderBtn {
+  cursor: pointer;
+  background-color: #FFBB0F;
+  border: 1px solid #FFBB0F;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin-left: 50px;
+  font-size: 16px;
+}
+.stopGoOrderBtn {
+  cursor: not-allowed;
+  background-color: #eee;
+  border: #eee;
+  color: #f24;
+  border: none;
+}
+@media screen and (max-width: 1200px) {
+  .cartBox,.cart {
+    min-width: 600px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .cartBox,.cart {
+    min-width: 450px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cartInner {
+    margin: 10px;
+  }
+  .cartBox,.cart {
+    min-width: 260px;
+    height: 515px;
+  }
+  .checkMealTitle {
+    font-size: 20px;
+  }
+  .goOrderMeal {
+    display: none;
+  }
+  .goOrderBtn {
+    margin-left: 0;
+  }
+}

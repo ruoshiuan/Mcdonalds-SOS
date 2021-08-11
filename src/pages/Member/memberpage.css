@@ -1,0 +1,75 @@
+.memberPageTitle {
+  padding-top: 20px;
+}
+.records {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  text-align: center;
+}
+
+.records th {
+  background-color: #222;
+  padding: 10px;
+  color: #fff;
+}
+.records tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+.records td {
+  padding: 10px;
+}
+.orderNumberLine {
+  border-bottom: 1px solid #3983bd;
+  color: #3983bd;
+  cursor: pointer;
+}
+.orderNumberLine:hover{
+  color: #C50406;
+  border-bottom: 1px solid #C50406;
+}
+@media screen and (max-width: 600px){
+  .records {
+    border: 0
+  }
+  .records thead{
+    border: none;
+    display: none;
+    width: 1px;
+  }
+  .records tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .records td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: right;
+  }
+  .records td::before {
+    content: attr(data-label);
+    float: left;
+  }
+
+}
+.bottomSignout {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+.signoutBtn {
+  cursor: pointer;
+  background-color: #C50406;
+  border: none;
+  color: #fff;
+  border-radius: 2px;
+  padding: 10px 30px;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+}

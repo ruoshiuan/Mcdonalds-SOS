@@ -4,7 +4,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.firebaserc
 
+src/firebase.json
 src/firestore_db.js
 src/key.js
 src/geoKey.js
