@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import RegisterForm from './RegisterForm'
@@ -9,14 +9,14 @@ const LoginPage = () => {
   const history = useHistory()
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
-      if(user){
+      if (user) {
         history.push('/member')
       } else {
         history.push('/register')
       }
     })
     return () => setLoading(false)
-  },[loading])
+  }, [loading])
   return (
     <>
       <Navbar />

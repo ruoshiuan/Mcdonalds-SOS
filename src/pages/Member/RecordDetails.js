@@ -1,13 +1,13 @@
 import React from 'react'
 import './recorddetails.css'
 const RecordDetails = ({ openRecord, setOpenRecord }) => {
-
-  return openRecord ? (
+  return openRecord
+    ? (
     <>
-      <div className='blackBackground' onClick={ ()=>setOpenRecord(null) }></div>
+      <div className='blackBackground' onClick={ () => setOpenRecord(null) }></div>
         <div className="recordCard">
           <div className="recordCardTop">
-            <div style={{fontSize:'22px',padding:'5px 0'}}>點餐記錄明細</div>
+            <div style={{ fontSize: '22px', padding: '5px 0' }}>點餐記錄明細</div>
             <div><span className="recordCardTop-span">編號</span>{ openRecord.orderNumber } {openRecord.mealType}</div>
             <div><span className="recordCardTop-span">時間</span>{ openRecord.orderTime }</div>
             <div><span className="recordCardTop-span">店名</span>{ openRecord.store }</div>
@@ -25,7 +25,7 @@ const RecordDetails = ({ openRecord, setOpenRecord }) => {
               </tr>
             </thead>
             <tbody>
-              {openRecord.items.map((item, index) => (
+              { openRecord.items.map((item, index) => (
                 <tr key={ index }>
                   <td data-label="名稱">{ item.meal }</td>
                   {!item.side ? <td data-label="配餐" >無</td> : <td data-label="配餐" >{ item.side },{ item.drink }</td>}
@@ -33,14 +33,15 @@ const RecordDetails = ({ openRecord, setOpenRecord }) => {
                   <td data-label="數量">{ item.quantity }</td>
                   <td data-label="總價">{ item.total }</td>
                 </tr>
-              ))}
+              )) }
             </tbody>
           </table>
           <div className="recordDetailTotal">訂單金額 $ { openRecord.total }</div>
           <button className="closeRecordDetail" onClick={ () => setOpenRecord(null) }>關閉</button>
       </div>
     </>
-  ) : null
+      )
+    : null
 }
 
 export default RecordDetails

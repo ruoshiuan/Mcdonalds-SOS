@@ -15,7 +15,7 @@ const App = () => {
   })
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
-      if(user){
+      if (user) {
         setAuthState({
           setAuthState: true,
           initializing: false
@@ -27,8 +27,8 @@ const App = () => {
         })
       }
     })
-  },[setAuthState])
-  if(authentication.initializing){
+  }, [setAuthState])
+  if (authentication.initializing) {
     return <div>Loading</div>
   }
   return (
@@ -37,7 +37,7 @@ const App = () => {
       <ScrollToTop />
       <Switch>
         <Route exact path='/' component={ HomePage } authenticated={ authentication.authenticated } />
-        <Route exact path='/register' component={ LoginPage }  />
+        <Route exact path='/register' component={ LoginPage } />
         <Route exact path='/member' component={ MemberPage } authenticated={ authentication.authenticated } />
         <Route exact path='/menu' component={ FoodPage } authenticated={ authentication.authenticated } />
         <Route exact path='/order' component={ OrderPage } authenticated={ authentication.authenticated } />

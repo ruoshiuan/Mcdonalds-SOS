@@ -12,64 +12,65 @@ import mapMarkedAlt from '@iconify-icons/fa-solid/map-marked-alt'
 
 const SearchPage = (props) => {
   const [loading, setLoading] = useState()
-  const [login,setLogin] = useState(null)
-  const [ data, setData ] = useState([])
+  const [login, setLogin] = useState(null)
+  const [data, setData] = useState([])
   const [noResult, setNoResult] = useState('')
   const { storeData } = useContext(storesContext)
   const history = useHistory()
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
-        if(user){
-            setLogin(user)
-        }else{
-            return null
-        }
+      if (user) {
+        setLogin(user)
+      } else {
+        return null
+      }
     })
     onFormSubmit('')
-    return() => setLoading(false)
+    return () => setLoading(false)
   }, [loading])
 
   const onFormSubmit = (term) => {
-    let emptyArray =[]
+    const emptyArray = []
     storeData.filter(store => {
-      if(term === ''){
+      if (term === '') {
         emptyArray.push(store)
         setData(emptyArray)
-      } else if (store.address && store.address.includes(term) || store.storeName && store.storeName.includes(term) || store.keywords && store.keywords.includes(term)) {
+      } else if ((store.address && store.address.includes(term)) || (store.storeName && store.storeName.includes(term)) || (store.keywords && store.keywords.includes(term))) {
         emptyArray.push(store)
         setData(emptyArray)
       } else {
         setData(emptyArray)
-        setNoResult(`沒有符合「${ term }」的相關地點`)
+        setNoResult(`沒有符合「${term}」的相關地點`)
       }
+      return false
     })
   }
   const onStoreSelect = (store) => {
-    if(login){
-        const getUser = firebase.auth().currentUser
-        const data = {
+    if (login) {
+      const getUser = firebase.auth().currentUser
+      const data = {
         email: getUser.email,
         store: store.storeName,
         address: store.address,
         tel: store.tel
-        }
-        localStorage.setItem('userMessage',JSON.stringify(data))
-        history.push('/menu')
-    } else {
-        history.push('/register')
       }
+      localStorage.setItem('userMessage', JSON.stringify(data))
+      history.push('/menu')
+    } else {
+      history.push('/register')
+    }
   }
   return (
-      <div style={{display:`${props.display}`}}>
+      <div style={{ display: `${props.display}` }}>
         <Navbar />
         <main>
           <div className="subtitle">
             <h2>請選擇取餐地點</h2>
             <button className="keyword_btn" onClick={ () => props.switchPage() }>
-              <Icon icon={ mapMarkedAlt } style={{ fontSize: '35px'}} />
+              <Icon icon={ mapMarkedAlt } style={{ fontSize: '35px' }} />
             </button>
           </div>
-            <div style={{ color:'#DA0406',fontSize:'14px',marginLeft: '0' }}>◎本服務需開啟定位功能以取得完整資訊</div>
+            <div style={{ color: '#DA0406', fontSize: '14px', marginLeft: '0' }}>◎本服務需開啟定位功能以取得完整資訊</div>
             <SearchBar onFormSubmit={ onFormSubmit } />
             <SearchList data={ data } onStoreSelect={ onStoreSelect } noResult={ noResult }/>
         </main>

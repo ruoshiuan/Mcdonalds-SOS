@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
           <div className="footerBottom">
             <Icon icon={ exclamationCircle } className="triangleAlert" />
-            <p>This is a copy work of McDonald's Japan mobile ordering application, without any purpose of profit.</p>
+            <p>This is a copy work of McDonald’s Japan mobile ordering application, without any purpose of profit.</p>
           </div>
         </main>
       </footer>

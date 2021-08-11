@@ -12,9 +12,9 @@ const MemberPage = () => {
   const history = useHistory()
   const handleLogout = () => {
     firebase.auth().signOut().then(() => {
-    localStorage.removeItem('email')
-    history.push('/register')
-  })
+      localStorage.removeItem('email')
+      history.push('/register')
+    })
   }
   return (
     <>

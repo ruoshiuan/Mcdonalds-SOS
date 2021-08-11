@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { menuRegularCollection } from '../../../firestore_db'
 const RegularMenu = ({ toRegular, setOpenRegular }) => {
   const [regularData, setRegularData] = useState([])
@@ -6,36 +6,38 @@ const RegularMenu = ({ toRegular, setOpenRegular }) => {
   const getRegularMenuFromFirebase = []
   useEffect(() => {
     menuRegularCollection
-    .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        getRegularMenuFromFirebase.push(doc.data())
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          getRegularMenuFromFirebase.push(doc.data())
+        })
+        setRegularData(getRegularMenuFromFirebase)
       })
-      setRegularData(getRegularMenuFromFirebase)
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     return () => setLoading(false)
-  },[loading])
+  }, [loading])
 
   const regularList = regularData.map(info => {
     return (
       <div className="itemCard" key={ info.mealId } onClick={() => { setOpenRegular(info) }}>
         <img className="itemImg" src={ info.image } alt="foodPhoto" width='150' />
         <div className="itemName">{ info.meal }</div>
-        <div className="itemPrice">$<span style={{fontSize: '24px'}}><strong>{ info.price }</strong></span></div>
+        <div className="itemPrice">$<span style={{ fontSize: '24px' }}><strong>{ info.price }</strong></span></div>
       </div>
     )
   })
-  return toRegular ? (
-    <>
-    <main>
-      <div className="sectionTitle">超值全餐</div>
-        <div className="container">
-          { regularList }
-        </div>
-    </main>
-    </>
-  ) : null
+  return toRegular
+    ? (
+      <>
+      <main>
+        <div className="sectionTitle">超值全餐</div>
+          <div className="container">
+            { regularList }
+          </div>
+      </main>
+      </>
+      )
+    : null
 }
 
 export default RegularMenu

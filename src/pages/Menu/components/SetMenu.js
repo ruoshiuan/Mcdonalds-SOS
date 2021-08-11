@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/foodpage.css'
 import { menuMorningCollection, menuRegularCollection, menuPointCollection } from '../../../firestore_db'
 
@@ -12,33 +12,33 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
   const getPointMenuFromFirebase = []
   useEffect(() => {
     menuMorningCollection
-    .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        getMorningMenuFromFirebase.push(doc.data())
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          getMorningMenuFromFirebase.push(doc.data())
+        })
+        setMorningData(getMorningMenuFromFirebase)
       })
-      setMorningData(getMorningMenuFromFirebase)
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     menuRegularCollection
-    .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        getRegularMenuFromFirebase.push(doc.data())
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          getRegularMenuFromFirebase.push(doc.data())
+        })
+        setRegularData(getRegularMenuFromFirebase)
       })
-      setRegularData(getRegularMenuFromFirebase)
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     menuPointCollection
-    .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        getPointMenuFromFirebase.push(doc.data())
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          getPointMenuFromFirebase.push(doc.data())
+        })
+        setPointData(getPointMenuFromFirebase)
       })
-      setPointData(getPointMenuFromFirebase)
-    })
     return () => setLoading(false)
-  },[loading])
+  }, [loading])
 
   const morningList = morningData.map(info => {
     return (
@@ -50,7 +50,7 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
       >
         <img className="itemImg" src={ info.image } alt="foodPhoto" width='150' />
         <div className="itemName">{ info.meal }</div>
-        <div className="itemPrice">$<span style={{fontSize: '24px'}}><strong>{ info.price }</strong></span></div>
+        <div className="itemPrice">$<span style={{ fontSize: '24px' }}><strong>{ info.price }</strong></span></div>
       </div>
     )
   })
@@ -64,7 +64,7 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
       >
         <img className="itemImg" src={ info.image } alt="foodPhoto" width='150' />
         <div className="itemName">{ info.meal }</div>
-        <div className="itemPrice">$<span style={{fontSize: '24px'}}><strong>{ info.price }</strong></span></div>
+        <div className="itemPrice">$<span style={{ fontSize: '24px' }}><strong>{ info.price }</strong></span></div>
       </div>
     )
   })
@@ -73,7 +73,7 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
       <div className="itemCard" key={ info.mealId } onClick={() => { setOpenPoint(info) }}>
         <img className="itemImg" src={ info.image } alt="foodPhoto" width='200' />
         <div className="itemName">{info.meal}</div>
-        <div className="itemPrice">$<span style={{fontSize: '24px'}}><strong>{info.price}</strong></span></div>
+        <div className="itemPrice">$<span style={{ fontSize: '24px' }}><strong>{info.price}</strong></span></div>
       </div>
     )
   })

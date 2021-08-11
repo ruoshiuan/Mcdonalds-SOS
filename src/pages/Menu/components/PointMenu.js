@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { menuPointCollection } from '../../../firestore_db'
 const PointMenu = ({ toPoint, setOpenPoint }) => {
   const [pointData, setPointData] = useState([])
@@ -6,16 +6,16 @@ const PointMenu = ({ toPoint, setOpenPoint }) => {
   const getPointMenuFromFirebase = []
   useEffect(() => {
     menuPointCollection
-    .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        getPointMenuFromFirebase.push(doc.data())
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          getPointMenuFromFirebase.push(doc.data())
+        })
+        setPointData(getPointMenuFromFirebase)
       })
-      setPointData(getPointMenuFromFirebase)
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     return () => setLoading(false)
-  },[loading])
+  }, [loading])
 
   const pointList = pointData.map(info => {
     return (
@@ -26,15 +26,17 @@ const PointMenu = ({ toPoint, setOpenPoint }) => {
       </div>
     )
   })
-  return toPoint ? (
-    <>
-    <main>
-      <div className="sectionTitle">單點/飲品</div>
-        <div className="container">
-          { pointList }
-      </div>
-    </main>
-    </>
-  ) : null
+  return toPoint
+    ? (
+      <>
+      <main>
+        <div className="sectionTitle">單點/飲品</div>
+          <div className="container">
+            { pointList }
+        </div>
+      </main>
+      </>
+      )
+    : null
 }
 export default PointMenu

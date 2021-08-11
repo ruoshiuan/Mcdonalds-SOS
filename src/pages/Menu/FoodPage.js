@@ -13,7 +13,7 @@ import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
 import './css/foodpage.css'
 
 const FoodPage = () => {
-  const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]' )
+  const localStoreInfo = JSON.parse(localStorage.getItem('cartItems') || '[]')
   const [toMorning, setToMorning] = useState(true)
   const [toRegular, setToRegular] = useState()
   const [toPoint, setToPoint] = useState()
@@ -22,19 +22,19 @@ const FoodPage = () => {
   const [openPoint, setOpenPoint] = useState()
   const [openCart, setOpenCart] = useState(false)
   const [orders, setOrders] = useState(localStoreInfo)
-  const [loading,setLoading] = useState()
+  const [loading, setLoading] = useState()
   const history = useHistory()
-  const storeInfo = JSON.parse(localStorage.getItem("userMessage"))
+  const storeInfo = JSON.parse(localStorage.getItem('userMessage'))
   useEffect(() => {
-    if(!storeInfo){
+    if (!storeInfo) {
       history.push('/')
     }
-    localStorage.setItem("cartItems", JSON.stringify(orders))
+    localStorage.setItem('cartItems', JSON.stringify(orders))
     return () => setLoading(false)
-  }, [loading,orders])
+  }, [loading, orders])
 
   const handleReset = () => {
-    localStorage.removeItem("userMessage")
+    localStorage.removeItem('userMessage')
     history.push('/')
   }
   const handleToMorningMenu = () => {
@@ -70,14 +70,14 @@ const FoodPage = () => {
           </button>
         </div>
         <div className="menuBar">
-          <div className={ toMorning ? "barTitle selected" : "barTitle" } onClick={ handleToMorningMenu }>早餐</div>
-          <div className={ toRegular ? "barTitle selected" : "barTitle" } onClick={ handleToRegularMenu }>全餐</div>
-          <div className={ toPoint ? "barTitle selected" : "barTitle" } onClick={ handleToPointMenu }>飲品</div>
+          <div className={ toMorning ? 'barTitle selected' : 'barTitle' } onClick={ handleToMorningMenu }>早餐</div>
+          <div className={ toRegular ? 'barTitle selected' : 'barTitle' } onClick={ handleToRegularMenu }>全餐</div>
+          <div className={ toPoint ? 'barTitle selected' : 'barTitle' } onClick={ handleToPointMenu }>飲品</div>
         </div>
       </main>
         <section>
-          <MorningMenu setOpenMorning={ setOpenMorning } toMorning={ toMorning }  />
-          <RegularMenu setOpenRegular={ setOpenRegular } toRegular={ toRegular }  />
+          <MorningMenu setOpenMorning={ setOpenMorning } toMorning={ toMorning } />
+          <RegularMenu setOpenRegular={ setOpenRegular } toRegular={ toRegular } />
           <PointMenu setOpenPoint={ setOpenPoint } toPoint={ toPoint } />
           <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
           <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />

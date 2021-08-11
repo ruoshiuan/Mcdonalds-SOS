@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import '../css/search.css'
 import { Icon } from '@iconify/react'
 import searchIcon from '@iconify-icons/fa-solid/search'
@@ -9,7 +9,7 @@ const SearchBar = ({ onFormSubmit }) => {
     onFormSubmit(term)
   }
   const handleKeyDown = (e) => {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       e.target.blur()
       onFormSubmit(term)
     }
