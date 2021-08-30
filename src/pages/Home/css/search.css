@@ -129,6 +129,14 @@
   font-size: 16px;
   font-weight: 600;
 }
+.mapMarkerAlt {
+  padding: 0 3px;
+}
+
+.distanceAlert {
+  color: '#DA0406';
+}
+
 .iconBox {
   display: flex;
   align-items: center;
@@ -194,6 +202,11 @@
   background-color: #eee;
   color: #DA0406;
 }
+.noResultAlert {
+  text-align: center;
+  color: #6A5959;
+}
+
 .paginationNum {
   list-style: none;
   display: flex;

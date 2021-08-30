@@ -17,7 +17,7 @@ const MapPage = (props) => {
                     <Icon icon={ inputSearch } style={{ fontSize: '45px' }} />
                 </button>
             </div>
-            <div style={{ color: '#DA0406', fontSize: '14px', marginLeft: '0' }}>
+            <div className="smallAlert">
                 ◎本服務需開啟定位功能以取得完整資訊
             </div>
             <Map />

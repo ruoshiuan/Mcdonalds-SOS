@@ -55,7 +55,9 @@
 .itemPrice {
   margin: 5px;
 }
-
+.itemPrice-span {
+  font-size: 24px;
+}
 .bottomOuter {
   background-color: #E1DDDD;
   position: fixed;

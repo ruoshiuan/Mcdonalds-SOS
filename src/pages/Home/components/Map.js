@@ -89,7 +89,7 @@ const Map = () => {
                   {
                     distance <= 100
                       ? <span><strong> { distance } </strong></span>
-                      : <span style={{ color: '#DA0406' }}><strong> { distance } </strong></span> }公里
+                      : <span className="overDistance"><strong> { distance } </strong></span> }公里
                 </div>
               </InfoWindow>
           )

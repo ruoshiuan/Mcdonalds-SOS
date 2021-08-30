@@ -34,8 +34,8 @@ const CompletePage = () => {
         ? <div className="content">
             <div className="thanksCorner">
               <div className="thankyou">Thank you!</div>
-              <div style={{ fontSize: '22px' }}>感謝您使用自助點餐服務</div>
-              <div style={{ fontSize: '20px', paddingTop: '15px' }}>取餐號碼</div>
+              <div>感謝您使用自助點餐服務</div>
+              <h4>取餐號碼</h4>
               <div className="orderNumber">{ record.orderNumber }</div>
             </div>
             <div className="thanksCornerAlert">
@@ -48,9 +48,9 @@ const CompletePage = () => {
               </div>
               <div className="cornerRight">
                 <div className="picBg">
-                { record.mealType === '內用' ? <img className="takePic" src={takein} alt="takein" /> : <img className="takePic" src={takeout} alt="takeout" /> }
+                { record.mealType === '內用' ? <img className="takePic" src={ takein } alt="takein" /> : <img className="takePic" src={ takeout } alt="takeout" /> }
                 </div>
-                <div className="dinnerType">用餐方式 - <span style={{ backgroundColor: '#fcecbd', padding: '0 3px' }}>{ record.mealType }</span></div>
+                <div className="dinnerType">用餐方式 - <span>{ record.mealType }</span></div>
                 <strong>店家資訊</strong>
                 <div>{ record.store }店</div>
                 <div>{ record.address }</div>

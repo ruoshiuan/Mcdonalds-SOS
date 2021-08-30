@@ -34,6 +34,12 @@
 .greet {
   font-size: 20px;
 }
+.greetAlert {
+  font-size: 14px;
+  margin-left: 0;
+  font-weight: 500;
+  color: #C50406;
+}
 .ip {
   margin: 5px 0;
   width: 250px;

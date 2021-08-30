@@ -70,7 +70,9 @@
   background-color: #eee;
   color: #DA0406;
 }
-
+.overDistance {
+  color: #DA0406;
+}
 @media screen and (max-width: 600px){
   .myplace {
     width: 80px;

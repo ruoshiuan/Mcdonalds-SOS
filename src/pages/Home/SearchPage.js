@@ -70,7 +70,7 @@ const SearchPage = (props) => {
               <Icon icon={ mapMarkedAlt } style={{ fontSize: '35px' }} />
             </button>
           </div>
-            <div style={{ color: '#DA0406', fontSize: '14px', marginLeft: '0' }}>◎本服務需開啟定位功能以取得完整資訊</div>
+            <div className="smallAlert">◎本服務需開啟定位功能以取得完整資訊</div>
             <SearchBar onFormSubmit={ onFormSubmit } />
             <SearchList data={ data } onStoreSelect={ onStoreSelect } noResult={ noResult }/>
         </main>

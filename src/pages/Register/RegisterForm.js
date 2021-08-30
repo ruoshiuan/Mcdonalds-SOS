@@ -99,7 +99,7 @@ const RegisterForm = () => {
           <h2 className="greet">
             { formGreet }
           </h2>
-          <div style={{ fontSize: '14px', marginLeft: '0', fontWeight: '500', color: '#C50406' }}>◎本服務需開啟定位功能以取得完整資訊</div>
+          <div className="greetAlert">◎本服務需開啟定位功能以取得完整資訊</div>
           {
           register
             ? <>

@@ -7,7 +7,7 @@ const RecordDetails = ({ openRecord, setOpenRecord }) => {
       <div className='blackBackground' onClick={ () => setOpenRecord(null) }></div>
         <div className="recordCard">
           <div className="recordCardTop">
-            <div style={{ fontSize: '22px', padding: '5px 0' }}>點餐記錄明細</div>
+            <div className="recordCardTop-title">點餐記錄明細</div>
             <div><span className="recordCardTop-span">編號</span>{ openRecord.orderNumber } {openRecord.mealType}</div>
             <div><span className="recordCardTop-span">時間</span>{ openRecord.orderTime }</div>
             <div><span className="recordCardTop-span">店名</span>{ openRecord.store }</div>
@@ -28,7 +28,7 @@ const RecordDetails = ({ openRecord, setOpenRecord }) => {
               { openRecord.items.map((item, index) => (
                 <tr key={ index }>
                   <td data-label="名稱">{ item.meal }</td>
-                  {!item.side ? <td data-label="配餐" >無</td> : <td data-label="配餐" >{ item.side },{ item.drink }</td>}
+                  { !item.side ? <td data-label="配餐" >無</td> : <td data-label="配餐" >{ item.side },<br/>{ item.drink }</td> }
                   <td data-label="單價">{ item.price }</td>
                   <td data-label="數量">{ item.quantity }</td>
                   <td data-label="總價">{ item.total }</td>

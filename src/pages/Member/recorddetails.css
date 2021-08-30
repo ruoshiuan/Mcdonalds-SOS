@@ -24,6 +24,10 @@
   border-bottom: 2px dotted #ddd;
   line-height: 30px;
 }
+.recordCardTop-title {
+  font-size: 22px;
+  padding: 5px 0;
+}
 .recordCardTop-span{
   background-color:#C50406;
   color: #fff;

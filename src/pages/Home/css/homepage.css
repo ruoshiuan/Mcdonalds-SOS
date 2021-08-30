@@ -50,6 +50,12 @@ h2 {
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
 }
 
+.smallAlert {
+  color: #DA0406;
+  font-size: 14px;
+  margin-left: 0;
+}
+
 @media screen and (max-width: 1600px){
   main {
     width: 80%

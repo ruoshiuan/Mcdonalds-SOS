@@ -61,7 +61,7 @@ const SearchList = ({ data, onStoreSelect, noResult }) => {
     </div>
   {
     data.length === 0
-      ? <div style={{ textAlign: 'center', color: '#6A5959' }}>{ noResult }</div>
+      ? <div className="noResultAlert">{ noResult }</div>
       : <ul className="paginationNum">
       <li>
         <button className="prevBtn" disabled={ currentPage === pages[0] } onClick={ handlePrevBtn }>

@@ -22,7 +22,7 @@ const MorningMenu = ({ toMorning, setOpenMorning }) => {
       <div className="itemCard" key={ info.mealId } onClick={() => { setOpenMorning(info) }}>
         <img className="itemImg" src={ info.image } alt="foodPhoto" width='150' />
         <div className="itemName">{ info.meal }</div>
-        <div className="itemPrice">$<span style={{ fontSize: '24px' }}><strong>{ info.price }</strong></span></div>
+        <div className="itemPrice">$<span className="itemPrice-span"><strong>{ info.price }</strong></span></div>
       </div>
     )
   })

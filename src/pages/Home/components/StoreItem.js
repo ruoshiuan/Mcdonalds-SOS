@@ -49,11 +49,11 @@ const StoreItem = ({ store, onStoreSelect }) => {
         <div>{ store.tel }</div>
       </div>
       <div className="distanceInfo">
-        <Icon icon={ mapMarkerAlt } style={{ padding: '0 3px' }} />
+        <Icon icon={ mapMarkerAlt } className="mapMarkerAlt" />
         {
         distance <= 170
           ? <span><strong>{ distance }</strong></span>
-          : <span style={{ color: '#DA0406' }}><strong>{ distance }</strong></span>
+          : <span className="distanceAlert"><strong>{ distance }</strong></span>
         } 公里
       </div>
         <div className="iconBox">
