@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { menuPointCollection } from '../../../firestore_db'
-const PointMenu = ({ toPoint, setOpenPoint }) => {
+const PointMenu = ({ isPointMenuSelected, setOpenPoint }) => {
   const [pointData, setPointData] = useState([])
   const [loading, setLoading] = useState(true)
   const getPointMenuFromFirebase = []
@@ -26,7 +26,7 @@ const PointMenu = ({ toPoint, setOpenPoint }) => {
       </div>
     )
   })
-  return toPoint
+  return isPointMenuSelected
     ? (
       <>
       <main>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { menuRegularCollection } from '../../../firestore_db'
-const RegularMenu = ({ toRegular, setOpenRegular }) => {
+const RegularMenu = ({ isRegularMenuSelected, setOpenRegular }) => {
   const [regularData, setRegularData] = useState([])
   const [loading, setLoading] = useState(true)
   const getRegularMenuFromFirebase = []
@@ -26,7 +26,7 @@ const RegularMenu = ({ toRegular, setOpenRegular }) => {
       </div>
     )
   })
-  return toRegular
+  return isRegularMenuSelected
     ? (
       <>
       <main>

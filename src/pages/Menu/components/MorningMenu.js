@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { menuMorningCollection } from '../../../firestore_db'
-const MorningMenu = ({ toMorning, setOpenMorning }) => {
+const MorningMenu = ({ isMorningMenuSelected, setOpenMorning }) => {
   const [morningData, setMorningData] = useState([])
   const [loading, setLoading] = useState(true)
   const getMorningMenuFromFirebase = []
@@ -26,7 +26,7 @@ const MorningMenu = ({ toMorning, setOpenMorning }) => {
       </div>
     )
   })
-  return toMorning
+  return isMorningMenuSelected
     ? (
       <>
       <main>
