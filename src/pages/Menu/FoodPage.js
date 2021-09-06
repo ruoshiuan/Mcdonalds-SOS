@@ -26,7 +26,6 @@ const FoodPage = () => {
   const [openPoint, setOpenPoint] = useState()
   const [openCart, setOpenCart] = useState(false)
   const [orders, setOrders] = useState(localStoreInfo)
-  const [loading, setLoading] = useState()
   const history = useHistory()
   const storeInfo = JSON.parse(localStorage.getItem('userMessage'))
   useEffect(() => {
@@ -40,8 +39,7 @@ const FoodPage = () => {
       }
     })
     localStorage.setItem('cartItems', JSON.stringify(orders))
-    return () => setLoading(false)
-  }, [loading, orders])
+  }, [orders])
 
   const handleReset = () => {
     localStorage.removeItem('userMessage')

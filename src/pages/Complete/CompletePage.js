@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import './completepage.css'
 import Navbar from '../../components/Navbar'
@@ -9,7 +9,6 @@ import completeImage from '../../images/completeImage.jpg'
 import firebase from '../../firestore_db'
 
 const CompletePage = () => {
-  const [loading, setLoading] = useState(true)
   const record = JSON.parse(sessionStorage.getItem('orderRecord'))
   const cartItems = JSON.parse(localStorage.getItem('cartItems'))
   const history = useHistory()
@@ -23,8 +22,7 @@ const CompletePage = () => {
         history.push('/register')
       }
     })
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
   return (
   <>
     <Navbar />

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { menuMorningCollection } from '../../../firestore_db'
 const MorningMenu = ({ isMorningMenuSelected, setOpenMorning }) => {
   const [morningData, setMorningData] = useState([])
-  const [loading, setLoading] = useState(true)
   const getMorningMenuFromFirebase = []
   useEffect(() => {
     menuMorningCollection
@@ -14,8 +13,7 @@ const MorningMenu = ({ isMorningMenuSelected, setOpenMorning }) => {
         setMorningData(getMorningMenuFromFirebase)
       })
       .catch(err => console.log(err))
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
 
   const morningList = morningData.map(info => {
     return (

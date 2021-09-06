@@ -6,7 +6,6 @@ import LoadingEffect from './LoadingEffect'
 import firebase, { ordersCollection } from '../../firestore_db'
 import './css/orderpage.css'
 const OrderPage = () => {
-  const [loading, setLoading] = useState(true)
   const [mealWay, setMealWay] = useState(null)
   const [payWay, setPayWay] = useState(null)
   const [direct, setDirect] = useState()
@@ -26,8 +25,7 @@ const OrderPage = () => {
     } else if (getTotal === 0) {
       history.push('menu')
     }
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
   const submitOrder = (e) => {
     e.preventDefault()
     if (mealWay === null) {

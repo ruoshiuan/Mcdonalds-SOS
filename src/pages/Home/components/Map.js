@@ -35,15 +35,13 @@ const Map = () => {
   const [selected, setSelected] = useState(null)
   const [location, setLocation] = useState({ lat: null, lng: null, error: '' })
   const [distance, setDistance] = useState(null)
-  const [loading, setLoading] = useState(true)
   const { storeData } = useContext(storesContext)
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
       position => setLocation({ lat: position.coords.latitude, lng: position.coords.longitude }),
       err => setLocation({ error: err.message })
     )
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
 
   const mapRef = useRef()
   const onMapLoad = useCallback((map) => {

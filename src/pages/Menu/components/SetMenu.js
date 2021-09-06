@@ -6,7 +6,6 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
   const [morningData, setMorningData] = useState([])
   const [regularData, setRegularData] = useState([])
   const [pointData, setPointData] = useState([])
-  const [loading, setLoading] = useState(true)
   const getMorningMenuFromFirebase = []
   const getRegularMenuFromFirebase = []
   const getPointMenuFromFirebase = []
@@ -37,8 +36,7 @@ const SetMenu = ({ setOpenMorning, setOpenRegular, setOpenPoint }) => {
         })
         setPointData(getPointMenuFromFirebase)
       })
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
 
   const morningList = morningData.map(info => {
     return (

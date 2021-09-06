@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { menuRegularCollection } from '../../../firestore_db'
 const RegularMenu = ({ isRegularMenuSelected, setOpenRegular }) => {
   const [regularData, setRegularData] = useState([])
-  const [loading, setLoading] = useState(true)
   const getRegularMenuFromFirebase = []
   useEffect(() => {
     menuRegularCollection
@@ -14,8 +13,7 @@ const RegularMenu = ({ isRegularMenuSelected, setOpenRegular }) => {
         setRegularData(getRegularMenuFromFirebase)
       })
       .catch(err => console.log(err))
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
 
   const regularList = regularData.map(info => {
     return (

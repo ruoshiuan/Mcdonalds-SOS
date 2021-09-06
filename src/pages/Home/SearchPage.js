@@ -11,7 +11,6 @@ import { Icon } from '@iconify/react'
 import mapMarkedAlt from '@iconify-icons/fa-solid/map-marked-alt'
 
 const SearchPage = (props) => {
-  const [loading, setLoading] = useState()
   const [login, setLogin] = useState(null)
   const [data, setData] = useState([])
   const [noResult, setNoResult] = useState('')
@@ -26,8 +25,7 @@ const SearchPage = (props) => {
       }
     })
     onFormSubmit('')
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
 
   const onFormSubmit = (term) => {
     const emptyArray = []

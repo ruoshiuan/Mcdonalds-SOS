@@ -4,7 +4,6 @@ import RecordDetails from './RecordDetails'
 const RecordList = () => {
   const [orderData, setOrderData] = useState([])
   const [openRecord, setOpenRecord] = useState()
-  const [loading, setLoading] = useState(true)
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -22,8 +21,7 @@ const RecordList = () => {
           .catch(error => console.log(error))
       }
     })
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
   const recordsList = orderData.map((record) => {
     return (
       <tr key={ record.orderTime }>

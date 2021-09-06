@@ -10,14 +10,12 @@ import mapMarkerAlt from '@iconify-icons/fa-solid/map-marker-alt'
 const StoreItem = ({ store, onStoreSelect }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [location, setLocation] = useState({ lat: null, lng: null, error: '' })
-  const [loading, setLoading] = useState(true)
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
       position => setLocation({ lat: position.coords.latitude, lng: position.coords.longitude }),
       error => setLocation({ error: error.message })
     )
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
   const tempDistance = haversine(
     { latitude: location.lat, longitude: location.lng },
     { latitude: store.coordinates[1], longitude: store.coordinates[0] }
