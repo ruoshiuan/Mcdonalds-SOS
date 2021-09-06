@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import firebase, { usersCollection } from '../../firestore_db'
 import { useHistory } from 'react-router-dom'
-import './login.css'
+import { Container, Form, Title, Greet, Alert, Input, ErrorMsg, Button, Hint, Switch, GoogleButton } from './style/registerFormStyles'
 const RegisterForm = () => {
   const history = useHistory()
   const [formData, setFormData] = useState({ name: '', lastname: '', email: '', password: '' })
@@ -91,32 +91,30 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="form_container">
-        <form className="loginForm" onSubmit={ handleSubmit }>
-          <h1 className="title">
+    <Container>
+        <Form onSubmit={ handleSubmit }>
+          <Title>
             { formTitle }
-          </h1>
-          <h2 className="greet">
+          </Title>
+          <Greet>
             { formGreet }
-          </h2>
-          <div className="greetAlert">◎本服務需開啟定位功能以取得完整資訊</div>
+          </Greet>
+          <Alert>◎本服務需開啟定位功能以取得完整資訊</Alert>
           {
           register
             ? <>
-              <input
+              <Input
                   type="text"
                   id="lastname"
                   name="lastname"
-                  className="ip lastnameInput"
                   placeholder="姓氏"
                   onChange={e => setFormData({ ...formData, lastname: e.target.value })}
                   value={ formData.lastname }
               />
-              <input
+              <Input
                   type="text"
                   id="name"
                   name="name"
-                  className="ip nameInput"
                   placeholder="名字"
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
                   value={ formData.name }
@@ -124,46 +122,38 @@ const RegisterForm = () => {
               </>
             : null
           }
-            <input
+            <Input
                 type="email"
                 id="email"
                 name="email"
-                className="ip emailInput"
                 placeholder="Email"
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
                 value={ formData.email }
             />
-            <input
+            <Input
                 type="password"
                 id="password"
                 name="password"
-                className="ip passwordInput"
                 placeholder="密碼"
                 onChange={e => setFormData({ ...formData, password: e.target.value })}
                 value={ formData.password }
             />
             <br/>
-            {error ? <div className="errorMsg">{error}</div> : null}
-            <button
-                className="submit_button"
-                type="submit"
-            >
-                { formTitle }
-            </button>
+            {error ? <ErrorMsg>{error}</ErrorMsg> : null}
+            <Button type="submit">
+              { formTitle }
+            </Button>
 
-            <div className="hint">
+            <Hint>
                 { register ? '已經是會員？' : '尚未成為會員？' }
-                <span
-                    className="switchlink"
-                    onClick={() => handleRigister()}
-                > 點此 </span>
-                 { register ? '開始登入' : '開始註冊' }
-            </div>
-        </form>
+                <Switch onClick={() => handleRigister()}> 點此 </Switch>
+                { register ? '開始登入' : '開始註冊' }
+            </Hint>
+        </Form>
         { register
           ? null
-          : <button className="googleLogin" onClick={() => handleGoogleSignin()}><strong>G+</strong> 使用Google帳戶登入</button>}
-    </div>
+          : <GoogleButton onClick={() => handleGoogleSignin()}><strong>G+</strong> 使用Google帳戶登入</GoogleButton> }
+    </Container>
   )
 }
 
