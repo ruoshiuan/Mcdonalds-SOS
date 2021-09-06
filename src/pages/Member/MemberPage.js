@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import RecordList from './RecordList'
 import firebase from '../../firestore_db'
-import './memberpage.css'
+import { Title, Bottom, Button } from './style/memberPageStyles'
 import { InlineIcon } from '@iconify/react'
 import signOutAlt from '@iconify-icons/fa-solid/sign-out-alt'
 
@@ -31,11 +31,11 @@ const MemberPage = () => {
     <>
       <Navbar />
       <main>
-        <h2 className="memberPageTitle">點餐記錄</h2>
+        <Title>點餐記錄</Title>
         <RecordList />
-        <div className="bottomSignout">
-          <button className="signoutBtn" onClick={ () => handleLogout() }><InlineIcon icon={signOutAlt} /> 登出</button>
-        </div>
+        <Bottom>
+          <Button onClick={ () => handleLogout() }><InlineIcon icon={signOutAlt} /> 登出</Button>
+        </Bottom>
       </main>
       <Footer />
     </>
