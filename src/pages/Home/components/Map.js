@@ -5,8 +5,8 @@ import haversine from 'haversine-distance'
 import key from '../../../key'
 import MapStyle from './MapStyle'
 import ClusterStyle from './ClusterStyle'
-import SelectPlaceBtn from './SelectPlaceBtn'
-import '../css/map.css'
+import MapSelectPlaceBtn from './MapSelectPlaceBtn'
+import { Myplace, CompassIcon, OverDistance } from '../style/mapStyles'
 import { Icon } from '@iconify/react'
 import mapMarkerAlt from '@iconify-icons/fa-solid/map-marker-alt'
 import compassIcon from '@iconify-icons/fa-solid/compass'
@@ -60,10 +60,10 @@ const Map = () => {
   return (
       <>
         <GoogleMap mapContainerStyle={ mapContainerStyle } zoom={ 7 } center={ center } options={ options } onLoad={ onMapLoad } >
-          <button className="myplace" onClick={() => { panTo({ lat: location.lat, lng: location.lng }) }}>
-            <Icon icon={ compassIcon } className="compassIcon"/>
+          <Myplace onClick={() => { panTo({ lat: location.lat, lng: location.lng }) }}>
+            <CompassIcon><Icon icon={ compassIcon } /></CompassIcon>
             我的位置
-          </button>
+          </Myplace>
           <MarkerClusterer enableRetinaIcons styles={ ClusterStyle }>
             {(clusterer) =>
               storeData.map((store) => (
@@ -78,21 +78,19 @@ const Map = () => {
           </MarkerClusterer>
           { selected && (
               <InfoWindow position={{ lat: selected.coordinates[1], lng: selected.coordinates[0] }} onCloseClick={ () => { setSelected(null) }}>
-                <div className="infoWindowStyle">
+                <div>
                   <div><strong>{ selected.storeName + '店' }</strong></div>
                   <div>{ selected.address }</div>
-                  <Icon
-                    icon={ mapMarkerAlt }
-                    className="distanceIcon" />
+                  <Icon icon={ mapMarkerAlt } />
                   {
                     distance <= 100
                       ? <span><strong> { distance } </strong></span>
-                      : <span className="overDistance"><strong> { distance } </strong></span> }公里
+                      : <OverDistance><strong> { distance } </strong></OverDistance> }公里
                 </div>
               </InfoWindow>
           )
           }
-          { selected ? <SelectPlaceBtn info={ distance } storeInfo={ selected } /> : null }
+          { selected ? <MapSelectPlaceBtn info={ distance } storeInfo={ selected } /> : null }
         </GoogleMap>
       </>
   )

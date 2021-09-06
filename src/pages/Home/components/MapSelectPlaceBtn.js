@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import '../css/map.css'
+import { OrderOption, MapOrderBtn, MapNoOrderBtn } from '../style/mapSelectPlaceBtnStyles'
 import { useHistory } from 'react-router-dom'
 import firebase from '../../../firestore_db'
 const SelectPlaceBtn = ({ info, storeInfo }) => {
@@ -36,16 +36,16 @@ const SelectPlaceBtn = ({ info, storeInfo }) => {
     alert('距離太遠，或尚未開啟定位功能')
   }
   return (
-    <div className="orderOption">
+    <OrderOption>
       { info <= 100
-        ? <button className="mapBtn mapOrderBtn" onClick={ handleRedirection }>
+        ? <MapOrderBtn onClick={ handleRedirection }>
           開始點餐
-        </button>
-        : <button className="mapBtn mapNoOrderBtn" onClick={ handleErrorAlert }>
+        </MapOrderBtn>
+        : <MapNoOrderBtn onClick={ handleErrorAlert }>
           無法點餐
-        </button>
+        </MapNoOrderBtn>
       }
-    </div>
+    </OrderOption>
   )
 }
 

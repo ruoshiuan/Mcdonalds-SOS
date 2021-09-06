@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
-import StoreItem from './StoreItem'
-import '../css/search.css'
+import StoreItem from './SearchStoreItem'
+import { Container, NoResultAlert, PaginationNum, PaginationNumList, PrevBtn, NextBtn, DefaultIndex, ActiveIndex } from '../style/searchListStyles'
 import { Icon } from '@iconify/react'
 import angleRight from '@iconify-icons/fa-solid/angle-right'
 import angleLeft from '@iconify-icons/fa-solid/angle-left'
@@ -44,11 +44,10 @@ const SearchList = ({ data, onStoreSelect, noResult }) => {
     return <StoreItem key={ store.storeRealId } store={ store } onStoreSelect={ onStoreSelect } />
   })
   const renderPageNumber = pages.map(num => {
+    const ListIndex = currentPage === num ? ActiveIndex : DefaultIndex
     if (num < maxPageNumLimit + 1 && num > minPageNumLimit) {
       return (
-        <li key={ num } id={ num } onClick={ handleIndexClick } className={ currentPage === num ? 'active' : null }>
-          { num }
-        </li>
+        <ListIndex key={ num } id={ num } onClick={ handleIndexClick } >{ num }</ListIndex>
       )
     } else {
       return null
@@ -56,25 +55,25 @@ const SearchList = ({ data, onStoreSelect, noResult }) => {
   })
   return (
     <>
-    <div className="container" ref={ scrollTopRef }>
+    <Container ref={ scrollTopRef }>
       { renderStoreList }
-    </div>
+    </Container>
   {
     data.length === 0
-      ? <div className="noResultAlert">{ noResult }</div>
-      : <ul className="paginationNum">
-      <li>
-        <button className="prevBtn" disabled={ currentPage === pages[0] } onClick={ handlePrevBtn }>
-        <Icon icon={ angleLeft } />
-        </button>
-      </li>
-      { renderPageNumber }
-      <li>
-        <button className="nextBtn" disabled={ currentPage === pages[pages.length - 1] } onClick={ handleNextBtn }>
-        <Icon icon={ angleRight } />
-        </button>
-      </li>
-    </ul>
+      ? <NoResultAlert>{ noResult }</NoResultAlert>
+      : <PaginationNum>
+        <PaginationNumList>
+          <PrevBtn disabled={ currentPage === pages[0] } onClick={ handlePrevBtn }>
+          <Icon icon={ angleLeft } />
+          </PrevBtn>
+        </PaginationNumList>
+        { renderPageNumber }
+        <PaginationNumList>
+          <NextBtn disabled={ currentPage === pages[pages.length - 1] } onClick={ handleNextBtn }>
+          <Icon icon={ angleRight } />
+          </NextBtn>
+        </PaginationNumList>
+      </PaginationNum>
 }
     </>
   )

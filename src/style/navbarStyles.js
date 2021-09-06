@@ -1,4 +1,6 @@
-.fixed_navbar {
+import styled from 'styled-components'
+
+export const FixedNavbar = styled.nav`
   position: fixed;
   right: 0;
   top: 0;
@@ -7,28 +9,32 @@
   max-width: 100%;
   background-color: #fff;
   box-shadow: 0 0 5px rgba(109, 113, 114, 0.3);
-}
+`
 
-.navbar {
+export const NavbarContent = styled.div`
   height: 60px;
   width: 1200px;
   background-color: #fff;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   display: flex;
   margin-right: auto;
   margin-left: auto;
-}
+  @media (max-width: 1600px) {
+    width: 80%;
+  }
+`
 
-.brand_icon {
+export const BrandIcon = styled.img`
   margin: 10px 2px;
   width: 45px;
   height: 38px;
   align-self: center;
-}
-.main_title {
+  @media (max-width: 600px) {
+    width: 37px;
+    height: 30px
+  }
+`
+export const MainTitle = styled.h1`
   position: relative;
   font-weight: 400;
   font-size: 30px;
@@ -37,33 +43,22 @@
   color: #6A5959;
   align-self: center;
   letter-spacing: 1px;
-}
+  @media (max-width: 600px) {
+    font-size: 28px;
+  }
+`
 
-.items {
+export const Items = styled.div`
   color: #6A5959;
   cursor: pointer;
   margin: 12px;
-}
+`
 
-.usercircle{
+export const Usercircle = styled.div`
   top: 0;
   font-size: 36px;
-}
-
-@media screen and (max-width: 1600px) {
-  .navbar {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .brand_icon {
-    width: 37px;
-    height: 30px
-  }
-  .main_title {
-    font-size: 28px;
-  }
-  .usercircle{
+  transform: translateY(-2px);
+  @media (max-width: 600px) {
     font-size: 34px;
   }
-}
+`

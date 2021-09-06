@@ -2,10 +2,9 @@ import React, { useState, useEffect, createContext } from 'react'
 import MapPage from './MapPage'
 import SearchPage from './SearchPage'
 import { storesCollection } from '../../firestore_db'
-import './css/homepage.css'
 export const storesContext = createContext()
 const HomePage = () => {
-  const [view, setView] = useState({ mapPage: 'flex', searchPage: 'none' })
+  const [view, setView] = useState({ mapPage: 'none', searchPage: 'flex' })
   const [storeData, setStoreData] = useState([])
   const getDataFromFirebase = []
   useEffect(() => {

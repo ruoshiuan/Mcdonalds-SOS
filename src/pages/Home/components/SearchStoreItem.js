@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import haversine from 'haversine-distance'
-import '../css/search.css'
+import { Card, CardContent, Photo, HideInfoOff, HideInfoOn, HideInfoTime, TopInfo, StoreName, DistanceInfo, MapMarkerAlt, DistanceAlert, IconBox, IconifyIcon, SmallIcon, OpenTimeInfo, CloseTimeInfo, OrderBtn, NoOrderBtn } from '../style/searchStoreItemStyles'
 import allday from '../images/24hr.svg'
 import { Icon } from '@iconify/react'
 import wifiIcon from '@iconify-icons/fa-solid/wifi'
@@ -24,11 +24,12 @@ const StoreItem = ({ store, onStoreSelect }) => {
   const handleErrorAlert = () => {
     alert('距離太遠，或尚未開啟定位功能')
   }
+  const HideInfo = isOpen ? HideInfoOn : HideInfoOff
   return (
-    <div className="card">
-    <div style={{ backgroundImage: `url(${store.image})` }} className="photo">
-      <div className={ isOpen ? 'hideInfo show' : 'hideInfo' }>
-        <div className="hideInfoTime">
+    <Card>
+    <Photo style={{ backgroundImage: `url(${store.image})` }}>
+      <HideInfo>
+        <HideInfoTime>
           <b>營業時間</b>
           <div>週一<span>{ store.opentime.Mon }</span></div>
           <div>週二<span>{ store.opentime.Tue }</span></div>
@@ -37,40 +38,40 @@ const StoreItem = ({ store, onStoreSelect }) => {
           <div>週五<span>{ store.opentime.Fri }</span></div>
           <div>週六<span>{ store.opentime.Sat }</span></div>
           <div>週日<span>{ store.opentime.Sun }</span></div>
-        </div>
-      </div>
-    </div>
-    <div className="card_content" >
-      <div className="topInfo">
-        <div className="storeName">{ store.storeName }</div>
+        </HideInfoTime>
+      </HideInfo>
+    </Photo>
+    <CardContent>
+      <TopInfo>
+        <StoreName>{ store.storeName }</StoreName>
         <div>{ store.address }</div>
         <div>{ store.tel }</div>
-      </div>
-      <div className="distanceInfo">
-        <Icon icon={ mapMarkerAlt } className="mapMarkerAlt" />
+      </TopInfo>
+      <DistanceInfo>
+        <MapMarkerAlt><Icon icon={ mapMarkerAlt } /></MapMarkerAlt>
         {
         distance <= 170
           ? <span><strong>{ distance }</strong></span>
-          : <span className="distanceAlert"><strong>{ distance }</strong></span>
+          : <DistanceAlert><strong>{ distance }</strong></DistanceAlert>
         } 公里
-      </div>
-        <div className="iconBox">
-          { store.macCafe === true ? <Icon icon={ coffeeIcon } className="coffeeIcon" title="McCafé" /> : null }
-          { store.wifi === true ? <Icon icon={ wifiIcon } className="wifiIcon" title="Wifi" /> : null }
-          { store.open_allday === true ? <img src={ allday } alt="24hr" className="smallIcon" title="24小時營業" /> : null }
+      </DistanceInfo>
+        <IconBox>
+          { store.macCafe === true ? <IconifyIcon><Icon icon={ coffeeIcon } /></IconifyIcon> : null }
+          { store.wifi === true ? <IconifyIcon><Icon icon={ wifiIcon } /></IconifyIcon> : null }
+          { store.open_allday === true ? <SmallIcon src={ allday } alt="24hr" title="24小時營業" /> : null }
           {
             !isOpen
-              ? <div className="openTimeInfo" onClick={ () => setIsOpen(!isOpen) }><strong>營業時間</strong></div>
-              : <div className="closeTimeInfo" onClick={ () => setIsOpen(!isOpen) }><strong>x 關閉資訊</strong></div>
+              ? <OpenTimeInfo onClick={ () => setIsOpen(!isOpen) }><strong>營業時間</strong></OpenTimeInfo>
+              : <CloseTimeInfo onClick={ () => setIsOpen(!isOpen) }><strong>x 關閉資訊</strong></CloseTimeInfo>
           }
-        </div>
-    </div>
+        </IconBox>
+    </CardContent>
     {
     distance <= 170
-      ? <button className="order_btn btn" onClick={ () => onStoreSelect(store) }>開始點餐</button>
-      : <button className="noorder_btn btn" onClick={ handleErrorAlert }>距離太遠，無法點餐</button>
+      ? <OrderBtn onClick={ () => onStoreSelect(store) }>開始點餐</OrderBtn>
+      : <NoOrderBtn onClick={ handleErrorAlert }>距離太遠，無法點餐</NoOrderBtn>
     }
-    </div>
+    </Card>
   )
 }
 export default StoreItem

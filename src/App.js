@@ -7,9 +7,10 @@ import OrderPage from './pages/Order/OrderPage'
 import CompletePage from './pages/Complete/CompletePage'
 import ScrollToTop from './components/ScrollToTop'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import './style/app.css'
 const App = () => {
   return (
-    <div>
+    <>
     <Router>
       <ScrollToTop />
       <Switch>
@@ -22,7 +23,7 @@ const App = () => {
         <Redirect to='/' />
       </Switch>
     </Router>
-    </div>
+    </>
   )
 }
 
