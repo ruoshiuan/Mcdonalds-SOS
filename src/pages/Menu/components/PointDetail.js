@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react'
 import windowClose from '@iconify-icons/fa-solid/window-close'
 import minusCircle from '@iconify-icons/fa-solid/minus-circle'
 import plusCircle from '@iconify-icons/fa-solid/plus-circle'
-import '../css/mealdetail.css'
+import { BlackBackground, DetailBox, Description, Title, CloseIcon, CountBar, CountIcon, Button } from '../style/detailStyles'
 const PointDetail = ({ openPoint, setOpenPoint, orders, setOrders }) => {
   const [count, setCount] = useState(1)
   const plus = () => {
@@ -41,25 +41,25 @@ const PointDetail = ({ openPoint, setOpenPoint, orders, setOrders }) => {
   return openPoint
     ? (
       <>
-        <div className="blackBackground" onClick={() => closeDetailBox() }></div>
-          <div className="detailBox">
-            <Icon className="closeIcon" icon={ windowClose } onClick={() => closeDetailBox() } />
+        <BlackBackground onClick={() => closeDetailBox() } />
+          <DetailBox>
+            <CloseIcon><Icon icon={ windowClose } onClick={() => closeDetailBox() } /></CloseIcon>
             <form className="detailInfo" onClick={ (e) => e.preventDefault() }>
               <img src={ openPoint.image } alt="photo" width="200" />
-              <div className="detailTitle">
+              <Title>
                 { openPoint.meal }
                 <div className="detailPrice">$<span>{ openPoint.price } / 杯</span></div>
-              </div>
-              <div className="detailDescription">{ openPoint.description }</div>
+              </Title>
+              <Description>{ openPoint.description }</Description>
               <div className="detailTitle">數量</div>
-              <div className="countBar">
-                <Icon icon={ minusCircle } className="countIcon" onClick={ () => minus() } />
+              <CountBar>
+                <CountIcon><Icon icon={ minusCircle } onClick={ () => minus() } /></CountIcon>
                 { count }
-                <Icon icon={ plusCircle } className="countIcon" onClick={ () => plus() } />
-              </div>
-              <button className="addCartBtn" onClick={ addToOrder }>加入購物車</button>
+                <CountIcon><Icon icon={ plusCircle } onClick={ () => plus() } /></CountIcon>
+              </CountBar>
+              <Button onClick={ addToOrder }>加入購物車</Button>
             </form>
-          </div>
+          </DetailBox>
       </>
       )
     : null

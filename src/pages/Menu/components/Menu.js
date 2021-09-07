@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Container, Item, Image, MealName, Price, Span } from '../style/menuStyles'
 const Menu = ({ menuCollection, isMenuSelected, setOpenMenu }) => {
   const [menuData, setMenuData] = useState([])
   const getMenuFromFirebase = []
@@ -16,20 +17,20 @@ const Menu = ({ menuCollection, isMenuSelected, setOpenMenu }) => {
 
   const menuList = menuData.map(info => {
     return (
-      <div className="itemCard" key={ info.mealId } onClick={() => { setOpenMenu(info) }}>
-        <img className="itemImg" src={ info.image } alt="foodPhoto" width='150' />
-        <div className="itemName">{ info.meal }</div>
-        <div className="itemPrice">$<span className="itemPrice-span"><strong>{ info.price }</strong></span></div>
-      </div>
+      <Item key={ info.mealId } onClick={() => { setOpenMenu(info) }}>
+        <Image src={ info.image } alt="foodPhoto" width='150' />
+        <MealName>{ info.meal }</MealName>
+        <Price>$<Span><strong>{ info.price }</strong></Span></Price>
+      </Item>
     )
   })
   return isMenuSelected
     ? (
       <>
       <main>
-          <div className="container">
+          <Container>
             { menuList }
-          </div>
+          </Container>
       </main>
       </>
       )

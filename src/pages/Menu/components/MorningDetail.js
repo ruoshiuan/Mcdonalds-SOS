@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react'
 import windowClose from '@iconify-icons/fa-solid/window-close'
 import minusCircle from '@iconify-icons/fa-solid/minus-circle'
 import plusCircle from '@iconify-icons/fa-solid/plus-circle'
-import '../css/mealdetail.css'
+import { BlackBackground, DetailBox, Description, Title, CloseIcon, CountBar, CountIcon, Button } from '../style/detailStyles'
 const MorningDetail = ({ openMorning, setOpenMorning, orders, setOrders }) => {
   const [sideFood, setSideFood] = useState('薯餅')
   const [drink, setDrink] = useState('奶茶')
@@ -45,23 +45,23 @@ const MorningDetail = ({ openMorning, setOpenMorning, orders, setOrders }) => {
   return openMorning
     ? (
       <>
-        <div className="blackBackground" onClick={() => closeDetailBox() }></div>
-          <div className="detailBox">
-            <Icon className="closeIcon" icon={ windowClose } onClick={() => closeDetailBox() } />
-            <form className="detailInfo" onClick={(e) => e.preventDefault()}>
+        <BlackBackground onClick={() => closeDetailBox() } />
+          <DetailBox>
+            <CloseIcon><Icon icon={ windowClose } onClick={() => closeDetailBox() } /></CloseIcon>
+            <form onClick={(e) => e.preventDefault()}>
               <img src={ openMorning.image } alt="photo" width="100"/>
-              <div className="detailTitle">
+              <Title>
                 { openMorning.meal + '套餐' }
-                <div className="detailPrice">$<span>{ openMorning.price } / 份</span></div>
-              </div>
-              <div className="detailDescription">{ openMorning.description }</div>
-              <div className="detailTitle">請選擇配餐</div>
+                <div>$<span>{ openMorning.price } / 份</span></div>
+              </Title>
+              <Description>{ openMorning.description }</Description>
+              <Title>請選擇配餐</Title>
               <select name="sidefood" onChange={ (e) => { setSideFood(e.target.value) } }>
                 <option value="薯餅">薯餅</option>
                 <option value="雞塊">雞塊</option>
                 <option value="沙拉">沙拉</option>
               </select>
-              <div className="detailTitle">請選擇飲料</div>
+              <Title>請選擇飲料</Title>
               <select name="drink"onChange={ (e) => { setDrink(e.target.value) } }>
                 <option value="奶茶">奶茶</option>
                 <option value="咖啡">咖啡</option>
@@ -70,15 +70,15 @@ const MorningDetail = ({ openMorning, setOpenMorning, orders, setOrders }) => {
                 <option value="雪碧">雪碧</option>
                 <option value="檸檬紅茶">檸檬紅茶</option>
               </select>
-              <div className="detailTitle">數量</div>
-              <div className="countBar">
-                <Icon icon={ minusCircle } className="countIcon" onClick={() => minus()}/>
+              <Title>數量</Title>
+              <CountBar>
+                <CountIcon><Icon icon={ minusCircle } onClick={() => minus()}/></CountIcon>
                 { count }
-                <Icon icon={ plusCircle } className="countIcon" onClick={() => plus()}/>
-              </div>
-              <button className="addCartBtn" onClick={ addToOrder } >加入購物車</button>
+                <CountIcon><Icon icon={ plusCircle } onClick={() => plus()}/></CountIcon>
+              </CountBar>
+              <Button onClick={ addToOrder } >加入購物車</Button>
             </form>
-          </div>
+          </DetailBox>
       </>
       )
     : null

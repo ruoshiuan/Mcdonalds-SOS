@@ -9,7 +9,7 @@ import CheckCart from './components/CheckCart'
 import { Icon } from '@iconify/react'
 import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
 import firebase, { menuMorningCollection, menuRegularCollection, menuPointCollection } from '../../firestore_db'
-import './css/foodpage.css'
+import { Subtitle, ResetButton, MenuBar, Title, SelectedTitle, Bottom, BottomBar, Cart, CartIcon, ItemCount, ItemTotal, Button } from './style/foodPageStyles'
 
 const MENU = {
   MORNING: 'morningMenu',
@@ -62,21 +62,24 @@ const FoodPage = () => {
   const isMorningMenuSelected = menu === MENU.MORNING
   const isRegularMenuSelected = menu === MENU.REGULAR
   const isPointMenuSelected = menu === MENU.POINT
+  const MorningBarTitle = isMorningMenuSelected ? SelectedTitle : Title
+  const RegularBarTitle = isRegularMenuSelected ? SelectedTitle : Title
+  const PointBarTitle = isPointMenuSelected ? SelectedTitle : Title
   return (
     <>
       <Navbar />
       <main>
-        <div className="subtitle">
+        <Subtitle>
           {storeInfo ? <h2>在 { storeInfo.store + '店' } 取餐</h2> : null}
-          <button className="reset_btn" onClick={ () => handleReset() }>
+          <ResetButton onClick={ () => handleReset() }>
             重選地點
-          </button>
-        </div>
-        <div className="menuBar">
-          <div className={ isMorningMenuSelected ? 'barTitle selected' : 'barTitle' } onClick={ handleToMorningMenu }>早餐</div>
-          <div className={ isRegularMenuSelected ? 'barTitle selected' : 'barTitle' } onClick={ handleToRegularMenu }>全餐</div>
-          <div className={ isPointMenuSelected ? 'barTitle selected' : 'barTitle' } onClick={ handleToPointMenu }>飲品</div>
-        </div>
+          </ResetButton>
+        </Subtitle>
+        <MenuBar>
+          <MorningBarTitle onClick={ handleToMorningMenu }>早餐</MorningBarTitle>
+          <RegularBarTitle onClick={ handleToRegularMenu }>全餐</RegularBarTitle>
+          <PointBarTitle onClick={ handleToPointMenu }>飲品</PointBarTitle>
+        </MenuBar>
       </main>
         <section>
           <Menu menuCollection={ menuMorningCollection } setOpenMenu={ setOpenMorning } isMenuSelected={ isMorningMenuSelected } />
@@ -87,16 +90,16 @@ const FoodPage = () => {
           <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
           <CheckCart openCart={ openCart } setOpenCart={ setOpenCart } orders={ orders } setOrders={ setOrders } />
         </section>
-        <div className="bottomOuter">
-        <div className="bottomBar">
-          <div className="shoppingCart">
-            <Icon icon={ shoppingBasket } className="cartIcon"/>
-            <div className="itemCount">{ getCount }</div>
-            <div className="itemTotal">$<span>{ getTotal }</span></div>
-          </div>
-          <button className="checkCart" onClick={() => setOpenCart(true)}>確認購物車</button>
-        </div>
-      </div>
+        <Bottom>
+        <BottomBar>
+          <Cart>
+            <CartIcon><Icon icon={ shoppingBasket } /></CartIcon>
+            <ItemCount>{ getCount }</ItemCount>
+            <ItemTotal>$<span>{ getTotal }</span></ItemTotal>
+          </Cart>
+          <Button onClick={() => setOpenCart(true)}>確認購物車</Button>
+        </BottomBar>
+      </Bottom>
     </>
   )
 }

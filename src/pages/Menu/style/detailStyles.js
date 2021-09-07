@@ -1,4 +1,6 @@
-.blackBackground {
+import styled from 'styled-components'
+
+export const BlackBackground = styled.div`
   z-index: 11;
   background-color: rgba(0,0,0,0.5);
   width: 100%;
@@ -6,8 +8,9 @@
   position: fixed;
   top: 0;
   left: 0;
-}
-.detailBox {
+`
+
+export const DetailBox = styled.div`
   position: fixed;
   top: 40%;
   left: 50%;
@@ -21,31 +24,43 @@
   box-shadow: 0 0 5px rgba(255,255,255,0.2);
   transform: translate(-50%,-40%);
   user-select: none;
-}
-.detailDescription {
+  @media (max-width: 600px){
+    width: 300px;
+  }
+`
+
+export const Description = styled.div`
   font-size: 14px;
   text-align: left;
-}
-.detailTitle {
+`
+
+export const Title = styled.div`
   font-size: 20px;
   line-height: 45px;
-}
-.closeIcon {
+`
+
+export const CloseIcon = styled.div`
   float: right;
   font-size: 20px;
   cursor: pointer;
   align-self: flex-end;
-}
+`
 
-.countBar {
+export const CountBar = styled.div`
+  display: flex;
+  flex-direaction: column;
+  justify-content: center;
+  align-item: center;
   font-size: 22px;
   padding: 5px;
-}
-.countIcon {
+`
+
+export const CountIcon = styled.div`
   margin: 0 20px;
   cursor: pointer;
-}
-.addCartBtn {
+`
+
+export const Button = styled.button`
   border-radius: 2px;
   padding: 10px 20px;
   font-weight: 500;
@@ -54,9 +69,4 @@
   background-color: #FFBB0F;
   color: #222;
   cursor: pointer;
-}
-@media screen and (max-width: 600px) {
-  .detailBox {
-    width: 300px;
-  }
-}
+`
