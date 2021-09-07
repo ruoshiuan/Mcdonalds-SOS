@@ -41,6 +41,7 @@ const Map = () => {
       position => setLocation({ lat: position.coords.latitude, lng: position.coords.longitude }),
       err => setLocation({ error: err.message })
     )
+    return () => setLocation()
   }, [])
 
   const mapRef = useRef()

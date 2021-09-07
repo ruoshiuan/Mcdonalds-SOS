@@ -22,6 +22,7 @@ const RecordList = () => {
           .catch(error => console.log(error))
       }
     })
+    return () => setOrderData([])
   }, [])
   const recordsList = orderData.map((record) => {
     return (

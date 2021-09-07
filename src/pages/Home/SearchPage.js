@@ -25,6 +25,7 @@ const SearchPage = (props) => {
       }
     })
     onFormSubmit('')
+    return () => setLogin()
   }, [])
 
   const onFormSubmit = (term) => {

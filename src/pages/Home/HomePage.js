@@ -17,6 +17,7 @@ const HomePage = () => {
         setStoreData(getDataFromFirebase)
       })
       .catch(error => console.log(error))
+    return () => setStoreData([])
   }, [])
 
   const toSearchPage = () => {
