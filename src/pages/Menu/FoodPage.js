@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
-import MorningMenu from './components/MorningMenu'
-import RegularMenu from './components/RegularMenu'
-import PointMenu from './components/PointMenu'
 import MorningDetail from './components/MorningDetail'
 import RegularDetail from './components/RegularDetail'
 import PointDetail from './components/PointDetail'
+import Menu from './components/Menu'
 import CheckCart from './components/CheckCart'
 import { Icon } from '@iconify/react'
 import shoppingBasket from '@iconify-icons/fa-solid/shopping-basket'
-import firebase from '../../firestore_db'
+import firebase, { menuMorningCollection, menuRegularCollection, menuPointCollection } from '../../firestore_db'
 import './css/foodpage.css'
 
 const MENU = {
@@ -81,9 +79,9 @@ const FoodPage = () => {
         </div>
       </main>
         <section>
-          <MorningMenu setOpenMorning={ setOpenMorning } isMorningMenuSelected={ isMorningMenuSelected } />
-          <RegularMenu setOpenRegular={ setOpenRegular } isRegularMenuSelected={ isRegularMenuSelected } />
-          <PointMenu setOpenPoint={ setOpenPoint } isPointMenuSelected={ isPointMenuSelected } />
+          <Menu menuCollection={ menuMorningCollection } setOpenMenu={ setOpenMorning } isMenuSelected={ isMorningMenuSelected } />
+          <Menu menuCollection={ menuRegularCollection } setOpenMenu={ setOpenRegular } isMenuSelected={ isRegularMenuSelected } />
+          <Menu menuCollection={ menuPointCollection } setOpenMenu={ setOpenPoint } isMenuSelected={ isPointMenuSelected } />
           <MorningDetail openMorning={ openMorning } setOpenMorning={ setOpenMorning } orders={ orders } setOrders={ setOrders } />
           <RegularDetail openRegular={ openRegular } setOpenRegular={ setOpenRegular } orders={ orders } setOrders={ setOrders } />
           <PointDetail openPoint={ openPoint } setOpenPoint={ setOpenPoint } orders={ orders } setOrders={ setOrders } />
