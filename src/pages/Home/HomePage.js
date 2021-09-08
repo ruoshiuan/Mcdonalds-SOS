@@ -4,11 +4,11 @@ import SearchPage from './SearchPage'
 import { storesCollection } from '../../firestore_db'
 export const storesContext = createContext()
 const HomePage = () => {
-  const [view, setView] = useState({ mapPage: 'none', searchPage: 'flex' })
+  const [view, setView] = useState({ mapPage: 'flex', searchPage: 'none' })
   const [storeData, setStoreData] = useState([])
   const getDataFromFirebase = []
   useEffect(() => {
-    storesCollection.limit(20)
+    storesCollection
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {

@@ -50,7 +50,7 @@ const StoreItem = ({ store, onStoreSelect }) => {
       <DistanceInfo>
         <MapMarkerAlt><Icon icon={ mapMarkerAlt } /></MapMarkerAlt>
         {
-        distance <= 170
+        distance <= 36
           ? <span><strong>{ distance }</strong></span>
           : <DistanceAlert><strong>{ distance }</strong></DistanceAlert>
         } 公里
@@ -67,7 +67,7 @@ const StoreItem = ({ store, onStoreSelect }) => {
         </IconBox>
     </CardContent>
     {
-    distance <= 170
+    distance <= 36
       ? <OrderBtn onClick={ () => onStoreSelect(store) }>開始點餐</OrderBtn>
       : <NoOrderBtn onClick={ handleErrorAlert }>距離太遠，無法點餐</NoOrderBtn>
     }

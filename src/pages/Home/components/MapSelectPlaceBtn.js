@@ -37,7 +37,7 @@ const SelectPlaceBtn = ({ info, storeInfo }) => {
   }
   return (
     <OrderOption>
-      { info <= 100
+      { info <= 36
         ? <MapOrderBtn onClick={ handleRedirection }>
           開始點餐
         </MapOrderBtn>

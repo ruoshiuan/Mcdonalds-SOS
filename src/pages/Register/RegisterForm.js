@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { Container, Form, Title, Greet, Alert, Input, ErrorMsg, Button, Hint, Switch, GoogleButton } from './style/registerFormStyles'
 const RegisterForm = () => {
   const history = useHistory()
-  const [formData, setFormData] = useState({ name: '', lastname: '', email: '', password: '' })
+  const [formData, setFormData] = useState({ name: '', lastname: '', email: 'tester@test.com', password: 'tester' })
   const [register, setRigister] = useState(false)
   const [error, setError] = useState('')
   const formTitle = register ? '註冊' : '登入'

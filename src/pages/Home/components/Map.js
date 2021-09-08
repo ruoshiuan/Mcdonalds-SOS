@@ -84,7 +84,7 @@ const Map = () => {
                   <div>{ selected.address }</div>
                   <Icon icon={ mapMarkerAlt } />
                   {
-                    distance <= 100
+                    distance <= 36
                       ? <span><strong> { distance } </strong></span>
                       : <OverDistance><strong> { distance } </strong></OverDistance> }公里
                 </div>
