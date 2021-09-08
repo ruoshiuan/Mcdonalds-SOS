@@ -4,9 +4,8 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import LoadingEffect from './LoadingEffect'
 import firebase, { ordersCollection } from '../../firestore_db'
-import './css/orderpage.css'
+import { Title, Form, SubTitle, InputRadio, Option, LabelTitle, Span, Cart, Item, ItemTitle, Quantity, ItemTotal, TotalPrice, Bottom, OrderButton, BackButton } from './style/orderPageStyles'
 const OrderPage = () => {
-  const [loading, setLoading] = useState(true)
   const [mealWay, setMealWay] = useState(null)
   const [payWay, setPayWay] = useState(null)
   const [direct, setDirect] = useState()
@@ -26,8 +25,7 @@ const OrderPage = () => {
     } else if (getTotal === 0) {
       history.push('menu')
     }
-    return () => setLoading(false)
-  }, [loading])
+  }, [])
   const submitOrder = (e) => {
     e.preventDefault()
     if (mealWay === null) {
@@ -67,61 +65,61 @@ const OrderPage = () => {
   }, 0)
   const orderInfo = getCartInfo.map(info => {
     return (
-    <div className="orderInfo" key={ info.id }>
-      <div className="orderMainTitle">
+    <Item key={ info.id }>
+      <ItemTitle>
         <span>{ info.meal }</span>
-        <span className="orderQuantity">x{ info.quantity }</span>
-      </div>
-      {info.side || info.drink === null ? <div className="mealSide">{ info.side }, { info.drink }</div> : null }
-      <div className="orderMealTotal">$ { info.total }</div>
-    </div>
+        <Quantity>x{ info.quantity }</Quantity>
+      </ItemTitle>
+      {info.side || info.drink === null ? <div>{ info.side }, { info.drink }</div> : null }
+      <ItemTotal>$ { info.total }</ItemTotal>
+    </Item>
     )
   })
   return (
     <>
       <Navbar />
       <main>
-        <div className="orderTitle">
+        <Title>
           {storeInfo ? <h2>在 { storeInfo.store } 取餐</h2> : null}
           {storeInfo ? <div>{ storeInfo.address }</div> : null}
-        </div>
-          <form className="orderForm">
-            <h3>選擇用餐方式</h3>
-            <div className="oneOption">
-              <input type="radio" className="radioStyle" id="takeout" name="diningTypes" value="外帶" onChange={(e) => setMealWay(e.target.value)}/>
-              <label htmlFor="takeout" className="labelStyle">外帶<span style={{ color: '#C50406', fontSize: '14px' }}> 得來速不得使用自助點餐</span></label>
-            </div>
-            <div className="oneOption">
-              <input type="radio" className="radioStyle" id="takein" name="diningTypes" value="內用" onChange={(e) => setMealWay(e.target.value)}/>
-              <label htmlFor="takein" className="labelStyle">內用</label>
-            </div>
-            <h3>選擇付款方式</h3>
-            <div className="oneOption">
-              <input type="radio" className="radioStyle" id="line" name="payWays" value="LinePay" onChange={(e) => setPayWay(e.target.value)} />
-              <label htmlFor="line" className="labelStyle">Line Pay</label>
-            </div>
-            <div className="oneOption">
-              <input type="radio" className="radioStyle" id="apple" name="payWays" value="ApplePay" onChange={(e) => setPayWay(e.target.value)} />
-              <label htmlFor="apple" className="labelStyle">Apple Pay</label>
-            </div>
-            <div className="oneOption">
-              <input type="radio" className="radioStyle" id="jko" name="payWays" value="街口支付" onChange={(e) => setPayWay(e.target.value)} />
-              <label htmlFor="jko" className="labelStyle">街口支付</label>
-            </div>
-            <div className="oneOption">
-              <input type="radio" className="radioStyle" id="credit" name="payWays" value="信用卡" onChange={(e) => setPayWay(e.target.value)} />
-              <label htmlFor="credit" className="labelStyle">信用卡</label>
-            </div>
-            <h3>餐點最終確認</h3>
-            <div className="orderCart">
+        </Title>
+          <Form>
+            <SubTitle>選擇用餐方式</SubTitle>
+            <Option>
+              <InputRadio type="radio" id="takeout" name="diningTypes" value="外帶" onChange={(e) => setMealWay(e.target.value)}/>
+              <LabelTitle htmlFor="takeout">外帶<Span> 得來速不得使用自助點餐</Span></LabelTitle>
+            </Option>
+            <Option>
+              <InputRadio type="radio" id="takein" name="diningTypes" value="內用" onChange={(e) => setMealWay(e.target.value)}/>
+              <LabelTitle htmlFor="takein">內用</LabelTitle>
+            </Option>
+            <SubTitle>選擇付款方式</SubTitle>
+            <Option>
+              <InputRadio type="radio" id="line" name="payWays" value="LinePay" onChange={(e) => setPayWay(e.target.value)} />
+              <LabelTitle htmlFor="line">Line Pay</LabelTitle>
+            </Option>
+            <Option>
+              <InputRadio type="radio" id="apple" name="payWays" value="ApplePay" onChange={(e) => setPayWay(e.target.value)} />
+              <LabelTitle htmlFor="apple">Apple Pay</LabelTitle>
+            </Option>
+            <Option>
+              <InputRadio type="radio" id="jko" name="payWays" value="街口支付" onChange={(e) => setPayWay(e.target.value)} />
+              <LabelTitle htmlFor="jko">街口支付</LabelTitle>
+            </Option>
+            <Option>
+              <InputRadio type="radio" id="credit" name="payWays" value="信用卡" onChange={(e) => setPayWay(e.target.value)} />
+              <LabelTitle htmlFor="credit">信用卡</LabelTitle>
+            </Option>
+            <SubTitle>餐點最終確認</SubTitle>
+            <Cart>
               { orderInfo }
-            </div>
-            <div className="orderTotal">合計 $<span>{ getTotal }</span></div>
-          </form>
-          <div className="orderBottomBtn">
-            <button className="backToCartBtn" onClick={() => history.push('menu') }>回上一頁</button>
-            <button className="orderBtn" onClick={ submitOrder }>確定結帳</button>
-          </div>
+            </Cart>
+            <TotalPrice>合計 $<span>{ getTotal }</span></TotalPrice>
+          </Form>
+          <Bottom>
+            <BackButton onClick={() => history.push('menu') }>回上一頁</BackButton>
+            <OrderButton onClick={ submitOrder }>確定結帳</OrderButton>
+          </Bottom>
           {direct ? <LoadingEffect /> : null}
       </main>
       <Footer />

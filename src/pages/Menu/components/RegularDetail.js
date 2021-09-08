@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react'
 import windowClose from '@iconify-icons/fa-solid/window-close'
 import minusCircle from '@iconify-icons/fa-solid/minus-circle'
 import plusCircle from '@iconify-icons/fa-solid/plus-circle'
-import '../css/mealdetail.css'
+import { BlackBackground, DetailBox, Description, Title, CloseIcon, CountBar, CountIcon, Button } from '../style/detailStyles'
 const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
   const [sideFood, setSideFood] = useState('薯條')
   const [drink, setDrink] = useState('可口可樂')
@@ -45,23 +45,23 @@ const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
   return openRegular
     ? (
       <>
-        <div className="blackBackground" onClick={() => closeDetailBox() }></div>
-          <div className="detailBox">
-            <Icon className="closeIcon" icon={ windowClose } onClick={ () => closeDetailBox() } />
-            <form className="detailInfo" onClick={ (e) => e.preventDefault() }>
+        <BlackBackground onClick={() => closeDetailBox() }/>
+          <DetailBox>
+            <CloseIcon><Icon icon={ windowClose } onClick={ () => closeDetailBox() } /></CloseIcon>
+            <form onClick={ (e) => e.preventDefault() }>
               <img src={ openRegular.image } alt="photo" width="100"/>
-              <div className="detailTitle">
+              <Title>
                 { openRegular.meal + '套餐' }
-                <div className="detailPrice">$<span>{ openRegular.price } / 份</span></div>
-              </div>
-              <div className="detailDescription">{ openRegular.description }</div>
-              <div className="detailTitle">請選擇配餐</div>
+                <div>$<span>{ openRegular.price } / 份</span></div>
+              </Title>
+              <Description>{ openRegular.description }</Description>
+              <Title>請選擇配餐</Title>
               <select name="sidefood" onChange={ (e) => { setSideFood(e.target.value) } }>
                 <option value="薯條">薯條</option>
                 <option value="麥脆雞腿">麥脆雞腿</option>
                 <option value="沙拉">沙拉</option>
               </select>
-              <div className="detailTitle">請選擇飲料</div>
+              <Title>請選擇飲料</Title>
               <select name="drink" onChange={ (e) => { setDrink(e.target.value) } }>
                 <option value="可口可樂">可口可樂</option>
                 <option value="雪碧">雪碧</option>
@@ -70,15 +70,15 @@ const MorningDetail = ({ openRegular, setOpenRegular, orders, setOrders }) => {
                 <option value="咖啡">無糖綠茶</option>
                 <option value="玉米濃湯">無糖紅茶</option>
               </select>
-              <div className="detailTitle">數量</div>
-              <div className="countBar">
-                <Icon icon={ minusCircle } className="countIcon" onClick={ () => minus() }/>
+              <Title>數量</Title>
+              <CountBar>
+                <CountIcon><Icon icon={ minusCircle } onClick={ () => minus() }/></CountIcon>
                 { count }
-                <Icon icon={ plusCircle } className="countIcon" onClick={ () => plus() }/>
-              </div>
-              <button className="addCartBtn" onClick={ addToOrder }>加入購物車</button>
+                <CountIcon><Icon icon={ plusCircle } onClick={ () => plus() }/></CountIcon>
+              </CountBar>
+              <Button onClick={ addToOrder }>加入購物車</Button>
             </form>
-          </div>
+          </DetailBox>
       </>
       )
     : null

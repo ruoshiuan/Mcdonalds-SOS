@@ -2,15 +2,13 @@ import React, { useState, useEffect, createContext } from 'react'
 import MapPage from './MapPage'
 import SearchPage from './SearchPage'
 import { storesCollection } from '../../firestore_db'
-import './css/homepage.css'
 export const storesContext = createContext()
 const HomePage = () => {
   const [view, setView] = useState({ mapPage: 'flex', searchPage: 'none' })
-  const [loading, setLoading] = useState(true)
   const [storeData, setStoreData] = useState([])
   const getDataFromFirebase = []
   useEffect(() => {
-    storesCollection.limit(20)
+    storesCollection
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -19,8 +17,8 @@ const HomePage = () => {
         setStoreData(getDataFromFirebase)
       })
       .catch(error => console.log(error))
-    return () => setLoading(false)
-  }, [loading])
+    return () => setStoreData([])
+  }, [])
 
   const toSearchPage = () => {
     setView({ mapPage: 'none', searchPage: 'flex' })
