@@ -1,11 +1,11 @@
 ## Mcdonald’s Self Order Service 麥當勞 自助點餐
 
-1. [Statement 注意事項](https://github.com/ruoshiuan/Mcdonalds-SOS#statement)
-2. [Summary 專案簡介](https://github.com/ruoshiuan/Mcdonalds-SOS#summary)
-3. [Demo 實際頁面](https://github.com/ruoshiuan/Mcdonalds-SOS#demo)
-4. [Diagram 專案架構圖](https://github.com/ruoshiuan/Mcdonalds-SOS#architecture-diagram)
-5. [Technologies 專案技術](https://github.com/ruoshiuan/Mcdonalds-SOS#technologies)
-6. [Feature 專案介紹](https://github.com/ruoshiuan/Mcdonalds-SOS#feature)
+1. [Statement 注意事項](#statement)
+2. [Summary 專案簡介](#summary)
+3. [Demo 實際頁面](#demo)
+4. [Diagram 專案架構圖](#architecture-diagram)
+5. [Technologies 專案技術](#technologies)
+6. [Feature 專案介紹](#feature)
 
 ### Statement
 
